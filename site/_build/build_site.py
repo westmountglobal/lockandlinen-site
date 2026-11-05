@@ -471,9 +471,10 @@ def prepare_images():
     compress_image(Path(__file__).parent / "home-hero-cliff-src.jpg", PUBLIC / "images" / "home-hero-cliff.jpg", max_w=1920, max_bytes=600_000)
 
     for s in STORIES:
+        out = PUBLIC / "stories" / s["slug"] / "images"
+        compress_image(Path(__file__).parent / "banners" / f"{s['slug']}.jpg", out / "banner.jpg", max_w=1920, max_bytes=600_000)
         if s["source"] == "mockup":
             continue
-        out = PUBLIC / "stories" / s["slug"] / "images"
         if s["source"] == "nc":
             stills = NC / s["concept_key"] / "stills"
             hero_src = stills / f"{s['hero_letter']}.raw.png"
@@ -540,25 +541,30 @@ nav a:hover { color: var(--ink); }
 
 .hero {
   position: relative;
-  min-height: clamp(320px, 62vh, 620px);
-  display: flex; align-items: flex-end;
-  background: #203a3a;
+  padding: 0;
+  background: #1c2320;
   overflow: hidden;
 }
 .hero img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: center 40%;
+  display: block;
+  width: 100%; height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
 }
 .hero-scrim {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(16,22,20,0.72) 0%, rgba(16,22,20,0.18) 45%, rgba(16,22,20,0.15) 100%);
+  background: linear-gradient(to top, rgba(16,22,20,0.72) 0%, rgba(16,22,20,0.12) 40%, rgba(16,22,20,0) 100%);
+  pointer-events: none;
 }
 .hero-copy {
-  position: relative; z-index: 1;
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
   max-width: 1100px; width: 100%; margin: 0 auto;
   padding: 2.5rem 1.25rem 2.75rem;
   color: #fff;
+}
+@media (max-width: 720px) {
+  .hero-scrim { display: none; }
+  .hero-copy { position: static; padding: 1.25rem 1.25rem 1.5rem; }
 }
 .eyebrow {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -581,6 +587,7 @@ nav a:hover { color: var(--ink); }
 
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
 section { padding: 3.5rem 0; }
+section.hero { padding: 0; }
 .section-label {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
@@ -903,7 +910,7 @@ def write_story(s: dict):
 {header(prefix)}
 
   <section class="hero" id="homes" aria-label="{esc(s['title'])} hero">
-    <img src="{img}/hero.jpg" alt="{esc(s['hero_alt'])}" />
+    <img src="{img}/banner.jpg" width="1920" height="1080" alt="{esc(s['hero_alt'])}" />
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-copy">
       <p class="eyebrow">{esc(s['eyebrow'])}</p>
@@ -1013,7 +1020,7 @@ def write_index():
 {header('')}
 
   <section class="hero" id="homes" aria-label="Lock and Linen hero">
-    <img src="images/home-hero-cliff.jpg" alt="Glass, stone and timber cliffside home above the sea at golden hour — Lock and Linen concept home (AI-generated)" />
+    <img src="images/home-hero-cliff.jpg" width="1920" height="1080" alt="Glass, stone and timber cliffside home above the sea at golden hour — Lock and Linen concept home (AI-generated)" />
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-copy">
       <p class="eyebrow">Concept homes · Stories</p>
