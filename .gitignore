@@ -1,5 +1,8 @@
 site/_build/*
 !site/_build/build_site.py
 !site/_build/manifest.json
+site/_build/banners/
+site/_build/static/
+site/_build/home-hero-cliff-src.jpg
 *.pyc
 __pycache__/

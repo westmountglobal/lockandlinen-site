@@ -333,3 +333,80 @@ footer {
   .shop-grid { grid-template-columns: 1fr; }
   .stories-grid { grid-template-columns: 1fr; }
 }
+.page-hero {
+  padding: 2.8rem 0 0.4rem;
+}
+.page-hero h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 500; letter-spacing: -0.02em;
+  margin: 0.35rem 0 0.6rem;
+}
+.fr-summary {
+  margin: 1.6rem 0 0;
+  padding: 1.1rem 1.15rem;
+  background: var(--sand);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  max-width: 70ch;
+}
+.fr-summary h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--lagoon); font-weight: 600; margin-bottom: 0.55rem;
+}
+.fr-summary p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem; color: #3a342c; margin-bottom: 0.55rem;
+}
+.fr-summary p:last-child { margin-bottom: 0; }
+.ideas-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.4rem;
+}
+.idea-card {
+  display: grid; grid-template-columns: 110px 1fr; gap: 0.9rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  overflow: hidden; text-decoration: none; color: inherit;
+}
+.idea-card:hover { border-color: #cbbda6; }
+.idea-card .thumb {
+  aspect-ratio: 1; background: var(--linen); overflow: hidden;
+}
+.idea-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.idea-card .body { padding: 0.85rem 0.9rem 0.95rem 0; }
+.idea-card .body .eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--lagoon); margin-bottom: 0.25rem;
+}
+.idea-card h3 {
+  font-size: 1.05rem; font-weight: 500; margin-bottom: 0.3rem;
+}
+.idea-card p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.82rem; color: var(--muted);
+}
+.guide-intro { max-width: 62ch; margin-top: 0.4rem; }
+.contact-list {
+  list-style: none; margin: 1rem 0 0; padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.contact-list li { margin-bottom: 0.7rem; }
+.contact-list a { color: var(--lagoon-deep); text-decoration: underline; text-underline-offset: 2px; }
+.amazon-line {
+  font-size: 0.86rem !important; line-height: 1.5; color: #d9d2c6 !important;
+  max-width: 70ch;
+}
+.amazon-line strong { color: #fff; font-weight: 600; }
+.shop-note {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.88rem; color: var(--muted); margin: -0.2rem 0 0.35rem; max-width: 52ch;
+}
+.shop-fr {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem; color: var(--muted); margin: 0 0 1.2rem; max-width: 56ch;
+}
+@media (max-width: 700px) {
+  .ideas-grid { grid-template-columns: 1fr; }
+  .idea-card { grid-template-columns: 88px 1fr; }
+}
+

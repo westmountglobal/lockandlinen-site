@@ -9,6 +9,26 @@ from PIL import Image
 
 ROOT = Path("/workspace/lockandlinen-site")
 PUBLIC = ROOT / "site" / "public"
+SITE_URL = "https://lockandlinen.com"
+# Shop module stays off until Lex/Elias greenlight live Amazon links.
+SHOP_MODULE_ENABLED = False
+SHOP_COPY = {
+    "en": {
+        "label": "Inspired by this look",
+        "heading": "Inspired by this look",
+        "subline": "Similar products, not the exact items in this AI-rendered concept.",
+        "commission": "We earn a commission if you buy through these links.",
+        "btn": "Affiliate link coming soon",
+    },
+    "fr": {
+        "heading": "Inspiré de ce décor",
+        "subline": "Produits similaires, pas les articles exacts de ce concept généré par IA.",
+        "commission": "Nous touchons une commission sur les achats faits via ces liens.",
+    },
+}
+AMAZON_DISCLOSURE_EN = "As an Amazon Associate I earn from qualifying purchases."
+AMAZON_DISCLOSURE_FR = "En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises."
+DEFAULT_AI_NOTE = "Visuals on this site are AI-generated concept renders from Lock & Linen reels. These are illustrative concept homes, not real listings or buildable plans."
 MOCKUP_IMG = ROOT / "mockup" / "images"
 NC = Path("/workspace/meta-reel-generator/projects/new_concepts")
 FORMULA01 = Path("/workspace/meta-reel-generator/projects/desert-compound-test/formula01")
@@ -211,8 +231,8 @@ add_nc_story(
     [
         ("I", "Living room — warm oak, fire, ocean under your feet", True),
         ("A", "Cantilevered glass above the surf", False),
-        ("K", "Clifftop herb terrace", False),
-        ("F", "Funicular — the only way in", False),
+        ("K", "Funicular — the only way in", False),
+        ("F", "Clifftop herb terrace", False),
         ("U", "Rock-cut cellar behind the glass", False),
         ("X", "Cantilevered house on the cliff face", False),
     ],
@@ -823,6 +843,83 @@ footer {
   .shop-grid { grid-template-columns: 1fr; }
   .stories-grid { grid-template-columns: 1fr; }
 }
+.page-hero {
+  padding: 2.8rem 0 0.4rem;
+}
+.page-hero h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 500; letter-spacing: -0.02em;
+  margin: 0.35rem 0 0.6rem;
+}
+.fr-summary {
+  margin: 1.6rem 0 0;
+  padding: 1.1rem 1.15rem;
+  background: var(--sand);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  max-width: 70ch;
+}
+.fr-summary h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--lagoon); font-weight: 600; margin-bottom: 0.55rem;
+}
+.fr-summary p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem; color: #3a342c; margin-bottom: 0.55rem;
+}
+.fr-summary p:last-child { margin-bottom: 0; }
+.ideas-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.4rem;
+}
+.idea-card {
+  display: grid; grid-template-columns: 110px 1fr; gap: 0.9rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  overflow: hidden; text-decoration: none; color: inherit;
+}
+.idea-card:hover { border-color: #cbbda6; }
+.idea-card .thumb {
+  aspect-ratio: 1; background: var(--linen); overflow: hidden;
+}
+.idea-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.idea-card .body { padding: 0.85rem 0.9rem 0.95rem 0; }
+.idea-card .body .eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--lagoon); margin-bottom: 0.25rem;
+}
+.idea-card h3 {
+  font-size: 1.05rem; font-weight: 500; margin-bottom: 0.3rem;
+}
+.idea-card p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.82rem; color: var(--muted);
+}
+.guide-intro { max-width: 62ch; margin-top: 0.4rem; }
+.contact-list {
+  list-style: none; margin: 1rem 0 0; padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.contact-list li { margin-bottom: 0.7rem; }
+.contact-list a { color: var(--lagoon-deep); text-decoration: underline; text-underline-offset: 2px; }
+.amazon-line {
+  font-size: 0.86rem !important; line-height: 1.5; color: #d9d2c6 !important;
+  max-width: 70ch;
+}
+.amazon-line strong { color: #fff; font-weight: 600; }
+.shop-note {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.88rem; color: var(--muted); margin: -0.2rem 0 0.35rem; max-width: 52ch;
+}
+.shop-fr {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8rem; color: var(--muted); margin: 0 0 1.2rem; max-width: 56ch;
+}
+@media (max-width: 700px) {
+  .ideas-grid { grid-template-columns: 1fr; }
+  .idea-card { grid-template-columns: 88px 1fr; }
+}
+
 """
 
 
@@ -835,6 +932,34 @@ def esc(s: str) -> str:
     )
 
 
+def head_meta(title: str, description: str, canonical_path: str, og_image: str | None = None) -> str:
+    """canonical_path is site-absolute path like / or /privacy/ or /stories/cliffside/."""
+    canon = SITE_URL.rstrip("/") + (canonical_path if canonical_path.startswith("/") else "/" + canonical_path)
+    if not canon.endswith("/") and not canon.rsplit("/", 1)[-1].endswith((".html", ".xml", ".txt", ".ico", ".svg", ".png", ".jpg")):
+        # keep as-is for .html pages; directories should end with /
+        pass
+    og = og_image or (SITE_URL + "/images/home-hero-cliff.jpg")
+    if og.startswith("/"):
+        og = SITE_URL.rstrip("/") + og
+    return f"""<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(description)}" />
+<link rel="canonical" href="{esc(canon)}" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Lock &amp; Linen" />
+<meta property="og:title" content="{esc(title)}" />
+<meta property="og:description" content="{esc(description)}" />
+<meta property="og:url" content="{esc(canon)}" />
+<meta property="og:image" content="{esc(og)}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{esc(title)}" />
+<meta name="twitter:description" content="{esc(description)}" />
+<meta name="twitter:image" content="{esc(og)}" />
+<meta name="p:domain_verify" content="d8eba614593c879141a48e3784ac2664" />
+"""
+
+
 def header(prefix: str) -> str:
     return f"""  <header class="site-header">
     <div class="header-inner">
@@ -842,7 +967,9 @@ def header(prefix: str) -> str:
       <nav aria-label="Primary">
         <a href="{prefix}index.html#homes">Homes</a>
         <a href="{prefix}index.html#stories">Stories</a>
+        <a href="{prefix}guides/quiet-security-ideas/index.html">Guide</a>
         <a href="{prefix}about.html">About</a>
+        <a href="{prefix}contact/index.html">Contact</a>
       </nav>
     </div>
   </header>"""
@@ -855,11 +982,15 @@ def footer(ai_note: str, prefix: str) -> str:
       <div class="footer-nav">
         <a href="{prefix}index.html">Homes</a>
         <a href="{prefix}index.html#stories">Stories</a>
+        <a href="{prefix}guides/quiet-security-ideas/index.html">Guide</a>
         <a href="{prefix}about.html">About</a>
+        <a href="{prefix}privacy/index.html">Privacy</a>
+        <a href="{prefix}contact/index.html">Contact</a>
       </div>
       <div class="disclosures">
-        <p><strong>AI disclosure:</strong> {esc(ai_note)}</p>
-        <p style="margin-top:0.7rem;"><strong>Affiliate disclosure (placeholder):</strong> Some links on this site may be affiliate links. If you buy through them, Lock &amp; Linen may earn a commission at no extra cost to you. No affiliate links are live on this page.</p>
+        <p class="amazon-line"><strong>Amazon Associates:</strong> {esc(AMAZON_DISCLOSURE_EN)}</p>
+        <p class="amazon-line" style="margin-top:0.35rem;"><strong>Partenaire Amazon :</strong> {esc(AMAZON_DISCLOSURE_FR)}</p>
+        <p style="margin-top:0.85rem;"><strong>AI disclosure:</strong> {esc(ai_note)}</p>
       </div>
     </div>
   </footer>"""
@@ -886,24 +1017,42 @@ def write_story(s: dict):
     body_html = "\n".join(f"          <p>{esc(p)}</p>" for p in s["body"])
     shop_html = []
     for name, desc in s["shop"]:
+        # No prices, ratings, availability, or product images until Amazon tools supply them.
         shop_html.append(
             f"""        <article class="product">
-          <span class="ph-badge">Placeholder</span>
-          <div class="ph-img">Image soon</div>
+          <span class="ph-badge">Coming soon</span>
+          <div class="ph-img">Image via Amazon</div>
           <div class="ph-body">
             <h3>{esc(name)}</h3>
             <p>{esc(desc)}</p>
-            <span class="btn-soon">Affiliate link coming soon</span>
+            <span class="btn-soon">{esc(SHOP_COPY["en"]["btn"])}</span>
           </div>
         </article>"""
         )
+    en, fr = SHOP_COPY["en"], SHOP_COPY["fr"]
+    shop_section = ""
+    if SHOP_MODULE_ENABLED:
+        shop_section = f"""
+  <section aria-label="{esc(en['heading'])}">
+    <div class="wrap">
+      <p class="section-label">{esc(en['label'])}</p>
+      <h2>{esc(en['heading'])}</h2>
+      <p class="shop-note">{esc(en['subline'])}</p>
+      <p class="shop-note">{esc(en['commission'])}</p>
+      <p class="shop-fr"><strong>FR — {esc(fr['heading'])}.</strong> {esc(fr['subline'])} {esc(fr['commission'])}</p>
+      <div class="shop-grid">
+{chr(10).join(shop_html)}
+      </div>
+    </div>
+  </section>
+"""
 
+    desc = (s.get("card_blurb") or s["tagline"] or s["title"])[:160]
+    og_img = f"{SITE_URL}/stories/{slug}/images/banner.jpg"
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{esc(s['title'])} — Lock &amp; Linen</title>
+{head_meta(f"{s['title']} — Lock & Linen", desc, f"/stories/{slug}/", og_img)}
 {FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
 </head>
 <body>
@@ -964,17 +1113,7 @@ def write_story(s: dict):
     </div>
   </section>
 
-  <section aria-label="Shop this look placeholders">
-    <div class="wrap">
-      <p class="section-label">Shop this look</p>
-      <h2>Pieces that match the mood</h2>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:0.88rem;color:var(--muted);margin:-0.4rem 0 1.4rem;max-width:52ch;">Placeholder affiliate cards only — no live products or links yet.</p>
-      <div class="shop-grid">
-{chr(10).join(shop_html)}
-      </div>
-    </div>
-  </section>
-
+{shop_section}
 {footer(s['ai_note'], prefix)}
 </body>
 </html>
@@ -989,7 +1128,66 @@ CARD_BLURBS = {
     "missile-silo": "A converted missile silo under the open prairie, with only a modest farmhouse and a flush hatch on top.",
     "fjord-boathouse": "Dark timber boathouse on dry-stone piers at the foot of a Nordic fjord, with a boat bay under the house.",
 }
+
 FAVICON = '<link rel="icon" href="{p}favicon.ico" sizes="any" />\n<link rel="icon" href="{p}favicon.svg" type="image/svg+xml" />\n<link rel="apple-touch-icon" href="{p}apple-touch-icon.png" />\n'
+
+
+GUIDE_IDEAS = [
+    {
+        "slug": "island-home",
+        "title": "One dock as the only way in",
+        "blurb": "A single teak dock and boat lift set the perimeter without looking like a fortress — quiet access control rendered as coastal living.",
+        "thumb": "stories/island-home/images/gallery-dock.jpg",
+    },
+    {
+        "slug": "cliffside",
+        "title": "A funicular instead of a driveway",
+        "blurb": "The Cliffside Glass House uses one clifftop car as the only land entry. Soft oak and linen wait inside the cantilever.",
+        "thumb": "stories/cliffside/images/gallery-3.jpg",
+    },
+    {
+        "slug": "canyon",
+        "title": "Earth walls that disappear into rock",
+        "blurb": "Rammed earth flush with red canyon stone, a planted roof, and a fig courtyard — privacy by terrain, softness by material.",
+        "thumb": "stories/canyon/images/gallery-1.jpg",
+    },
+    {
+        "slug": "lighthouse",
+        "title": "One gravel causeway to the keeper's house",
+        "blurb": "A restored headland light with wool throws and a stove. The causeway is the filter; the interior is the refuge.",
+        "thumb": "stories/lighthouse/images/gallery-1.jpg",
+    },
+    {
+        "slug": "missile-silo",
+        "title": "A flush hatch under a prairie farmhouse",
+        "blurb": "Ordinary above, cylindrical oak living rooms below. Security as a quiet layer, not a showpiece.",
+        "thumb": "stories/missile-silo/images/gallery-1.jpg",
+    },
+    {
+        "slug": "fjord-boathouse",
+        "title": "Boat bay under the living room",
+        "blurb": "Dark timber, sheepskins, and a glass floor over the boat. Arrival by water feels intentional, not theatrical.",
+        "thumb": "stories/fjord-boathouse/images/gallery-1.jpg",
+    },
+    {
+        "slug": "canyon-homestead",
+        "title": "Canyon walls as the compound edge",
+        "blurb": "One road, one gate, cliffs on three sides. Raised beds and a root cellar keep the mood domestic.",
+        "thumb": "stories/canyon-homestead/images/gallery-1.jpg",
+    },
+    {
+        "slug": "sea-cliff-homestead",
+        "title": "Headland compound above the surf",
+        "blurb": "Sea cliffs on three sides, one lane in, wool throws after the wind. Fortification read as geography.",
+        "thumb": "stories/sea-cliff-homestead/images/gallery-1.jpg",
+    },
+    {
+        "slug": "mountain-homestead",
+        "title": "Granite behind, one switchback road",
+        "blurb": "Stone-and-timber under the peaks. Soft evenings, solar roofs, and a single approach that keeps the bench quiet.",
+        "thumb": "stories/mountain-homestead/images/gallery-1.jpg",
+    },
+]
 
 
 def write_index():
@@ -1007,13 +1205,19 @@ def write_index():
           </div>
         </a>"""
         )
-    default_ai = "Visuals on this site are AI-generated concept renders from Lock & Linen reels. These are illustrative concept homes, not real listings or buildable plans."
+    guide_card = """        <a class="story-card" href="guides/quiet-security-ideas/index.html">
+          <div class="thumb"><img src="stories/cliffside/images/hero.jpg" alt="Guide: Quiet security, softly furnished" /></div>
+          <div class="body">
+            <p class="eyebrow">Guide</p>
+            <h3>Quiet security, softly furnished</h3>
+            <p>Nine ideas from our AI concept homes — privacy by design, comfort by material.</p>
+            <span class="more">Read the guide</span>
+          </div>
+        </a>"""
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Lock &amp; Linen — Concept Homes</title>
+{head_meta("Lock & Linen — Concept Homes", "AI-rendered concept homes: quietly fortified and softly furnished. Room-by-room stories from Lock & Linen.", "/", f"{SITE_URL}/images/home-hero-cliff.jpg")}
 {FAVICON.format(p="")}<link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -1036,11 +1240,12 @@ def write_index():
       <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:0.92rem;color:var(--muted);margin:-0.35rem 0 0;max-width:58ch;">Each story pairs stills from a Lock &amp; Linen reel with the caption and voiceover already published — no invented facts.</p>
       <div class="stories-grid">
 {chr(10).join(cards)}
+{guide_card}
       </div>
     </div>
   </section>
 
-{footer(default_ai, '')}
+{footer(DEFAULT_AI_NOTE, '')}
 </body>
 </html>
 """
@@ -1048,13 +1253,10 @@ def write_index():
 
 
 def write_about():
-    default_ai = "Visuals across Lock & Linen are AI-generated concept renders. These are illustrative concept homes, not real listings or buildable plans."
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About — Lock &amp; Linen</title>
+{head_meta("About — Lock & Linen", "Lock & Linen tells short stories about AI-rendered concept homes — private, self-sufficient places, quietly fortified and softly furnished.", "/about.html")}
 {FAVICON.format(p="")}<link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
@@ -1067,21 +1269,186 @@ def write_about():
       <div class="prose">
         <p>Lock &amp; Linen tells short stories about concept homes — private, self-sufficient places rendered as quiet fortification, then softly furnished.</p>
         <p>Every home on this site comes from a published Lock &amp; Linen reel. The copy is taken from that reel’s caption and voiceover. The images are frames from the same render set. Nothing here is a real listing or a buildable plan.</p>
-        <p>Shop cards are placeholders only. Affiliate links are not live yet.</p>
+        <p>We participate in the Amazon Services LLC Associates Program. Product modules stay off until links are ready; when they appear, they will be labeled as inspired by the look, not as the exact items in the AI render.</p>
       </div>
     </div>
   </section>
 
-{footer(default_ai, '')}
+{footer(DEFAULT_AI_NOTE, '')}
 </body>
 </html>
 """
     (PUBLIC / "about.html").write_text(html)
 
 
+def write_privacy():
+    out = PUBLIC / "privacy"
+    out.mkdir(parents=True, exist_ok=True)
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("Privacy Policy — Lock & Linen", "How Lock & Linen handles information, cookies, Amazon Associates referrals, and hosting logs. Effective November 5, 2026.", "/privacy/")}
+{FAVICON.format(p="../")}<link rel="stylesheet" href="../css/site.css" />
+</head>
+<body>
+{header('../')}
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="section-label">Legal</p>
+      <h1>Privacy policy</h1>
+      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--muted);font-size:0.9rem;">Effective date: November 5, 2026 · Contact: <a href="mailto:hello@lockandlinen.com" style="color:var(--lagoon-deep);text-decoration:underline;">hello@lockandlinen.com</a></p>
+      <div class="prose" style="margin-top:1.4rem;">
+        <p>Lock &amp; Linen (“we”, “us”) runs this website to share AI-rendered concept-home stories. This policy explains what information is involved when you visit lockandlinen.com, in plain language. It is meant to be readable under Québec’s Law 25 as well as for visitors elsewhere.</p>
+
+        <p><strong>Amazon Associates.</strong> We participate in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and related sites. {esc(AMAZON_DISCLOSURE_EN)}</p>
+
+        <p><strong>Affiliate cookies.</strong> When you click an Amazon (or other affiliate) link on this site, Amazon and other third parties may place and read cookies or similar technologies on your device to track that you came from Lock &amp; Linen and to attribute a later purchase. We do not control those cookies. Their use is governed by Amazon’s and those parties’ own privacy policies. No affiliate links are live on the site until we enable them.</p>
+
+        <p><strong>What this site loads.</strong> This site does <em>not</em> load its own analytics, advertising, or tracking scripts (no Google Analytics, Meta Pixel, or similar first-party tags). Story pages may embed a privacy-enhanced YouTube player (<code>youtube-nocookie.com</code>); YouTube / Google may set or read cookies if you play a video, under Google’s policies. We do not add any other third-party trackers.</p>
+
+        <p><strong>Hosting logs.</strong> The site is hosted on Render. Like most hosts, Render may keep standard server logs (for example IP address, user agent, requested URL, and time) for security, debugging, and reliable delivery. We do not use those logs to build marketing profiles, and we do not sell personal information.</p>
+
+        <p><strong>Accounts and forms.</strong> We do not offer user accounts on this site. There is no login and no on-site contact form — only a mailto link to hello@lockandlinen.com. If you email us, we use your message only to reply.</p>
+
+        <p><strong>No sale of data.</strong> We do not sell your personal information.</p>
+
+        <p><strong>Children.</strong> This site is not directed at children under 14.</p>
+
+        <p><strong>Changes.</strong> If this policy changes, we will update the effective date on this page.</p>
+
+        <p><strong>Contact.</strong> Questions: <a href="mailto:hello@lockandlinen.com">hello@lockandlinen.com</a>.</p>
+      </div>
+
+      <div class="fr-summary" lang="fr">
+        <h3>Résumé (français)</h3>
+        <p>Lock &amp; Linen présente des maisons conceptuelles générées par IA. Nous participons au programme Partenaires Amazon Services LLC. {esc(AMAZON_DISCLOSURE_FR)}</p>
+        <p>Si vous cliquez un lien d’affiliation, Amazon et d’autres tiers peuvent placer et lire des témoins (cookies) pour attribuer une éventuelle vente. Ce site n’installe pas ses propres scripts d’analyse ou de publicité. L’hébergeur (Render) peut conserver des journaux techniques habituels. Aucun compte utilisateur, aucune vente de données. Contact : hello@lockandlinen.com. Entrée en vigueur : 5 novembre 2026.</p>
+      </div>
+    </div>
+  </section>
+
+{footer(DEFAULT_AI_NOTE, '../')}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
+def write_contact():
+    out = PUBLIC / "contact"
+    out.mkdir(parents=True, exist_ok=True)
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("Contact — Lock & Linen", "Email Lock & Linen at hello@lockandlinen.com. Questions about concept homes, press, or the site.", "/contact/")}
+{FAVICON.format(p="../")}<link rel="stylesheet" href="../css/site.css" />
+</head>
+<body>
+{header('../')}
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="section-label">Contact</p>
+      <h1>Say hello</h1>
+      <div class="prose" style="margin-top:1.1rem;">
+        <p>For questions about a concept home, a correction on the site, press, or partnership notes — email us. We read every message; replies may take a few days.</p>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> <a href="mailto:hello@lockandlinen.com">hello@lockandlinen.com</a></li>
+          <li><strong>Pinterest:</strong> <a href="https://www.pinterest.com/lockandlinen/" rel="noopener noreferrer">pinterest.com/lockandlinen</a></li>
+          <li><strong>Instagram:</strong> <a href="https://www.instagram.com/lockandlinen/" rel="noopener noreferrer">@lockandlinen</a></li>
+          <li><strong>YouTube:</strong> <a href="https://www.youtube.com/@LockandLinen" rel="noopener noreferrer">@LockandLinen</a></li>
+        </ul>
+        <p style="margin-top:1.2rem;">We do not publish a phone number or street address. Visuals on this site are AI-generated concepts, not real listings.</p>
+      </div>
+
+      <div class="fr-summary" lang="fr">
+        <h3>Résumé (français)</h3>
+        <p>Écrivez-nous à <a href="mailto:hello@lockandlinen.com">hello@lockandlinen.com</a> pour toute question sur les maisons conceptuelles, le site ou la presse. Retrouvez-nous aussi sur Pinterest, Instagram et YouTube (@lockandlinen / @LockandLinen). Pas de téléphone ni d’adresse postale publiés.</p>
+      </div>
+    </div>
+  </section>
+
+{footer(DEFAULT_AI_NOTE, '../')}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
+def write_guide():
+    out = PUBLIC / "guides" / "quiet-security-ideas"
+    out.mkdir(parents=True, exist_ok=True)
+    cards = []
+    for i, idea in enumerate(GUIDE_IDEAS, 1):
+        cards.append(
+            f"""        <a class="idea-card" href="../../stories/{idea['slug']}/index.html">
+          <div class="thumb"><img src="../../{esc(idea['thumb'])}" alt="{esc(idea['title'])} — AI concept" /></div>
+          <div class="body">
+            <p class="eyebrow">Idea {i} · AI concept</p>
+            <h3>{esc(idea['title'])}</h3>
+            <p>{esc(idea['blurb'])}</p>
+          </div>
+        </a>"""
+        )
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("Quiet security, softly furnished: 9 ideas — Lock & Linen", "Nine privacy-and-comfort ideas drawn from Lock & Linen AI concept homes — each linked to its full story.", "/guides/quiet-security-ideas/", f"{SITE_URL}/stories/cliffside/images/banner.jpg")}
+{FAVICON.format(p="../../")}<link rel="stylesheet" href="../../css/site.css" />
+</head>
+<body>
+{header('../../')}
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="section-label">Guide</p>
+      <h1>Quiet security, softly furnished: 9 ideas from our concept homes</h1>
+      <div class="prose guide-intro">
+        <p>Lock &amp; Linen homes are AI-rendered concepts, not real listings. What they share is a mood: privacy handled by landform and a single clear entry, then interiors finished in linen, timber, wool, and soft light. Here are nine ideas you can steal for a mood board — each one links to the full story.</p>
+        <p>Nothing on this page is a product claim or a security-performance guarantee. It is design inspiration from fictional places.</p>
+      </div>
+      <div class="ideas-grid">
+{chr(10).join(cards)}
+      </div>
+    </div>
+  </section>
+
+{footer(DEFAULT_AI_NOTE, '../../')}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
+def write_robots_and_sitemap():
+    (PUBLIC / "robots.txt").write_text(
+        f"""User-agent: *
+Allow: /
+
+Sitemap: {SITE_URL}/sitemap.xml
+"""
+    )
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/"]
+    for s in STORIES:
+        paths.append(f"/stories/{s['slug']}/")
+    urls = []
+    for p in paths:
+        loc = SITE_URL.rstrip("/") + p
+        urls.append(f"""  <url>
+    <loc>{loc}</loc>
+    <changefreq>weekly</changefreq>
+  </url>""")
+    (PUBLIC / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(urls)
+        + "\n</urlset>\n"
+    )
+
+
 def main():
     if PUBLIC.exists():
-        # wipe previous public contents carefully
         for child in PUBLIC.iterdir():
             if child.is_dir():
                 shutil.rmtree(child)
@@ -1100,10 +1467,13 @@ def main():
         print(" ", s["slug"], s["yt"])
     write_index()
     write_about()
-    # manifest for report
+    write_privacy()
+    write_contact()
+    write_guide()
+    write_robots_and_sitemap()
     manifest = [{"slug": s["slug"], "yt": s["yt"], "title": s["title"]} for s in STORIES]
     (ROOT / "site" / "_build" / "manifest.json").write_text(json.dumps(manifest, indent=2))
-    print("Done.", len(STORIES), "stories")
+    print("Done.", len(STORIES), "stories + privacy/contact/guide")
 
 
 if __name__ == "__main__":
