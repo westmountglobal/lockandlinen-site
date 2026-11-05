@@ -1,3 +1,5 @@
-site/_build/
+site/_build/*
+!site/_build/build_site.py
+!site/_build/manifest.json
 *.pyc
 __pycache__/
