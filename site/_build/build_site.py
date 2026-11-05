@@ -178,7 +178,7 @@ def add_nc_story(slug, yt, concept_key, still_map, shop, hero_letter="A"):
     # Better card from caption second line
     caps = [ln for ln in caption.split("\n") if ln.strip()]
     if len(caps) >= 2:
-        card = caps[1][:140]
+        card = caps[1]
 
     STORIES.append(
         {
@@ -468,7 +468,7 @@ def prepare_images():
         compress_image(MOCKUP_IMG / name, island_dir / name)
 
     # Index hero: island hero copy
-    compress_image(MOCKUP_IMG / "hero.jpg", PUBLIC / "images" / "home-hero.jpg")
+    compress_image(Path(__file__).parent / "home-hero-cliff-src.jpg", PUBLIC / "images" / "home-hero-cliff.jpg", max_w=1920, max_bytes=600_000)
 
     for s in STORIES:
         if s["source"] == "mockup":
@@ -897,7 +897,7 @@ def write_story(s: dict):
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{esc(s['title'])} — Lock &amp; Linen</title>
-<link rel="stylesheet" href="{prefix}css/site.css" />
+{FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
 </head>
 <body>
 {header(prefix)}
@@ -975,6 +975,16 @@ def write_story(s: dict):
     (out_dir / "index.html").write_text(html)
 
 
+CARD_BLURBS = {
+    "cliffside": "Cantilevered glass house above the surf, reached only by funicular, with a rock-cut cellar below.",
+    "canyon": "Earth-walled house cut into a canyon wall, with one trail, one hidden gate and a fig courtyard.",
+    "lighthouse": "Restored stone lighthouse and keeper's house on a rocky headland, reached by one gravel causeway.",
+    "missile-silo": "A converted missile silo under the open prairie, with only a modest farmhouse and a flush hatch on top.",
+    "fjord-boathouse": "Dark timber boathouse on dry-stone piers at the foot of a Nordic fjord, with a boat bay under the house.",
+}
+FAVICON = '<link rel="icon" href="{p}favicon.ico" sizes="any" />\n<link rel="icon" href="{p}favicon.svg" type="image/svg+xml" />\n<link rel="apple-touch-icon" href="{p}apple-touch-icon.png" />\n'
+
+
 def write_index():
     cards = []
     for s in STORIES:
@@ -985,7 +995,7 @@ def write_index():
           <div class="body">
             <p class="eyebrow">Concept home</p>
             <h3>{esc(s['title'])}</h3>
-            <p>{esc(s['card_blurb'])}</p>
+            <p>{esc(CARD_BLURBS.get(s['slug'], s['card_blurb']))}</p>
             <span class="more">Read the story</span>
           </div>
         </a>"""
@@ -997,13 +1007,13 @@ def write_index():
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lock &amp; Linen — Concept Homes</title>
-<link rel="stylesheet" href="css/site.css" />
+{FAVICON.format(p="")}<link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
 {header('')}
 
   <section class="hero" id="homes" aria-label="Lock and Linen hero">
-    <img src="images/home-hero.jpg" alt="Aerial view of a teak stilt house on a turquoise lagoon — Lock and Linen concept home" />
+    <img src="images/home-hero-cliff.jpg" alt="Glass, stone and timber cliffside home above the sea at golden hour — Lock and Linen concept home (AI-generated)" />
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-copy">
       <p class="eyebrow">Concept homes · Stories</p>
@@ -1038,7 +1048,7 @@ def write_about():
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>About — Lock &amp; Linen</title>
-<link rel="stylesheet" href="css/site.css" />
+{FAVICON.format(p="")}<link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
 {header('')}
@@ -1073,6 +1083,8 @@ def main():
     PUBLIC.mkdir(parents=True, exist_ok=True)
     (PUBLIC / "css").mkdir(parents=True, exist_ok=True)
     (PUBLIC / "css" / "site.css").write_text(CSS)
+    for f in (Path(__file__).parent / "static").iterdir():
+        shutil.copy2(f, PUBLIC / f.name)
     print("Compressing images…")
     prepare_images()
     print("Writing pages…")
