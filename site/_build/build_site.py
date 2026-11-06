@@ -957,6 +957,7 @@ def head_meta(title: str, description: str, canonical_path: str, og_image: str |
 <meta name="twitter:description" content="{esc(description)}" />
 <meta name="twitter:image" content="{esc(og)}" />
 <meta name="p:domain_verify" content="d8eba614593c879141a48e3784ac2664" />
+<meta name="google-site-verification" content="epKejJR5K_EWgKNm6s708GhHztnLz79qfR9GjJEubyo" />
 """
 
 
