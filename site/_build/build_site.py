@@ -958,6 +958,14 @@ def head_meta(title: str, description: str, canonical_path: str, og_image: str |
 <meta name="twitter:image" content="{esc(og)}" />
 <meta name="p:domain_verify" content="d8eba614593c879141a48e3784ac2664" />
 <meta name="google-site-verification" content="epKejJR5K_EWgKNm6s708GhHztnLz79qfR9GjJEubyo" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CK8VTP8KF1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-CK8VTP8KF1');
+</script>
 """
 
 
@@ -1306,7 +1314,7 @@ def write_privacy():
 
         <p><strong>Affiliate cookies.</strong> When you click an Amazon (or other affiliate) link on this site, Amazon and other third parties may place and read cookies or similar technologies on your device to track that you came from Lock &amp; Linen and to attribute a later purchase. We do not control those cookies. Their use is governed by Amazon’s and those parties’ own privacy policies. No affiliate links are live on the site until we enable them.</p>
 
-        <p><strong>What this site loads.</strong> This site does <em>not</em> load its own analytics, advertising, or tracking scripts (no Google Analytics, Meta Pixel, or similar first-party tags). Story pages may embed a privacy-enhanced YouTube player (<code>youtube-nocookie.com</code>); YouTube / Google may set or read cookies if you play a video, under Google’s policies. We do not add any other third-party trackers.</p>
+        <p><strong>Analytics.</strong> We use Google Analytics 4 (GA4), Measurement ID <code>G-CK8VTP8KF1</code>, to understand how people use this site — for example which pages are viewed, approximate location, and device type. Google may set cookies or similar technologies and process usage data under <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google’s privacy policy</a>. We do not sell personal information. We do not use a Meta Pixel or similar advertising pixels. Story pages may also embed a privacy-enhanced YouTube player (<code>youtube-nocookie.com</code>); YouTube / Google may set or read cookies if you play a video, under Google’s policies.</p>
 
         <p><strong>Hosting logs.</strong> The site is hosted on Render. Like most hosts, Render may keep standard server logs (for example IP address, user agent, requested URL, and time) for security, debugging, and reliable delivery. We do not use those logs to build marketing profiles, and we do not sell personal information.</p>
 
@@ -1324,7 +1332,7 @@ def write_privacy():
       <div class="fr-summary" lang="fr">
         <h3>Résumé (français)</h3>
         <p>Lock &amp; Linen présente des maisons conceptuelles générées par IA. Nous participons au programme Partenaires Amazon Services LLC. {esc(AMAZON_DISCLOSURE_FR)}</p>
-        <p>Si vous cliquez un lien d’affiliation, Amazon et d’autres tiers peuvent placer et lire des témoins (cookies) pour attribuer une éventuelle vente. Ce site n’installe pas ses propres scripts d’analyse ou de publicité. L’hébergeur (Render) peut conserver des journaux techniques habituels. Aucun compte utilisateur, aucune vente de données. Contact : hello@lockandlinen.com. Entrée en vigueur : 5 novembre 2026.</p>
+        <p>Si vous cliquez un lien d’affiliation, Amazon et d’autres tiers peuvent placer et lire des témoins (cookies) pour attribuer une éventuelle vente. Nous utilisons Google Analytics 4 (GA4), identifiant de mesure <code>G-CK8VTP8KF1</code>, pour comprendre le trafic (pages consultées, localisation approximative, appareil). Google peut placer des témoins et traiter des données d’usage selon sa politique de confidentialité. Nous ne vendons pas de renseignements personnels. Pas de Meta Pixel. L’hébergeur (Render) peut conserver des journaux techniques habituels. Aucun compte utilisateur. Contact : hello@lockandlinen.com. Entrée en vigueur : 5 novembre 2026.</p>
       </div>
     </div>
   </section>
