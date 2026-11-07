@@ -234,7 +234,7 @@ add_nc_story(
         ("K", "Funicular — the only way in", False),
         ("F", "Clifftop herb terrace", False),
         ("U", "Rock-cut cellar behind the glass", False),
-        ("X", "Cantilevered house on the cliff face", False),
+        ("X", "X-ray view — Faraday-lined walls", False),
     ],
     [
         ("Low oak lounge chair", "Warm wood for the concrete-and-glass living room."),
@@ -251,10 +251,10 @@ add_nc_story(
     [
         ("I", "Cool interior — thick rammed-earth walls, clay and linen", True),
         ("A", "Earth-walled house flush with the canyon rock", False),
-        ("K", "Fig-tree courtyard", False),
-        ("F", "Hidden rammed-earth gate", False),
+        ("K", "Hidden rammed-earth gate", False),
+        ("F", "Fig-tree courtyard", False),
         ("U", "Rock-cut water tank & cellar", False),
-        ("X", "Planted roof, nearly invisible in the wall", False),
+        ("X", "X-ray view — Faraday-lined walls", False),
     ],
     [
         ("Linen window-seat cushion", "Soft seating for deep earth walls."),
@@ -271,10 +271,10 @@ add_nc_story(
     [
         ("I", "Keeper's living room — stove, window seat, wool throws", True),
         ("A", "Whitewashed lighthouse on a rocky headland", False),
-        ("K", "Walled kitchen garden", False),
-        ("F", "Gravel causeway — one way in", False),
+        ("K", "Gravel causeway — one way in", False),
+        ("F", "Walled kitchen garden", False),
         ("U", "Granite-cut storeroom below", False),
-        ("X", "Lantern room and slate-roofed keeper's house", False),
+        ("X", "X-ray view — Faraday-lined keeper's house", False),
     ],
     [
         ("Cast-iron stove set", "Warmth for thick stone walls."),
@@ -291,10 +291,10 @@ add_nc_story(
     [
         ("I", "Cylindrical living room — oak panelling, skylight shaft", True),
         ("A", "Prairie farmhouse above the silo", False),
-        ("K", "Raised-bed prairie garden", False),
-        ("F", "Flush concrete silo hatch", False),
-        ("U", "Stacked pantry levels below", False),
-        ("X", "Cross-section — living floors down the shaft", False),
+        ("K", "Flush concrete silo hatch", False),
+        ("F", "Raised-bed prairie garden", False),
+        ("U", "Cross-section — living and pantry levels down the shaft", False),
+        ("X", "X-ray view — Faraday-lined farmhouse at night", False),
     ],
     [
         ("Sectional sofa", "Soft seating for the curved living room."),
@@ -311,10 +311,10 @@ add_nc_story(
     [
         ("I", "Timber living room — wood stove, sheepskins, glass floor to the boat", True),
         ("A", "Dark timber boathouse on dry-stone piers", False),
-        ("K", "Fjord-side timber sauna", False),
-        ("F", "Cliff stair — one way in by land", False),
-        ("U", "Rock-cut store behind the house", False),
-        ("X", "Boat bay under the house", False),
+        ("K", "Cliff stair — one way in by land", False),
+        ("F", "Fjord-side timber sauna", False),
+        ("U", "Wall of preserves inside", False),
+        ("X", "X-ray view — Faraday-lined walls", False),
     ],
     [
         ("Sheepskin throw", "Soft texture for the timber lounge."),
@@ -378,7 +378,7 @@ add_formula_story(
     img_root=FORMULA01 / "stills",
     still_map=[
         ("H.raw.png", "Cozy home under canyon walls", True),
-        ("C.raw.png", "The compound in the box canyon", False),
+        ("C.raw.png", "Root cellar and stone cistern", False),
         ("F.raw.png", "Potato rows, corn, coop and goat pen", False),
         ("G.raw.png", "Garage and fueled rides", False),
         ("S2.raw.png", "One fence — one way in", False),
@@ -411,7 +411,7 @@ add_formula_story(
     img_root=BATCH2 / "f03" / "stills",
     still_map=[
         ("H.raw.png", "Shingle-and-stone cottage on the headland", True),
-        ("C.raw.png", "Headland compound above the surf", False),
+        ("C.raw.png", "Turf-roofed root cellar", False),
         ("F.raw.png", "Raised beds, potatoes, coop and sheep shelter", False),
         ("G.raw.png", "Garage and fueled rides", False),
         ("S2.raw.png", "One lane — one gate", False),
@@ -443,10 +443,10 @@ add_formula_story(
     img_root=BATCH2 / "f04" / "stills",
     still_map=[
         ("H.raw.png", "Stone-and-timber chalet on the alpine bench", True),
-        ("C.raw.png", "Mountain compound under the peaks", False),
+        ("C.raw.png", "Cellar door and water cistern", False),
         ("F.raw.png", "Potatoes, cabbage, coop and goat pen", False),
         ("G.raw.png", "Garage and fueled rides", False),
-        ("S1.raw.png", "One switchback road — one gate", False),
+        ("S1.raw.png", "One road in — the only approach", False),
         ("N.raw.png", "Night — lights wake on the bench", False),
     ],
     hero_file="H.raw.png",
