@@ -468,6 +468,7 @@ footer {
   font-size: 0.86rem !important; line-height: 1.5; color: #d9d2c6 !important;
   max-width: 70ch;
 }
+.amazon-line + .amazon-line { margin-top: 0.4rem; }
 .amazon-line strong { color: #fff; font-weight: 600; }
 .shop-note {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

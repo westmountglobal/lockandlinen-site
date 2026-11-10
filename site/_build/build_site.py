@@ -28,6 +28,7 @@ SHOP_COPY = {
 }
 AMAZON_DISCLOSURE_EN = "As an Amazon Associate I earn from qualifying purchases."
 AMAZON_DISCLOSURE_NEAR = "As an Amazon Associate we earn from qualifying purchases."
+AMAZON_TRADEMARK = "Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates."
 AMAZON_DISCLOSURE_FR = "En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises."
 GEAR_PAGE_HREF = "/guides/gear-wed-put-in-these-homes/"
 GEAR_PAGE_REL = {  # prefix-relative from a story page
@@ -1298,6 +1299,7 @@ footer {
   font-size: 0.86rem !important; line-height: 1.5; color: #d9d2c6 !important;
   max-width: 70ch;
 }
+.amazon-line + .amazon-line { margin-top: 0.4rem; }
 .amazon-line strong { color: #fff; font-weight: 600; }
 .shop-note {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1392,6 +1394,7 @@ def footer(ai_note: str, prefix: str) -> str:
       </div>
       <div class="disclosures">
         <p class="amazon-line">{esc(AMAZON_DISCLOSURE_EN)}</p>
+        <p class="amazon-line">{esc(AMAZON_TRADEMARK)}</p>
         <p style="margin-top:0.85rem;"><strong>AI disclosure:</strong> {esc(ai_note)}</p>
       </div>
     </div>
