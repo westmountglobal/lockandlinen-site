@@ -36,46 +36,88 @@ GEAR_PAGE_REL = {  # prefix-relative from a story page
 GEAR_PICKS = {
     "cliffside": [
         ("SLNT leather phone sleeve", "B07GXZM5PM"),
+        ("eufy Video Doorbell E340", "B0CD7NT4Y9"),
         ("Puzipha cordless wood & linen lamp", "B0GFDJ4X22"),
-        ("LLB ivory sheepskin", "B09BYXV2FR"),
     ],
     "missile-silo": [
         ("Mission Darkness Faraday phone bag", "B09BGTVBKG"),
-        ("FosPower NOAA weather radio", "B0G53Z8RD1"),
-        ("Luminara flameless pillars", "B09S24TQVP"),
+        ("SentrySafe fireproof document box", "B00KOO599O"),
+        ("Swiss Safe first-aid kit", "B06XVJDYSF"),
     ],
     "bunker-lodge": [
+        ("Buddybar door security bar", "B002BQ4VBU"),
         ("Mission Darkness Faraday phone bag", "B09BGTVBKG"),
         ("FosPower NOAA weather radio", "B0G53Z8RD1"),
-        ("DaranEner portable power station", "B0GKGFWY69"),
     ],
     "fjord-boathouse": [
-        ("Puzipha cordless wood & linen lamp", "B0GFDJ4X22"),
+        ("Pendleton Eco-Wise wool throw", "B00I3N0M40"),
+        ("UCO candle lantern", "B000BS05XS"),
         ("LLB ivory sheepskin", "B09BYXV2FR"),
     ],
     "glacier-cabin": [
+        ("Pendleton Eco-Wise wool throw", "B00I3N0M40"),
+        ("NICETOWN blackout curtains", "B07R5FC3K1"),
         ("FosPower NOAA weather radio", "B0G53Z8RD1"),
-        ("LLB ivory sheepskin", "B09BYXV2FR"),
     ],
     "mountain-homestead": [
+        ("eufy Video Doorbell E340", "B0CD7NT4Y9"),
         ("Barebones Edison Light Stick", "B0D46PQT2C"),
-        ("LLB ivory sheepskin", "B09BYXV2FR"),
+        ("UCO candle lantern", "B000BS05XS"),
     ],
     "canyon": [
+        ("eufy Smart Lock C220", "B0CYYZ6WRW"),
         ("Twelve South PowerCapsule", "B0GMRFYVZ9"),
         ("Barebones Edison Light Stick", "B0D46PQT2C"),
     ],
     "island-home": [
-        ("Twelve South PowerCapsule", "B0GMRFYVZ9"),
-        ("Luminara flameless pillars", "B09S24TQVP"),
+        ("Simple&Opulence linen sheet set", "B08ZBWCTCK"),
+        ("LifeStraw personal water filter", "B006QF3TW4"),
+        ("Addalock portable door lock", "B00186URTY"),
     ],
     "cave-dwelling": [
+        ("SentrySafe fireproof document box", "B00KOO599O"),
         ("Barebones Edison Light Stick", "B0D46PQT2C"),
         ("Luminara flameless pillars", "B09S24TQVP"),
     ],
     "black-aframe": [
+        ("Pendleton Eco-Wise wool throw", "B00I3N0M40"),
         ("FosPower NOAA weather radio", "B0G53Z8RD1"),
         ("Twelve South PowerCapsule", "B0GMRFYVZ9"),
+    ],
+    "treehouse": [
+        ("Addalock portable door lock", "B00186URTY"),
+        ("Simple&Opulence linen sheet set", "B08ZBWCTCK"),
+        ("Goal Zero Crush Light lantern", "B07BMJPH8L"),
+    ],
+    "marsh-stilt": [
+        ("UltraPro window and door alarms", "B00178HMCI"),
+        ("LifeStraw personal water filter", "B006QF3TW4"),
+        ("Goal Zero Crush Light lantern", "B07BMJPH8L"),
+    ],
+    "lighthouse": [
+        ("UltraPro window and door alarms", "B00178HMCI"),
+        ("LifeStraw personal water filter", "B006QF3TW4"),
+        ("FosPower NOAA weather radio", "B0G53Z8RD1"),
+    ],
+    "volcanic-plateau": [
+        ("Goal Zero Crush Light lantern", "B07BMJPH8L"),
+        ("Mission Darkness Faraday phone bag", "B09BGTVBKG"),
+        ("UCO candle lantern", "B000BS05XS"),
+    ],
+    "cliff-monastery": [
+        ("Addalock portable door lock", "B00186URTY"),
+        ("Pendleton Eco-Wise wool throw", "B00I3N0M40"),
+        ("UCO candle lantern", "B000BS05XS"),
+    ],
+    "canyon-homestead": [
+        ("eufy Smart Lock C220", "B0CYYZ6WRW"),
+        ("SentrySafe fireproof document box", "B00KOO599O"),
+        ("Swiss Safe first-aid kit", "B06XVJDYSF"),
+    ],
+    "sea-cliff-homestead": [
+        ("eufy Video Doorbell E340", "B0CD7NT4Y9"),
+        ("NICETOWN blackout curtains", "B07R5FC3K1"),
+        ("LifeStraw personal water filter", "B006QF3TW4"),
     ],
 }
 
