@@ -1314,7 +1314,253 @@ footer {
   .idea-card { grid-template-columns: 88px 1fr; }
 }
 
+.footer-nav .cookie-settings-link {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.ll-cookie-banner {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 80;
+  background: var(--cream);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 24px rgba(28, 26, 23, 0.08);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.ll-cookie-banner[hidden] { display: none !important; }
+.ll-cookie-banner:focus { outline: none; }
+.ll-cookie-banner:focus-visible {
+  outline: 2px solid var(--lagoon);
+  outline-offset: -2px;
+}
+.ll-cookie-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.9rem 1.25rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.55rem 1.25rem;
+  align-items: end;
+}
+.ll-cookie-title {
+  grid-column: 1 / -1;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--lagoon-deep);
+  margin: 0;
+}
+.ll-cookie-copy p {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0 0 0.3rem;
+}
+.ll-cookie-copy p:last-child { margin-bottom: 0; }
+.ll-cookie-copy a {
+  color: var(--lagoon-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ll-cookie-actions {
+  display: flex;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+.ll-cookie-btn {
+  appearance: none;
+  font-family: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  min-width: 10.5rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--ink);
+  background: var(--cream);
+  color: var(--ink);
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: center;
+}
+.ll-cookie-btn:hover { background: var(--sand); }
+.ll-cookie-btn:focus-visible {
+  outline: 2px solid var(--lagoon);
+  outline-offset: 2px;
+}
+body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
+@media (max-width: 720px) {
+  .ll-cookie-inner {
+    grid-template-columns: 1fr;
+    padding: 0.75rem 1rem 0.85rem;
+    gap: 0.55rem;
+  }
+  .ll-cookie-title { font-size: 0.64rem; }
+  .ll-cookie-copy p { font-size: 0.78rem; }
+  .ll-cookie-actions { width: 100%; }
+  .ll-cookie-btn { flex: 1 1 0; min-width: 0; }
+}
+
 """
+
+
+
+COOKIE_JS = r"""(function () {
+  "use strict";
+  var KEY = "ll_cookie_consent";
+  var GA_ID = "G-CK8VTP8KF1";
+  var GTAG_SRC = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+
+  function getChoice() {
+    try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+  function setChoice(value) {
+    try { window.localStorage.setItem(KEY, value); } catch (e) {}
+  }
+
+  function loadAnalytics() {
+    if (window.__llGtagLoaded) return;
+    window.__llGtagLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag("consent", "default", {
+      analytics_storage: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      wait_for_update: 500
+    });
+    gtag("consent", "update", {
+      analytics_storage: "granted",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied"
+    });
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = GTAG_SRC;
+    s.onload = function () {
+      gtag("js", new Date());
+      gtag("config", GA_ID);
+    };
+    document.head.appendChild(s);
+  }
+
+  function revokeAnalytics() {
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied"
+      });
+    }
+  }
+
+  function setBannerHeight(el) {
+    document.body.style.setProperty("--ll-cookie-banner-h", el.offsetHeight + "px");
+  }
+
+  function hideBanner() {
+    var el = document.getElementById("ll-cookie-banner");
+    if (el) {
+      el.hidden = true;
+      el.setAttribute("hidden", "");
+    }
+    document.body.classList.remove("ll-cookie-open");
+  }
+
+  function showBanner() {
+    ensureBanner();
+    var el = document.getElementById("ll-cookie-banner");
+    el.hidden = false;
+    el.removeAttribute("hidden");
+    document.body.classList.add("ll-cookie-open");
+    setBannerHeight(el);
+    if (document.activeElement && document.activeElement.id === "ll-cookie-settings") {
+      var first = el.querySelector("button, a");
+      if (first) first.focus();
+    }
+  }
+
+  function accept() {
+    setChoice("accepted");
+    hideBanner();
+    loadAnalytics();
+  }
+  function refuse() {
+    setChoice("refused");
+    hideBanner();
+    revokeAnalytics();
+  }
+
+  function ensureBanner() {
+    if (document.getElementById("ll-cookie-banner")) return;
+    var wrap = document.createElement("div");
+    wrap.id = "ll-cookie-banner";
+    wrap.className = "ll-cookie-banner";
+    wrap.setAttribute("role", "dialog");
+    wrap.setAttribute("aria-modal", "false");
+    wrap.setAttribute("aria-labelledby", "ll-cookie-title");
+    wrap.setAttribute("aria-describedby", "ll-cookie-desc");
+    wrap.tabIndex = -1;
+    wrap.hidden = true;
+    wrap.innerHTML =
+      '<div class="ll-cookie-inner">' +
+        '<p id="ll-cookie-title" class="ll-cookie-title">Témoins et analyse / Cookies and analytics</p>' +
+        '<div id="ll-cookie-desc" class="ll-cookie-copy">' +
+          '<p lang="fr">Nous utilisons Google Analytics uniquement pour comprendre le trafic sur ce site. Pas de publicité. Consultez la <a href="/privacy/#consent">politique de confidentialité</a>.</p>' +
+          '<p lang="en">We use Google Analytics only to understand how this site is used. No advertising. See the <a href="/privacy/#consent">privacy policy</a>.</p>' +
+        "</div>" +
+        '<div class="ll-cookie-actions">' +
+          '<button type="button" class="ll-cookie-btn" data-ll-refuse>Refuser / Refuse</button>' +
+          '<button type="button" class="ll-cookie-btn" data-ll-accept>Accepter / Accept</button>' +
+        "</div>" +
+      "</div>";
+    document.body.appendChild(wrap);
+    wrap.querySelector("[data-ll-refuse]").addEventListener("click", refuse);
+    wrap.querySelector("[data-ll-accept]").addEventListener("click", accept);
+    wrap.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      if (getChoice()) hideBanner();
+    });
+    window.addEventListener("resize", function () {
+      if (!wrap.hidden) setBannerHeight(wrap);
+    });
+  }
+
+  function bindFooter() {
+    document.addEventListener("click", function (e) {
+      var t = e.target.closest && e.target.closest("#ll-cookie-settings");
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+  }
+
+  function init() {
+    ensureBanner();
+    bindFooter();
+    var choice = getChoice();
+    if (choice === "accepted") loadAnalytics();
+    else if (choice !== "refused") showBanner();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+"""
+
+
+def write_cookie_js() -> None:
+    dest = PUBLIC / "js"
+    dest.mkdir(parents=True, exist_ok=True)
+    (dest / "cookie-consent.js").write_text(COOKIE_JS)
 
 
 def esc(s: str) -> str:
@@ -1352,14 +1598,7 @@ def head_meta(title: str, description: str, canonical_path: str, og_image: str |
 <meta name="twitter:image" content="{esc(og)}" />
 <meta name="p:domain_verify" content="d8eba614593c879141a48e3784ac2664" />
 <meta name="google-site-verification" content="epKejJR5K_EWgKNm6s708GhHztnLz79qfR9GjJEubyo" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CK8VTP8KF1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
-  gtag('js', new Date());
-  gtag('config', 'G-CK8VTP8KF1');
-</script>
+<script src="/js/cookie-consent.js" defer></script>
 """
 
 
@@ -1390,6 +1629,7 @@ def footer(ai_note: str, prefix: str) -> str:
         <a href="{prefix}guides/gear-wed-put-in-these-homes/index.html">Gear</a>
         <a href="{prefix}about.html">About</a>
         <a href="{prefix}privacy/index.html">Privacy</a>
+        <a href="/privacy/#consent" id="ll-cookie-settings" class="cookie-settings-link">Cookie settings / Paramètres des témoins</a>
         <a href="{prefix}contact/index.html">Contact</a>
       </div>
       <div class="disclosures">
@@ -1709,7 +1949,7 @@ def write_privacy():
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-{head_meta("Privacy Policy — Lock & Linen", "How Lock & Linen handles information, cookies, Amazon Associates referrals, and hosting logs. Effective November 5, 2026.", "/privacy/")}
+{head_meta("Privacy Policy — Lock & Linen", "How Lock & Linen handles information, cookies, Amazon Associates referrals, and hosting logs. Effective November 10, 2026.", "/privacy/")}
 {FAVICON.format(p="../")}<link rel="stylesheet" href="../css/site.css" />
 </head>
 <body>
@@ -1719,7 +1959,7 @@ def write_privacy():
     <div class="wrap">
       <p class="section-label">Legal</p>
       <h1>Privacy policy</h1>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--muted);font-size:0.9rem;">Effective date: November 5, 2026 · Contact: <a href="mailto:hello@lockandlinen.com" style="color:var(--lagoon-deep);text-decoration:underline;">hello@lockandlinen.com</a></p>
+      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--muted);font-size:0.9rem;">Effective date: November 10, 2026 · Contact: <a href="mailto:hello@lockandlinen.com" style="color:var(--lagoon-deep);text-decoration:underline;">hello@lockandlinen.com</a></p>
       <div class="prose" style="margin-top:1.4rem;">
         <p>Lock &amp; Linen (“we”, “us”) runs this website to share AI-rendered concept-home stories. This policy explains what information is involved when you visit lockandlinen.com, in plain language. It is meant to be readable under Québec’s Law 25 as well as for visitors elsewhere.</p>
 
@@ -1727,7 +1967,9 @@ def write_privacy():
 
         <p><strong>Affiliate cookies.</strong> When you click an Amazon (or other affiliate) link on this site, Amazon and other third parties may place and read cookies or similar technologies on your device to track that you came from Lock &amp; Linen and to attribute a later purchase. We do not control those cookies. Their use is governed by Amazon’s and those parties’ own privacy policies. No affiliate links are live on the site until we enable them.</p>
 
-        <p><strong>Analytics.</strong> We use Google Analytics 4 (GA4), Measurement ID <code>G-CK8VTP8KF1</code>, to understand how people use this site — for example which pages are viewed, approximate location, and device type. Google may set cookies or similar technologies and process usage data under <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google’s privacy policy</a>. We do not sell personal information. We do not use a Meta Pixel or similar advertising pixels. Story pages may also embed a privacy-enhanced YouTube player (<code>youtube-nocookie.com</code>); YouTube / Google may set or read cookies if you play a video, under Google’s policies.</p>
+        <p><strong>Analytics.</strong> We use Google Analytics 4 (GA4), Measurement ID <code>G-CK8VTP8KF1</code>, to understand how people use this site — for example which pages are viewed, approximate location, and device type. Google may set cookies or similar technologies and process usage data under <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google’s privacy policy</a>. Analytics loads only after you accept the cookie banner described below. We do not sell personal information. We do not use a Meta Pixel or similar advertising pixels. Story pages may also embed a privacy-enhanced YouTube player (<code>youtube-nocookie.com</code>); YouTube / Google may set or read cookies if you play a video, under Google’s policies.</p>
+
+        <p id="consent"><strong>Cookie consent.</strong> The first time you visit, we show a bilingual French and English banner. Google Analytics is not loaded, and no analytics cookies are set, until you choose Accept. If you choose Refuse, we do not load Google Analytics. We store your choice in your browser’s localStorage (key <code>ll_cookie_consent</code>) so later visits can honour it. You can change your mind at any time with the “Cookie settings / Paramètres des témoins” link in the footer, or by clearing your browser data. Analytics is the only purpose of this banner. We do not use advertising cookies. Clicking an Amazon affiliate link may still allow Amazon to set its own cookies, which we do not control.</p>
 
         <p><strong>Hosting logs.</strong> The site is hosted on Render. Like most hosts, Render may keep standard server logs (for example IP address, user agent, requested URL, and time) for security, debugging, and reliable delivery. We do not use those logs to build marketing profiles, and we do not sell personal information.</p>
 
@@ -1745,7 +1987,7 @@ def write_privacy():
       <div class="fr-summary" lang="fr">
         <h3>Résumé (français)</h3>
         <p>Lock &amp; Linen présente des maisons conceptuelles générées par IA. Nous participons au programme Partenaires Amazon Services LLC. {esc(AMAZON_DISCLOSURE_FR)}</p>
-        <p>Si vous cliquez un lien d’affiliation, Amazon et d’autres tiers peuvent placer et lire des témoins (cookies) pour attribuer une éventuelle vente. Nous utilisons Google Analytics 4 (GA4), identifiant de mesure <code>G-CK8VTP8KF1</code>, pour comprendre le trafic (pages consultées, localisation approximative, appareil). Google peut placer des témoins et traiter des données d’usage selon sa politique de confidentialité. Nous ne vendons pas de renseignements personnels. Pas de Meta Pixel. L’hébergeur (Render) peut conserver des journaux techniques habituels. Aucun compte utilisateur. Contact : hello@lockandlinen.com. Entrée en vigueur : 5 novembre 2026.</p>
+        <p>Si vous cliquez un lien d’affiliation, Amazon et d’autres tiers peuvent placer et lire des témoins (cookies) pour attribuer une éventuelle vente. Nous utilisons Google Analytics 4 (GA4), identifiant de mesure <code>G-CK8VTP8KF1</code>, pour comprendre le trafic (pages consultées, localisation approximative, appareil), seulement après que vous ayez accepté la bannière de consentement. Google peut alors placer des témoins et traiter des données d’usage selon sa politique de confidentialité. Un refus signifie que GA4 n’est pas chargé. Votre choix est conservé dans le localStorage du navigateur et peut être modifié en tout temps via le lien « Cookie settings / Paramètres des témoins » dans le pied de page. Nous ne vendons pas de renseignements personnels. Pas de Meta Pixel ni de témoins publicitaires de notre part. L’hébergeur (Render) peut conserver des journaux techniques habituels. Aucun compte utilisateur. Contact : hello@lockandlinen.com. Entrée en vigueur : 10 novembre 2026.</p>
       </div>
     </div>
   </section>
@@ -1908,6 +2150,7 @@ def main():
     PUBLIC.mkdir(parents=True, exist_ok=True)
     (PUBLIC / "css").mkdir(parents=True, exist_ok=True)
     (PUBLIC / "css" / "site.css").write_text(CSS)
+    write_cookie_js()
     for rel, files in preserved.items():
         dest = PUBLIC / rel
         dest.mkdir(parents=True, exist_ok=True)
