@@ -398,6 +398,61 @@ footer {
 }
 .contact-list li { margin-bottom: 0.7rem; }
 .contact-list a { color: var(--lagoon-deep); text-decoration: underline; text-underline-offset: 2px; }
+.gear-cta {
+  background: var(--sand);
+  border-top: 1px solid var(--line);
+  padding: 2.6rem 0 2.8rem;
+}
+.gear-cta-inner { max-width: 720px; }
+.gear-cta h2 {
+  font-size: clamp(1.55rem, 2.4vw, 1.95rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0.2rem 0 0.65rem;
+}
+.gear-cta-copy {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 54ch;
+  margin: 0 0 1rem;
+}
+.gear-picks-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.4rem 0 0.45rem;
+}
+.gear-picks {
+  list-style: none;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.gear-picks a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  color: var(--lagoon-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.gear-picks a:hover { color: var(--ink); }
+.gear-cta-btn {
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: #fff !important;
+  padding: 0.75rem 1.15rem;
+  border-radius: 999px;
+}
+.gear-cta-btn:hover { background: var(--lagoon-deep); }
 .amazon-line {
   font-size: 0.86rem !important; line-height: 1.5; color: #d9d2c6 !important;
   max-width: 70ch;

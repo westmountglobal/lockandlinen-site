@@ -28,6 +28,84 @@ SHOP_COPY = {
 }
 AMAZON_DISCLOSURE_EN = "As an Amazon Associate I earn from qualifying purchases."
 AMAZON_DISCLOSURE_FR = "En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises."
+GEAR_PAGE_HREF = "/guides/gear-wed-put-in-these-homes/"
+GEAR_PAGE_REL = {  # prefix-relative from a story page
+    "../../": "../../guides/gear-wed-put-in-these-homes/index.html",
+}
+# Optional tasteful picks for story pages that clearly match the showcase (name + ASIN).
+GEAR_PICKS = {
+    "cliffside": [
+        ("SLNT leather phone sleeve", "B07GXZM5PM"),
+        ("Puzipha cordless wood & linen lamp", "B0GFDJ4X22"),
+        ("LLB ivory sheepskin", "B09BYXV2FR"),
+    ],
+    "missile-silo": [
+        ("Mission Darkness Faraday phone bag", "B09BGTVBKG"),
+        ("FosPower NOAA weather radio", "B0G53Z8RD1"),
+        ("Luminara flameless pillars", "B09S24TQVP"),
+    ],
+    "bunker-lodge": [
+        ("Mission Darkness Faraday phone bag", "B09BGTVBKG"),
+        ("FosPower NOAA weather radio", "B0G53Z8RD1"),
+        ("DaranEner portable power station", "B0GKGFWY69"),
+    ],
+    "fjord-boathouse": [
+        ("Puzipha cordless wood & linen lamp", "B0GFDJ4X22"),
+        ("LLB ivory sheepskin", "B09BYXV2FR"),
+    ],
+    "glacier-cabin": [
+        ("FosPower NOAA weather radio", "B0G53Z8RD1"),
+        ("LLB ivory sheepskin", "B09BYXV2FR"),
+    ],
+    "mountain-homestead": [
+        ("Barebones Edison Light Stick", "B0D46PQT2C"),
+        ("LLB ivory sheepskin", "B09BYXV2FR"),
+    ],
+    "canyon": [
+        ("Twelve South PowerCapsule", "B0GMRFYVZ9"),
+        ("Barebones Edison Light Stick", "B0D46PQT2C"),
+    ],
+    "island-home": [
+        ("Twelve South PowerCapsule", "B0GMRFYVZ9"),
+        ("Luminara flameless pillars", "B09S24TQVP"),
+    ],
+    "cave-dwelling": [
+        ("Barebones Edison Light Stick", "B0D46PQT2C"),
+        ("Luminara flameless pillars", "B09S24TQVP"),
+    ],
+    "black-aframe": [
+        ("FosPower NOAA weather radio", "B0G53Z8RD1"),
+        ("Twelve South PowerCapsule", "B0GMRFYVZ9"),
+    ],
+}
+
+def gear_section_html(slug: str, prefix: str) -> str:
+    """Tasteful end-of-story CTA linking to the gear showcase."""
+    href = f"{prefix}guides/gear-wed-put-in-these-homes/index.html"
+    picks = GEAR_PICKS.get(slug) or []
+    picks_html = ""
+    if picks:
+        items = []
+        for name, asin in picks[:3]:
+            url = f"https://www.amazon.com/dp/{asin}?tag=lockandlinen-20"
+            items.append(
+                f'<li><a href="{esc(url)}" rel="nofollow sponsored noopener noreferrer">{esc(name)}</a></li>'
+            )
+        picks_html = (
+            '<p class="gear-picks-label">A few pieces that fit this look</p>\n'
+            f'<ul class="gear-picks">\n{chr(10).join(items)}\n</ul>\n'
+        )
+    return f"""
+  <section class="gear-cta" aria-label="Get the gear">
+    <div class="wrap gear-cta-inner">
+      <p class="section-label">Shop the look</p>
+      <h2>Get the gear</h2>
+      <p class="gear-cta-copy">Soft power and quiet privacy pieces inspired by these concept homes — similar products, not the exact items in the AI render.</p>
+{picks_html}      <p class="gear-cta-actions"><a class="gear-cta-btn" href="{esc(href)}">Browse the gear showcase</a></p>
+    </div>
+  </section>
+"""
+
 DEFAULT_AI_NOTE = "Visuals on this site are AI-generated concept renders from Lock & Linen reels. These are illustrative concept homes, not real listings or buildable plans."
 MOCKUP_IMG = ROOT / "mockup" / "images"
 NC = Path("/workspace/meta-reel-generator/projects/new_concepts")
@@ -1106,6 +1184,61 @@ footer {
 }
 .contact-list li { margin-bottom: 0.7rem; }
 .contact-list a { color: var(--lagoon-deep); text-decoration: underline; text-underline-offset: 2px; }
+.gear-cta {
+  background: var(--sand);
+  border-top: 1px solid var(--line);
+  padding: 2.6rem 0 2.8rem;
+}
+.gear-cta-inner { max-width: 720px; }
+.gear-cta h2 {
+  font-size: clamp(1.55rem, 2.4vw, 1.95rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0.2rem 0 0.65rem;
+}
+.gear-cta-copy {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 54ch;
+  margin: 0 0 1rem;
+}
+.gear-picks-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.4rem 0 0.45rem;
+}
+.gear-picks {
+  list-style: none;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.gear-picks a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  color: var(--lagoon-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.gear-picks a:hover { color: var(--ink); }
+.gear-cta-btn {
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: #fff !important;
+  padding: 0.75rem 1.15rem;
+  border-radius: 999px;
+}
+.gear-cta-btn:hover { background: var(--lagoon-deep); }
 .amazon-line {
   font-size: 0.86rem !important; line-height: 1.5; color: #d9d2c6 !important;
   max-width: 70ch;
@@ -1181,6 +1314,7 @@ def header(prefix: str) -> str:
         <a href="{prefix}index.html#homes">Homes</a>
         <a href="{prefix}index.html#stories">Stories</a>
         <a href="{prefix}guides/quiet-security-ideas/index.html">Guide</a>
+        <a href="{prefix}guides/gear-wed-put-in-these-homes/index.html">Gear</a>
         <a href="{prefix}about.html">About</a>
         <a href="{prefix}contact/index.html">Contact</a>
       </nav>
@@ -1196,13 +1330,13 @@ def footer(ai_note: str, prefix: str) -> str:
         <a href="{prefix}index.html">Homes</a>
         <a href="{prefix}index.html#stories">Stories</a>
         <a href="{prefix}guides/quiet-security-ideas/index.html">Guide</a>
+        <a href="{prefix}guides/gear-wed-put-in-these-homes/index.html">Gear</a>
         <a href="{prefix}about.html">About</a>
         <a href="{prefix}privacy/index.html">Privacy</a>
         <a href="{prefix}contact/index.html">Contact</a>
       </div>
       <div class="disclosures">
-        <p class="amazon-line"><strong>Amazon Associates:</strong> {esc(AMAZON_DISCLOSURE_EN)}</p>
-        <p class="amazon-line" style="margin-top:0.35rem;"><strong>Partenaire Amazon :</strong> {esc(AMAZON_DISCLOSURE_FR)}</p>
+        <p class="amazon-line">{esc(AMAZON_DISCLOSURE_EN)}</p>
         <p style="margin-top:0.85rem;"><strong>AI disclosure:</strong> {esc(ai_note)}</p>
       </div>
     </div>
@@ -1343,6 +1477,7 @@ def write_story(s: dict):
   </section>
 
 {shop_section}
+{gear_section_html(slug, prefix)}
 {footer(s['ai_note'], prefix)}
 </body>
 </html>
@@ -1658,7 +1793,7 @@ Allow: /
 Sitemap: {SITE_URL}/sitemap.xml
 """
     )
-    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/"]
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/gear/"]
     for s in STORIES:
         paths.append(f"/stories/{s['slug']}/")
     urls = []
@@ -1674,6 +1809,29 @@ Sitemap: {SITE_URL}/sitemap.xml
         + "\n".join(urls)
         + "\n</urlset>\n"
     )
+
+
+def write_gear_shortlink():
+    """Static /gear/ fallback that sends visitors to the showcase (Render 301 via Dashboard preferred)."""
+    dest = f"{SITE_URL}/guides/gear-wed-put-in-these-homes/"
+    out = PUBLIC / "gear"
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "index.html").write_text(f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="refresh" content="0;url={dest}" />
+<link rel="canonical" href="{dest}" />
+<meta name="robots" content="noindex" />
+<title>Gear — Lock &amp; Linen</title>
+<script>location.replace({dest!r});</script>
+</head>
+<body>
+  <p>Moved to <a href="{dest}">Gear we'd put in these homes</a>.</p>
+</body>
+</html>
+""")
+
 
 
 def main():
@@ -1713,6 +1871,7 @@ def main():
     write_privacy()
     write_contact()
     write_guide()
+    write_gear_shortlink()
     write_robots_and_sitemap()
     manifest = [{"slug": s["slug"], "yt": s["yt"], "title": s["title"]} for s in STORIES]
     (ROOT / "site" / "_build" / "manifest.json").write_text(json.dumps(manifest, indent=2))
