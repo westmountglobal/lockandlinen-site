@@ -39,7 +39,31 @@
     margin-left: 0.5rem; vertical-align: middle;
   }
   .shop-grid { margin-top: 1.4rem; }
-  .btn-soon:hover { filter: brightness(1.05); }
+  .product {
+    border-style: solid;
+    border-color: var(--line);
+  }
+  .product .ph-img {
+    aspect-ratio: 1 / 1;
+    background: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.1rem;
+    overflow: hidden;
+  }
+  .product .ph-img img {
+    width: 100%; height: 100%;
+    object-fit: contain; object-position: center;
+    background: transparent;
+  }
+  .product .ph-homes {
+    font-size: 0.72rem; color: var(--muted); margin-top: -0.5rem;
+  }
+  .btn-amazon {
+    background: var(--lagoon); color: #fff; border-color: var(--lagoon-deep);
+    cursor: pointer; text-decoration: none;
+  }
+  .btn-amazon:hover { filter: brightness(1.05); }
+  .btn-amazon .paid { font-weight: 400; opacity: 0.85; text-transform: none; letter-spacing: 0; }
   .tag-note {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.78rem; color: var(--muted);
@@ -70,132 +94,156 @@
         <p>Soft power and quiet privacy pieces inspired by Lock &amp; Linen concept homes — especially the farmhouse-over-silo that readers keep coming back to. These are similar products, not the exact items in the AI renders. Nothing here is a real listing or a security-performance guarantee.</p>
       </div>
       <div class="disclose-banner" role="note">
-        <p><strong>As an Amazon Associate we earn from qualifying purchases.</strong> Every product link below is marked <strong>(paid link)</strong>. Affiliate tracking tag is a placeholder (<code>TAG-PENDING</code>) until Associates is approved — links will not credit until a real tag is set.</p>
+        <p><strong>As an Amazon Associate I earn from qualifying purchases.</strong> Every product link below is marked <strong>(paid link)</strong>. Tracking tag: <code>lockandlinen-20</code>.</p>
         <p style="margin-top:0.55rem;"><strong>AI disclosure:</strong> Visuals and concept homes on Lock &amp; Linen are AI-generated. This page is illustrative set-dressing inspiration, not a product demo or protection claim.</p>
       </div>
       <div class="shop-grid">
         <article class="product">
           <span class="ph-badge">Faraday pouch</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B09BGTVBKG?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/81dB0DIKV+L._AC_SL1471_.jpg" alt="Mission Darkness non-window Faraday phone bag, two-pack" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>Mission Darkness Faraday phone bag, 2-pack</h3>
             <p>A slim pouch for phones and key fobs when you want a quiet evening offline.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Silo farmhouse · bunker lodge</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B09BGTVBKG?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Silo farmhouse · bunker lodge</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B09BGTVBKG?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Leather sleeve</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B07GXZM5PM?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/41WzxFgYTiL._AC_SL1000_.jpg" alt="SLNT Faraday phone sleeve in black top-grain leather, Medium" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>SLNT leather phone sleeve, Medium</h3>
             <p>Top-grain leather sleeve for the entry table — soft finish, magnetic close.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Cliffside · silo entry</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B07GXZM5PM?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Cliffside · silo entry</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B07GXZM5PM?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Window film</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B00PR0W5ZQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/91ws31QbJFL._AC_SL1500_.jpg" alt="BDF S8MC eight-mil clear security window film roll" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>BDF S8MC 8 mil clear window film, 36×49</h3>
             <p>Clear interior film for glass — inspired by the farmhouse windows upstairs.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Silo farmhouse · cliffside glass</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B00PR0W5ZQ?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Silo farmhouse · cliffside glass</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B00PR0W5ZQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Power bank</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0GMRFYVZ9?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61ZZw2GRDVL._AC_SL1500_.jpg" alt="Twelve South PowerCapsule 10,000 mAh MagSafe power bank in Dune" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>Twelve South PowerCapsule 10,000 mAh, Dune</h3>
             <p>Sand-toned MagSafe power bank that sits on a side table like a pebble.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Cliffside · silo living</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B0GMRFYVZ9?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Cliffside · silo living</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0GMRFYVZ9?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Emergency radio</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0G53Z8RD1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/71K5FLRT4CL._AC_SL1500_.jpg" alt="FosPower NOAA emergency weather radio A1 with crank and solar" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>FosPower NOAA emergency weather radio A1</h3>
             <p>Crank + solar radio with flashlight for the pantry shelf.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Silo pantry · bunker · glacier</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B0G53Z8RD1?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Silo pantry · bunker · glacier</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0G53Z8RD1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Power station</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0GKGFWY69?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/81qxI84VesL._AC_SL1500_.jpg" alt="DaranEner portable power station with AC outlet" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>DaranEner portable power station</h3>
             <p>Compact neutral power unit tucked beside the stove.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Cliffside · bunker</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B0FP16NDX7?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Cliffside · bunker</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0GKGFWY69?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Cordless lamp</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0GFDJ4X22?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61vfu8cgFnL._AC_SL1024_.jpg" alt="Puzipha cordless table lamp with wood base and linen shade" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>Puzipha cordless wood & linen lamp</h3>
             <p>Warm 2700K bedside light with no cord to hide.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Cliffside · fjord</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B0GFDJ4X22?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Cliffside · fjord</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0GFDJ4X22?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Cordless lamp</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0FK5BJZKM?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/71qAuAp7hWL._AC_SL1500_.jpg" alt="EZVALO cordless wood-grain table lamp" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>EZVALO cordless wood-grain lamp</h3>
             <p>Drum-shade lamp for the reading nook.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Cliffside</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B0FK5BJZKM?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Cliffside</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0FK5BJZKM?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Lantern</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0D46PQT2C?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61RGPrIrQhL._AC_SL1500_.jpg" alt="Barebones Edison Light Stick lantern in brass" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>Barebones Edison Light Stick, Brass</h3>
             <p>Brass and leather lantern that glows like candlelight.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Cliffside · mountain</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B0D46PQT2C?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Cliffside · mountain</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0D46PQT2C?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Flameless candles</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B09S24TQVP?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/51XwXIQtSGL._AC_SL1500_.jpg" alt="Luminara ivory flameless pillar candles, set of three" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>Luminara ivory flameless pillars, set of 3</h3>
             <p>Moving-flame pillars for the timber hearth.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Cliffside · silo</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B09S24TQVP?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Cliffside · silo</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B09S24TQVP?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Furniture charging</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0D6BN7RQQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/71yhzQBRjLL._AC_SL1500_.jpg" alt="runjuly wooden nightstand with built-in charging station" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>runjuly wood nightstand with charging</h3>
             <p>Bedside table with power built in — cords disappear into the grain.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Cliffside bedroom</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B0D6BN7RQQ?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Cliffside bedroom</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0D6BN7RQQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
         <article class="product">
           <span class="ph-badge">Soft furnishings</span>
-          <div class="ph-img">Image via Amazon</div>
+          <a class="ph-img" href="https://www.amazon.com/dp/B09BYXV2FR?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61ZZP3e7QBL._AC_SL1001_.jpg" alt="LLB ivory sheepskin area rug approximately two by six feet" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
           <div class="ph-body">
             <h3>LLB ivory sheepskin, 2×6 ft</h3>
             <p>Long ivory sheepskin draped by the stove.</p>
-            <p style="font-size:0.72rem;color:var(--muted);margin-top:-0.5rem;">Inspired by: Cliffside · fjord · glacier</p>
-            <a class="btn-soon" style="background:var(--lagoon);color:#fff;border-color:var(--lagoon-deep);cursor:pointer;text-decoration:none;" href="https://www.amazon.com/dp/B09BYXV2FR?tag=TAG-PENDING" rel="nofollow sponsored noopener noreferrer">View on Amazon <span style="font-weight:400;opacity:0.85;">(paid link)</span></a>
+            <p class="ph-homes">Inspired by: Cliffside · fjord · glacier</p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B09BYXV2FR?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon <span class="paid">(paid link)</span></a>
           </div>
         </article>
       </div>
-      <p class="tag-note">Shop module on story pages stays <strong>OFF</strong> (<code>SHOP_MODULE_ENABLED = False</code>). This guide page is a draft only on branch <code>showcase-draft</code> — not pushed to main, not deployed.</p>
+      <p class="tag-note">Shop module on story pages stays <strong>OFF</strong> (<code>SHOP_MODULE_ENABLED = False</code>). This guide page is a draft only on branch <code>showcase-draft</code> — not pushed to main, not deployed. Product photos are hotlinked from Amazon's image CDN (Associates-compliant); they are not re-hosted.</p>
     </div>
   </section>
 
