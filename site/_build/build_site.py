@@ -150,15 +150,23 @@ def shop_from_materials(materials: list[tuple[str, str]]) -> list[tuple[str, str
     return materials
 
 
-def add_nc_story(slug, yt, concept_key, still_map, shop, hero_letter="A"):
+def add_nc_story(slug, yt, concept_key, still_map, shop, hero_letter="A", ig=None, fb=None, home_num=None):
     c = CONCEPTS[concept_key]
     title = {
         "n01_island": "The Island Home",
         "n02_cliffside": "The Cliffside Glass House",
+        "n03_treehouse": "The Canopy Treehouse",
+        "n04_bunker_lodge": "The Bunker Lodge",
+        "n05_aframe": "The Black A-Frame",
         "n06_canyon": "The Hidden Canyon House",
         "n07_lighthouse": "The Lighthouse Hideout",
         "n08_missile_silo": "The Missile Silo Home",
         "n09_fjord_boathouse": "The Fjord Boathouse",
+        "n10_marsh_stilt": "The Marsh Stilt House",
+        "n11_volcanic_plateau": "The Volcanic Plateau House",
+        "n13_glacier_cabin": "The Glacier Cabin",
+        "n17_cave_dwelling": "The Cave Dwelling",
+        "n18_cliff_monastery": "The Cliff Monastery",
     }[concept_key]
     hook = " ".join(c["hook"].split())
     tagline = hook
@@ -219,6 +227,9 @@ def add_nc_story(slug, yt, concept_key, still_map, shop, hero_letter="A"):
             "concept_key": concept_key,
             "still_map": still_map,
             "hero_letter": hero_letter,
+            "ig": ig,
+            "fb": fb,
+            "home_num": home_num,
         }
     )
 
@@ -242,6 +253,8 @@ add_nc_story(
         ("Herb planter boxes", "Wind-sheltered terrace greens."),
         ("Wool throw blanket", "Soft texture against board-formed walls."),
     ],
+    ig="https://www.instagram.com/reel/DfU92JVgnje/",
+    fb="https://www.facebook.com/reel/2448967132507389/",
 )
 
 add_nc_story(
@@ -302,6 +315,8 @@ add_nc_story(
         ("Raised garden bed kit", "Tomatoes and sunflowers on the prairie."),
         ("Reading floor lamp", "Quiet light from the skylight shaft."),
     ],
+    ig="https://www.instagram.com/reel/DfVtDVFg-pG/",
+    fb="https://www.facebook.com/reel/2508866756276014",
 )
 
 add_nc_story(
@@ -323,6 +338,189 @@ add_nc_story(
         ("Wool lounge chair", "Nordic calm over dark water."),
     ],
 )
+
+
+
+add_nc_story(
+    "volcanic-plateau",
+    "R-vMFsLcU4Y",
+    "n11_volcanic_plateau",
+    [
+        ("I", "Stone walls, a sunken fire, and the volcano in the window", True),
+        ("A", "Low basalt-and-charred-timber house on black sand", False),
+        ("K", "Basalt-walled carport — one gravel track in", False),
+        ("F", "Geothermal hot pool beside the moss roof", False),
+        ("U", "Storerooms cut into the lava", False),
+        ("X", "X-ray view — Faraday-lined walls", False),
+    ],
+    [
+        ("Stone fire set", "A quiet hearth for basalt interiors."),
+        ("Charred timber stool", "Warm seating against dark stone."),
+        ("Wool throw blanket", "Soft evenings after the black-sand wind."),
+        ("Outdoor soaking lantern", "Soft light by the hot pool."),
+    ],
+    ig="https://www.instagram.com/reel/DfXi69JgRO4/",
+    fb="https://www.facebook.com/reel/2481023519373150/",
+)
+
+add_nc_story(
+    "treehouse",
+    "46AJHK3bYk4",
+    "n03_treehouse",
+    [
+        ("I", "Morning in a timber pod — the jungle at the window", True),
+        ("A", "Four rounded timber pods high in the canopy", False),
+        ("K", "Spiral stair — one way up", False),
+        ("F", "Canopy kitchen garden", False),
+        ("U", "Vault down in the roots", False),
+        ("X", "X-ray view — Faraday-lined pods", False),
+    ],
+    [
+        ("Rope hammock", "Soft rest between the rope bridges."),
+        ("Timber stool set", "Simple seating for the canopy pods."),
+        ("Rain barrel", "Catch what the living roofs already gather."),
+        ("Wool throw blanket", "Cool evenings fifteen meters up."),
+    ],
+    ig="https://www.instagram.com/reel/DfYTHqkgPvH/",
+    fb="https://www.facebook.com/reel/997783876017483",
+)
+
+add_nc_story(
+    "cliff-monastery",
+    "pIgluQAbM8U",
+    "n18_cliff_monastery",
+    [
+        ("I", "Whitewashed vaults, a fire, and the gorge through an arched window", True),
+        ("A", "Whitewashed retreat stacked down the cliff", False),
+        ("K", "Three hundred steps — one stair in", False),
+        ("F", "Terraced herb gardens on the ledge", False),
+        ("U", "Rock-cut stores in the cliff", False),
+        ("X", "X-ray view — Faraday-lined stone walls", False),
+    ],
+    [
+        ("Herb planter boxes", "Greens for the walled terrace garden."),
+        ("Wool throw blanket", "Soft evenings in the whitewashed vaults."),
+        ("Clay tableware set", "Simple meals after the climb."),
+        ("Storm lantern lamp", "Warm light down the cliff stair."),
+    ],
+    ig="https://www.instagram.com/reel/DfZ10GtgmnY/",
+    fb="https://www.facebook.com/reel/2175302393110926/",
+)
+
+add_nc_story(
+    "cave-dwelling",
+    "4ac1TuQpnd8",
+    "n17_cave_dwelling",
+    [
+        ("I", "Sandstone ceiling, a fire, and the valley through the glass", True),
+        ("A", "Home built into a cliff overhang above olive terraces", False),
+        ("K", "Stone carport by the terrace — one track up", False),
+        ("F", "Stone-walled olive terraces", False),
+        ("U", "Rock-cut cellar and cistern", False),
+        ("X", "X-ray view — Faraday-lined glass front", False),
+    ],
+    [
+        ("Wool throw blanket", "Soft evenings under the rock lip."),
+        ("Clay olive oil cruet", "A table piece for the cave kitchen."),
+        ("Stone fire tools", "Quiet heat for sandstone nights."),
+        ("Lantern set", "Warm light on the terrace."),
+    ],
+    ig="https://www.instagram.com/reel/Dfa4hpqAL47/",
+    fb="https://www.facebook.com/reel/1157798226999996/",
+)
+
+add_nc_story(
+    "black-aframe",
+    "xspsklEvR3g",
+    "n05_aframe",
+    [
+        ("I", "Wood stove, loft, and the whole lake through the glass", True),
+        ("A", "Black timber A-frame on the lake — no road in", False),
+        ("K", "Floatplane dock — the only way in", False),
+        ("F", "Wood-fired barrel sauna by the water", False),
+        ("U", "Ice house dug into the bank", False),
+        ("X", "X-ray view — Faraday-lined walls", False),
+    ],
+    [
+        ("Wool throw blanket", "Soft evenings after a cold lake landing."),
+        ("Cast-iron stove set", "Warmth for the black A-frame loft."),
+        ("Dock lantern", "Motion-soft light as the plane comes in."),
+        ("Sauna bucket & ladle", "Steam before a lake dip."),
+    ],
+    ig="https://www.instagram.com/reel/DfctzBcgSBo/",
+    fb="https://www.facebook.com/reel/1022186017584693",
+    home_num=14,
+)
+
+add_nc_story(
+    "bunker-lodge",
+    "IUQ4ARm-J_A",
+    "n04_bunker_lodge",
+    [
+        ("I", "Stone fire, sheepskins, and the peaks in every window", True),
+        ("A", "Stone-and-timber lodge half into the alpine slope", False),
+        ("K", "Vault door set into the mountain", False),
+        ("F", "Ski-in deck above the snow", False),
+        ("U", "Spring-fed cistern under the lodge", False),
+        ("X", "X-ray view — Faraday-lined walls", False),
+    ],
+    [
+        ("Sheepskin throw", "Soft texture for the stone lounge."),
+        ("Wood stove accessories", "Evenings under the sod roof."),
+        ("Wool lounge chair", "Quiet seating with the peaks outside."),
+        ("Ski-boot tray", "A practical piece for the lodge entry."),
+    ],
+    ig="https://www.instagram.com/reel/DfddhiPAQCj/",
+    fb="https://www.facebook.com/reel/1117580981198029",
+    home_num=15,
+)
+
+add_nc_story(
+    "marsh-stilt",
+    "qm2R-Sq3SmA",
+    "n10_marsh_stilt",
+    [
+        ("I", "Ceiling fans, cypress walls, and the marsh through the screens", True),
+        ("A", "Cypress stilt house two meters above the tide", False),
+        ("K", "Boardwalk from a crushed-shell pad", False),
+        ("F", "Raised garden deck over the marsh", False),
+        ("N", "Night — lights wake along the boardwalk", False),
+        ("X", "X-ray view — Faraday-lined walls", False),
+    ],
+    [
+        ("Ceiling fan, warm wood", "Quiet air for screened porches."),
+        ("Raised garden bed kit", "Greens kept high above the tide."),
+        ("Screened porch swing", "Soft evenings over the salt marsh."),
+        ("Storm lantern lamp", "Warm light along the boardwalk."),
+    ],
+    ig="https://www.instagram.com/lockandlinen/reel/Dfh25CLg-vi/",
+    fb="https://www.facebook.com/reel/1503395011935195",
+    home_num=16,
+)
+
+add_nc_story(
+    "glacier-cabin",
+    "umFSpe-IdC0",
+    "n13_glacier_cabin",
+    [
+        ("I", "Wood stove, sheepskins, and the ice through the glass", True),
+        ("A", "Black timber cabin on a rock shelf above the glacier", False),
+        ("K", "Garage cut into the rock — one moraine road in", False),
+        ("F", "Sheltered glass greenhouse", False),
+        ("U", "Rock-cut cold cellar", False),
+        ("X", "X-ray view — Faraday-lined walls", False),
+    ],
+    [
+        ("Sheepskin throw", "Soft evenings facing the ice."),
+        ("Wood stove accessories", "Warmth under the solar steel roof."),
+        ("Wool lounge chair", "Quiet seating at the glass corner."),
+        ("Greenhouse grow lights", "Greens through the glacier winter."),
+    ],
+    ig="https://www.instagram.com/reel/DfimwmUgbr8/",
+    fb="https://www.facebook.com/reel/1149125324236323",
+    home_num=17,
+)
+
 
 
 def add_formula_story(slug, yt, title, tagline, h2, body, aside, shop, card, img_root, still_map, hero_file):
@@ -1062,6 +1260,21 @@ def write_story(s: dict):
   </section>
 """
 
+    platform_bits = [
+        f'<a href="https://www.youtube.com/shorts/{esc(s["yt"])}" rel="noopener noreferrer">YouTube</a>'
+    ]
+    if s.get("ig"):
+        platform_bits.append(f'<a href="{esc(s["ig"])}" rel="noopener noreferrer">Instagram</a>')
+    if s.get("fb"):
+        platform_bits.append(f'<a href="{esc(s["fb"])}" rel="noopener noreferrer">Facebook</a>')
+    home_bit = f' · Home #{s["home_num"]}' if s.get("home_num") else ""
+    platform_links = (
+        '      <p class="reel-links" style="font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif;font-size:0.88rem;color:var(--muted);margin:0.85rem 0 0;">'
+        + f"Watch the reel{home_bit}: "
+        + " · ".join(platform_bits)
+        + "</p>"
+    )
+
     desc = (s.get("card_blurb") or s["tagline"] or s["title"])[:160]
     og_img = f"{SITE_URL}/stories/{slug}/images/banner.jpg"
     html = f"""<!DOCTYPE html>
@@ -1125,6 +1338,7 @@ def write_story(s: dict):
           allowfullscreen
           loading="lazy"></iframe>
       </div>
+{platform_links}
     </div>
   </section>
 
@@ -1444,7 +1658,7 @@ Allow: /
 Sitemap: {SITE_URL}/sitemap.xml
 """
     )
-    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/"]
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/"]
     for s in STORIES:
         paths.append(f"/stories/{s['slug']}/")
     urls = []
