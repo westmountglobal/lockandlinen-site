@@ -1862,11 +1862,10 @@ def write_gear_shortlink():
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="refresh" content="0;url={dest}" />
 <link rel="canonical" href="{dest}" />
 <meta name="robots" content="noindex" />
 <title>Gear — Lock &amp; Linen</title>
-<script>location.replace({dest!r});</script>
+<script>location.replace({dest!r} + (location.hash || ""));</script>
 </head>
 <body>
   <p>Moved to <a href="{dest}">Gear we'd put in these homes</a>.</p>

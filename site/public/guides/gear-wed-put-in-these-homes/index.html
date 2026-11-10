@@ -71,6 +71,59 @@
     cursor: pointer; text-decoration: none;
   }
   .btn-amazon:hover { filter: brightness(1.05); }
+
+  :root { --header-h: 3.6rem; }
+  .gear-tabs-wrap {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 35;
+    background: rgba(251,248,243,0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    margin: 0.4rem 0 0;
+  }
+  .gear-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.3rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.55rem 0 0.6rem;
+  }
+  .gear-tabs::-webkit-scrollbar { display: none; }
+  .gear-tabs a {
+    flex: 0 0 auto;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.48rem 0.8rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+  .gear-tabs a:hover { color: var(--ink); }
+  .gear-tabs a:focus-visible {
+    outline: 2px solid var(--lagoon);
+    outline-offset: 2px;
+  }
+  .gear-tabs a[aria-selected="true"],
+  .gear-tabs a.is-active {
+    color: var(--ink);
+    background: var(--sand);
+    border-color: var(--line);
+  }
+  .gear-group { scroll-margin-top: calc(var(--header-h) + 3.4rem); }
+  .gear-group:first-child .gear-section { margin-top: 1.5rem; }
+  html.catalog-filtered .gear-group:not([hidden]) .gear-section { margin-top: 1.5rem; }
+  @media (max-width: 640px) {
+    .gear-tabs a { font-size: 0.68rem; padding: 0.44rem 0.72rem; }
+  }
 </style>
 </head>
 <body>
@@ -98,6 +151,22 @@
       <div class="disclose-banner" role="note">
         <p><strong>AI disclosure:</strong> Visuals and concept homes on Lock &amp; Linen are AI-generated. This page is illustrative set-dressing inspiration, not a product demo or protection claim.</p>
       </div>
+    </div>
+    <div class="gear-tabs-wrap" id="all">
+      <div class="wrap">
+        <div class="gear-tabs" role="tablist" aria-label="Gear categories">
+          <a href="#all" class="is-active" role="tab" id="tab-all" data-filter="all" aria-selected="true" aria-controls="gear-catalog" tabindex="0">All</a>
+          <a href="#entry" role="tab" id="tab-entry" data-filter="entry" aria-selected="false" aria-controls="entry" tabindex="-1">Entry &amp; doors</a>
+          <a href="#window" role="tab" id="tab-window" data-filter="window" aria-selected="false" aria-controls="window" tabindex="-1">Window &amp; glass</a>
+          <a href="#power" role="tab" id="tab-power" data-filter="power" aria-selected="false" aria-controls="power" tabindex="-1">Power-out kit</a>
+          <a href="#privacy" role="tab" id="tab-privacy" data-filter="privacy" aria-selected="false" aria-controls="privacy" tabindex="-1">Privacy &amp; signal</a>
+          <a href="#linen" role="tab" id="tab-linen" data-filter="linen" aria-selected="false" aria-controls="linen" tabindex="-1">Cozy linen &amp; light</a>
+          <a href="#emergency" role="tab" id="tab-emergency" data-filter="emergency" aria-selected="false" aria-controls="emergency" tabindex="-1">Emergency water &amp; first aid</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap" id="gear-catalog">
+      <div class="gear-group" id="privacy" data-category="privacy" role="tabpanel" aria-labelledby="tab-privacy">
       <div class="gear-section">
         <p class="section-label">Privacy &amp; signal</p>
         <h2>Privacy &amp; signal</h2>
@@ -129,6 +198,8 @@
           </div>
         </article>
       </div>
+      </div>
+      <div class="gear-group" id="window" data-category="window" role="tabpanel" aria-labelledby="tab-window">
       <div class="gear-section">
         <p class="section-label">Window &amp; glass</p>
         <h2>Window &amp; glass</h2>
@@ -160,6 +231,8 @@
           </div>
         </article>
       </div>
+      </div>
+      <div class="gear-group" id="power" data-category="power" role="tabpanel" aria-labelledby="tab-power">
       <div class="gear-section">
         <p class="section-label">Power-out kit</p>
         <h2>Power-out kit</h2>
@@ -215,6 +288,8 @@
           </div>
         </article>
       </div>
+      </div>
+      <div class="gear-group" id="entry" data-category="entry" role="tabpanel" aria-labelledby="tab-entry">
       <div class="gear-section">
         <p class="section-label">Entry &amp; doors</p>
         <h2>Entry &amp; doors</h2>
@@ -282,6 +357,8 @@
           </div>
         </article>
       </div>
+      </div>
+      <div class="gear-group" id="linen" data-category="linen" role="tabpanel" aria-labelledby="tab-linen">
       <div class="gear-section">
         <p class="section-label">Cozy linen &amp; light</p>
         <h2>Cozy linen &amp; light</h2>
@@ -397,6 +474,8 @@
           </div>
         </article>
       </div>
+      </div>
+      <div class="gear-group" id="emergency" data-category="emergency" role="tabpanel" aria-labelledby="tab-emergency">
       <div class="gear-section">
         <p class="section-label">Emergency water &amp; first aid</p>
         <h2>Emergency water &amp; first aid</h2>
@@ -440,6 +519,7 @@
           </div>
         </article>
       </div>
+      </div>
     </div>
   </section>
 
@@ -458,5 +538,101 @@
       </nav>
     </div>
   </footer>
+
+  <script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".gear-tabs [role='tab']"));
+    var groups = Array.prototype.slice.call(document.querySelectorAll(".gear-group"));
+    var list = document.querySelector(".gear-tabs");
+    if (!list || !tabs.length) return;
+    var aliases = { "power-out": "power", "doors": "entry", "water": "emergency", "first-aid": "emergency", "signal": "privacy", "cozy": "linen" };
+    var valid = { all: 1, entry: 1, window: 1, power: 1, privacy: 1, linen: 1, emergency: 1 };
+
+    function slugFromHash() {
+      var h = (location.hash || "").replace(/^#/, "").toLowerCase();
+      if (aliases[h]) h = aliases[h];
+      return valid[h] ? h : "all";
+    }
+
+    function headerH() {
+      var n = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h"));
+      return isNaN(n) ? 58 : n;
+    }
+
+    function setHeaderH() {
+      var header = document.querySelector(".site-header");
+      if (header) document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+    }
+
+    function apply(slug, opts) {
+      slug = valid[slug] ? slug : "all";
+      groups.forEach(function (g) {
+        g.hidden = !(slug === "all" || g.getAttribute("data-category") === slug);
+      });
+      tabs.forEach(function (tab) {
+        var on = tab.getAttribute("data-filter") === slug;
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+        tab.tabIndex = on ? 0 : -1;
+        tab.classList.toggle("is-active", on);
+      });
+      document.documentElement.classList.toggle("catalog-filtered", slug !== "all");
+      if (opts && opts.scrollTab) {
+        var active = list.querySelector("[aria-selected='true']");
+        if (active && active.scrollIntoView) active.scrollIntoView({ inline: "center", block: "nearest" });
+      }
+    }
+
+    function setHash(slug) {
+      var next = "#" + slug;
+      if (history.replaceState) history.replaceState(null, "", next);
+      else location.hash = next;
+    }
+
+    function scrollToCatalog(slug) {
+      var tabsWrap = document.querySelector(".gear-tabs-wrap");
+      var tabsH = tabsWrap ? tabsWrap.offsetHeight : 48;
+      var target = document.getElementById(slug === "all" ? "gear-catalog" : slug);
+      if (!target) return;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - headerH() - tabsH - 8;
+      if (top < 0) top = 0;
+      window.scrollTo({ top: top, behavior: "smooth" });
+    }
+
+    list.addEventListener("click", function (e) {
+      var tab = e.target.closest("[role='tab']");
+      if (!tab || !list.contains(tab)) return;
+      e.preventDefault();
+      var slug = tab.getAttribute("data-filter") || "all";
+      apply(slug, { scrollTab: true });
+      setHash(slug);
+      scrollToCatalog(slug);
+    });
+
+    list.addEventListener("keydown", function (e) {
+      var i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      var next = i;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (i + 1) % tabs.length;
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = tabs.length - 1;
+      else if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        document.activeElement.click();
+        return;
+      } else return;
+      e.preventDefault();
+      tabs[next].focus();
+    });
+
+    window.addEventListener("hashchange", function () {
+      var slug = slugFromHash();
+      apply(slug, { scrollTab: true });
+    });
+    window.addEventListener("resize", setHeaderH);
+    setHeaderH();
+    apply(slugFromHash(), { scrollTab: true });
+  })();
+  </script>
 </body>
 </html>
