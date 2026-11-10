@@ -723,11 +723,17 @@ h2 {
 }
 .product .ph-img {
   aspect-ratio: 1 / 1;
-  background: linear-gradient(135deg, #ddd6c8 0%, #cfc6b6 50%, #e5dece 100%);
+  background: var(--sand);
   display: flex; align-items: center; justify-content: center;
   color: var(--muted);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 1rem;
+  overflow: hidden;
+}
+.product .ph-img img {
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
 }
 .product .ph-body { padding: 0.9rem 0.95rem 1.05rem; }
 .product h3 {
@@ -1457,6 +1463,13 @@ Sitemap: {SITE_URL}/sitemap.xml
 
 
 def main():
+    # Preserve hand-authored draft guides (e.g. showcase-draft gear page) across rebuilds.
+    preserve_dirs = ["guides/gear-wed-put-in-these-homes"]
+    preserved = {}
+    for rel in preserve_dirs:
+        src = PUBLIC / rel
+        if src.exists():
+            preserved[rel] = {p.relative_to(src): p.read_bytes() for p in src.rglob("*") if p.is_file()}
     if PUBLIC.exists():
         for child in PUBLIC.iterdir():
             if child.is_dir():
@@ -1466,6 +1479,13 @@ def main():
     PUBLIC.mkdir(parents=True, exist_ok=True)
     (PUBLIC / "css").mkdir(parents=True, exist_ok=True)
     (PUBLIC / "css" / "site.css").write_text(CSS)
+    for rel, files in preserved.items():
+        dest = PUBLIC / rel
+        dest.mkdir(parents=True, exist_ok=True)
+        for sub, data in files.items():
+            out = dest / sub
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_bytes(data)
     for f in (Path(__file__).parent / "static").iterdir():
         shutil.copy2(f, PUBLIC / f.name)
     print("Compressing images…")

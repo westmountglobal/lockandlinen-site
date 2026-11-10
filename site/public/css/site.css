@@ -213,11 +213,17 @@ h2 {
 }
 .product .ph-img {
   aspect-ratio: 1 / 1;
-  background: linear-gradient(135deg, #ddd6c8 0%, #cfc6b6 50%, #e5dece 100%);
+  background: var(--sand);
   display: flex; align-items: center; justify-content: center;
   color: var(--muted);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 1rem;
+  overflow: hidden;
+}
+.product .ph-img img {
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
 }
 .product .ph-body { padding: 0.9rem 0.95rem 1.05rem; }
 .product h3 {
