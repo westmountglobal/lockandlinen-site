@@ -1322,6 +1322,10 @@ footer {
   position: fixed;
   left: 0; right: 0; bottom: 0;
   z-index: 80;
+  max-height: 45dvh;
+  overflow-y: auto;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  -webkit-overflow-scrolling: touch;
   background: var(--cream);
   color: var(--ink);
   border-top: 1px solid var(--line);
@@ -1390,16 +1394,22 @@ footer {
   outline-offset: 2px;
 }
 body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
+.ll-cookie-banner {
+  max-height: 45dvh;
+  overflow-y: auto;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  -webkit-overflow-scrolling: touch;
+}
 @media (max-width: 720px) {
   .ll-cookie-inner {
     grid-template-columns: 1fr;
-    padding: 0.75rem 1rem 0.85rem;
-    gap: 0.55rem;
+    padding: 0.65rem 0.9rem 0.7rem;
+    gap: 0.4rem;
   }
-  .ll-cookie-title { font-size: 0.64rem; }
-  .ll-cookie-copy p { font-size: 0.78rem; }
+  .ll-cookie-title { font-size: 0.62rem; }
+  .ll-cookie-copy p { font-size: 0.75rem; line-height: 1.35; margin-bottom: 0.2rem; }
   .ll-cookie-actions { width: 100%; }
-  .ll-cookie-btn { flex: 1 1 0; min-width: 0; }
+  .ll-cookie-btn { flex: 1 1 0; min-width: 0; padding: 0.58rem 0.7rem; font-size: 0.75rem; }
 }
 
 """
@@ -1463,6 +1473,18 @@ COOKIE_JS = r"""(function () {
     document.body.style.setProperty("--ll-cookie-banner-h", el.offsetHeight + "px");
   }
 
+  function pinToVisualViewport() {
+    var el = document.getElementById("ll-cookie-banner");
+    if (!el) return;
+    var vv = window.visualViewport;
+    var visible = vv ? vv.height : window.innerHeight;
+    var offset = 0;
+    if (vv) offset = Math.max(0, window.innerHeight - vv.height - (vv.offsetTop || 0));
+    el.style.bottom = offset + "px";
+    el.style.maxHeight = Math.max(160, Math.floor(visible * 0.45)) + "px";
+    if (!el.hidden) setBannerHeight(el);
+  }
+
   function hideBanner() {
     var el = document.getElementById("ll-cookie-banner");
     if (el) {
@@ -1478,7 +1500,7 @@ COOKIE_JS = r"""(function () {
     el.hidden = false;
     el.removeAttribute("hidden");
     document.body.classList.add("ll-cookie-open");
-    setBannerHeight(el);
+    pinToVisualViewport();
     if (document.activeElement && document.activeElement.id === "ll-cookie-settings") {
       var first = el.querySelector("button, a");
       if (first) first.focus();
@@ -1526,9 +1548,11 @@ COOKIE_JS = r"""(function () {
       if (e.key !== "Escape") return;
       if (getChoice()) hideBanner();
     });
-    window.addEventListener("resize", function () {
-      if (!wrap.hidden) setBannerHeight(wrap);
-    });
+    window.addEventListener("resize", pinToVisualViewport);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", pinToVisualViewport);
+      window.visualViewport.addEventListener("scroll", pinToVisualViewport);
+    }
   }
 
   function bindFooter() {

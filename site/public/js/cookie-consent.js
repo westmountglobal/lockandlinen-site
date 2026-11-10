@@ -55,6 +55,18 @@
     document.body.style.setProperty("--ll-cookie-banner-h", el.offsetHeight + "px");
   }
 
+  function pinToVisualViewport() {
+    var el = document.getElementById("ll-cookie-banner");
+    if (!el) return;
+    var vv = window.visualViewport;
+    var visible = vv ? vv.height : window.innerHeight;
+    var offset = 0;
+    if (vv) offset = Math.max(0, window.innerHeight - vv.height - (vv.offsetTop || 0));
+    el.style.bottom = offset + "px";
+    el.style.maxHeight = Math.max(160, Math.floor(visible * 0.45)) + "px";
+    if (!el.hidden) setBannerHeight(el);
+  }
+
   function hideBanner() {
     var el = document.getElementById("ll-cookie-banner");
     if (el) {
@@ -70,7 +82,7 @@
     el.hidden = false;
     el.removeAttribute("hidden");
     document.body.classList.add("ll-cookie-open");
-    setBannerHeight(el);
+    pinToVisualViewport();
     if (document.activeElement && document.activeElement.id === "ll-cookie-settings") {
       var first = el.querySelector("button, a");
       if (first) first.focus();
@@ -118,9 +130,11 @@
       if (e.key !== "Escape") return;
       if (getChoice()) hideBanner();
     });
-    window.addEventListener("resize", function () {
-      if (!wrap.hidden) setBannerHeight(wrap);
-    });
+    window.addEventListener("resize", pinToVisualViewport);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", pinToVisualViewport);
+      window.visualViewport.addEventListener("scroll", pinToVisualViewport);
+    }
   }
 
   function bindFooter() {
