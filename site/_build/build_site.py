@@ -27,6 +27,7 @@ SHOP_COPY = {
     },
 }
 AMAZON_DISCLOSURE_EN = "As an Amazon Associate I earn from qualifying purchases."
+AMAZON_DISCLOSURE_NEAR = "As an Amazon Associate we earn from qualifying purchases."
 AMAZON_DISCLOSURE_FR = "En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises."
 GEAR_PAGE_HREF = "/guides/gear-wed-put-in-these-homes/"
 GEAR_PAGE_REL = {  # prefix-relative from a story page
@@ -125,7 +126,7 @@ def gear_section_html(slug: str, prefix: str) -> str:
     """Tasteful end-of-story CTA linking to the gear showcase."""
     href = f"{prefix}guides/gear-wed-put-in-these-homes/index.html"
     picks = GEAR_PICKS.get(slug) or []
-    picks_html = ""
+    picks_html = f'<p class="affiliate-near">{esc(AMAZON_DISCLOSURE_NEAR)}</p>\n'
     if picks:
         items = []
         for name, asin in picks[:3]:
@@ -136,6 +137,7 @@ def gear_section_html(slug: str, prefix: str) -> str:
         picks_html = (
             '<p class="gear-picks-label">A few pieces that fit this look</p>\n'
             f'<ul class="gear-picks">\n{chr(10).join(items)}\n</ul>\n'
+            f'<p class="affiliate-near">{esc(AMAZON_DISCLOSURE_NEAR)}</p>\n'
         )
     return f"""
   <section class="gear-cta" aria-label="Get the gear">
@@ -1281,6 +1283,17 @@ footer {
   border-radius: 999px;
 }
 .gear-cta-btn:hover { background: var(--lagoon-deep); }
+.affiliate-near {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0.85rem 0 0;
+  max-width: 62ch;
+}
+.gear-cta .affiliate-near {
+  margin: -0.25rem 0 1rem;
+}
 .amazon-line {
   font-size: 0.86rem !important; line-height: 1.5; color: #d9d2c6 !important;
   max-width: 70ch;

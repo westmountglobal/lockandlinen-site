@@ -453,6 +453,17 @@ footer {
   border-radius: 999px;
 }
 .gear-cta-btn:hover { background: var(--lagoon-deep); }
+.affiliate-near {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0.85rem 0 0;
+  max-width: 62ch;
+}
+.gear-cta .affiliate-near {
+  margin: -0.25rem 0 1rem;
+}
 .amazon-line {
   font-size: 0.86rem !important; line-height: 1.5; color: #d9d2c6 !important;
   max-width: 70ch;
