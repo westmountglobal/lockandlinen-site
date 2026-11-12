@@ -1476,6 +1476,10 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
 .fn-article .product { border-style: solid; border-color: var(--line); }
 .fn-section { margin: 0 0 2.35rem; }
 .fn-section .shop-grid { margin-top: 1rem; }
+/* One-product tiers (Pocket, Camping): a single full card, not 1/4 of a 280px grid */
+.shop-grid.shop-grid--single,
+.fn-section .shop-grid.shop-grid--single { grid-template-columns: minmax(0, 1fr); max-width: 280px; }
+.affiliate-note { margin: 0 0 1.4rem; max-width: 62ch; }
 .fn-article h2[id] { scroll-margin-top: 5rem; }
 .btn-amazon {
   background: var(--lagoon); color: #fff; border-color: var(--lagoon-deep);
@@ -1485,6 +1489,7 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
 @media (max-width: 560px) {
   .fn-glance .shop-grid,
   .fn-section .shop-grid { grid-template-columns: 1fr 1fr; }
+  .fn-section .shop-grid.shop-grid--single { grid-template-columns: minmax(0, 1fr); max-width: 260px; }
 }
 @media (max-width: 860px) {
   .header-inner { position: relative; gap: 0.75rem; }
@@ -2520,6 +2525,7 @@ def write_field_notes_grid_goes_dark():
         <p>It is not a louder house. It is not a fortress. Someone in that room simply kept a battery ready for the fridge, the router, and the lamp by the sofa. The hidden-home idea, at its quietest, is comfort that stays on when the rest of the block goes dark.</p>
       </div>
 
+      <p class="affiliate-near affiliate-note">Some links on this page are Amazon affiliate links. We may earn a commission at no extra cost to you.</p>
       <div class="fn-glance">
         <h2>Our picks at a glance</h2>
         <nav class="fn-jumps" aria-label="Jump to a tier">
@@ -2568,7 +2574,7 @@ def write_field_notes_grid_goes_dark():
           <h2>Pocket</h2>
           <p>For the pocket, we keep coming back to the <a href="{a('B0GMRFYVZ9')}" {AMAZON_REL}>Twelve South PowerCapsule 10K</a>. It is already on our gear page, and it looks like it belongs in a Lock &amp; Linen room: a slim 10,000 milliamp-hour bank wrapped in vegan leather, in a color called Dune, with Qi2 magnetic wireless charging up to 15 watts and a USB-C port besides. It is usually around $45. About two phone charges, quietly, in a jacket pocket.</p>
         </div>
-        <div class="shop-grid" style="max-width: 280px;">
+        <div class="shop-grid shop-grid--single">
 {card_twelve}
         </div>
       </div>
@@ -2595,7 +2601,7 @@ def write_field_notes_grid_goes_dark():
           <h2>Camping</h2>
           <p>For a night away from the wall, the step up is a small power station with real AC outlets. The <a href="{a('B0GKGFWY69')}" {AMAZON_REL}>DaranEner 600W / 288Wh</a>, also already on the gear page, is camping-size rather than a home unit: 288 watt-hours, 600 watts rated, two AC outlets, a 100-watt USB-C port, and a weight of about nine pounds. It is usually around $175. Lights, a fan, and phones for a night in a tent or a trunk.</p>
         </div>
-        <div class="shop-grid" style="max-width: 280px;">
+        <div class="shop-grid shop-grid--single">
 {card_daran}
         </div>
       </div>
