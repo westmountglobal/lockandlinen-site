@@ -75,7 +75,7 @@ for r, s in soups.items():
 
 # affiliate parity
 def amz(s):
-    return sorted((a["href"], " ".join(a.get("rel", []))) for a in s.find_all("a", href=True) if "amazon." in a["href"])
+    return sorted((a["href"], " ".join(a.get("rel", []))) for a in s.find_all("a", href=True) if "amazon." in a["href"] and ("/dp/" in a["href"] or "tag=" in a["href"]))
 for p in en:
     r = rel_of(p)
     e, f = amz(soups[r]), amz(soups.get("fr/" + r, BeautifulSoup("", "html.parser")))

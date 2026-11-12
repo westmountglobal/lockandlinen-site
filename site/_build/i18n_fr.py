@@ -471,7 +471,7 @@ def main(extract: bool = False):
         for rel, p in page_map.items():
             if rel in NOINDEX_REDIRECTS:
                 continue
-            soup = BeautifulSoup(p.read_text(), "html.parser")
+            soup = BeautifulSoup(strip_i18n(p.read_text()), "html.parser")
             for div in soup.select('.fr-summary[lang="fr"]'):
                 div.decompose()
             for k in collect_units(soup):
