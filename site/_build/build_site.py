@@ -1460,6 +1460,32 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
 .fn-picks a { color: var(--ink); }
 .fn-article-end { margin-top: 2.2rem; }
 .fn-card-meta { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem; }
+.fn-glance { margin: 0.4rem 0 2.4rem; }
+.fn-glance h2 { max-width: none; margin-bottom: 0.7rem; }
+.fn-jumps {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.15rem;
+  margin: 0 0 1.15rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.fn-jumps a { color: var(--lagoon); text-decoration: none; }
+.fn-jumps a:hover { color: var(--ink); }
+.fn-article .product { border-style: solid; border-color: var(--line); }
+.fn-section { margin: 0 0 2.35rem; }
+.fn-section .shop-grid { margin-top: 1rem; }
+.fn-article h2[id] { scroll-margin-top: 5rem; }
+.btn-amazon {
+  background: var(--lagoon); color: #fff; border-color: var(--lagoon-deep);
+  cursor: pointer; text-decoration: none;
+}
+.btn-amazon:hover { filter: brightness(1.05); color: #fff; }
+@media (max-width: 560px) {
+  .fn-glance .shop-grid,
+  .fn-section .shop-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  nav { flex-wrap: wrap; justify-content: flex-end; row-gap: 0.35rem; }
+}
 
 """
 
@@ -2169,6 +2195,23 @@ def _amazon(asin: str) -> str:
     return f"https://www.amazon.com/dp/{asin}?tag=lockandlinen-20"
 
 
+def fn_product_card(asin, image, alt, badge, title, blurb):
+    """A gear-style product card. Image and button both go to the tagged Amazon URL."""
+    url = _amazon(asin)
+    return f"""        <article class="product">
+          <span class="ph-badge">{badge}</span>
+          <a class="ph-img" href="{url}" {AMAZON_REL}>
+            <img src="{image}" alt="{alt}" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>{title}</h3>
+            <p>{blurb}</p>
+            <a class="btn-soon btn-amazon" href="{url}" {AMAZON_REL}>View on Amazon</a>
+          </div>
+        </article>
+"""
+
+
 def write_field_notes():
     """Index + first long-form article. Images are copied from site/_content."""
     src_root = FIELD_NOTES_CONTENT
@@ -2229,10 +2272,66 @@ def write_field_notes_grid_goes_dark():
     slug = "when-the-grid-goes-dark"
     out = PUBLIC / "field-notes" / slug
     out.mkdir(parents=True, exist_ok=True)
-    img = "images" if (out / "images").exists() or True else "."
-    # images are copied to field-notes/when-the-grid-goes-dark/*.jpg
-    # Prefer a clean images/ subfolder if we copied flat; use relative filenames in the article folder.
+
+    img_twelve = "https://m.media-amazon.com/images/I/61ZZw2GRDVL._AC_SL1500_.jpg"
+    img_anker_20 = "https://m.media-amazon.com/images/I/217wCCtq3QL._AC_UL1500_.jpg"
+    img_anker_26 = "https://m.media-amazon.com/images/I/31PvsmoVUfL._AC_UL1500_.jpg"
+    img_daran = "https://m.media-amazon.com/images/I/81qxI84VesL._AC_SL1500_.jpg"
+    img_jackery_1000 = "https://m.media-amazon.com/images/I/31+D1tNXreL._AC_UL1500_.jpg"
+    img_jackery_2000 = "https://m.media-amazon.com/images/I/41-aYRSzjEL._AC_UL1500_.jpg"
+    img_ecoflow = "https://m.media-amazon.com/images/I/61bW3qrsEbL._AC_SL1500_.jpg"
+    img_solix = "https://m.media-amazon.com/images/I/41iJKYxROtL._AC_UL1500_.jpg"
+
+    card_twelve = fn_product_card(
+        "B0GMRFYVZ9", img_twelve,
+        "Twelve South PowerCapsule 10,000 mAh power bank in Dune, attached to the back of a phone",
+        "Pocket", "Twelve South PowerCapsule 10K",
+        "10,000 mAh in Dune leather. Usually around $45.",
+    )
+    card_anker_20 = fn_product_card(
+        "B0F66NH2ZX", img_anker_20,
+        "Anker Prime Power Bank, 20,100 mAh, 220 W, in silver and black with a digital display",
+        "Everyday carry", "Anker Prime 20,100 mAh, 220W",
+        "Laptop-ready everyday bank. Usually around $180.",
+    )
+    card_anker_26 = fn_product_card(
+        "B0F66LNB8D", img_anker_26,
+        "Anker Prime Power Bank, 26,250 mAh, 300 W, in silver and black with a digital display",
+        "Everyday carry", "Anker Prime 26,250 mAh, 300W",
+        "More headroom for a weekend. Usually around $230.",
+    )
+    card_daran = fn_product_card(
+        "B0GKGFWY69", img_daran,
+        "DaranEner portable power station in a compact grey case with a handle and AC outlets",
+        "Camping", "DaranEner 600W / 288Wh",
+        "A compact station for a night away. Usually around $175.",
+    )
+    card_ecoflow = fn_product_card(
+        "B0DCC2BVFW", img_ecoflow,
+        "EcoFlow DELTA 3 Plus home-backup power station, silver case with a front display and AC outlets",
+        "Home backup", "EcoFlow DELTA 3 Plus",
+        "1,024 Wh, expandable to about 5 kWh. Usually around $720.",
+    )
+    card_jackery_1000 = fn_product_card(
+        "B0D7PPG25F", img_jackery_1000,
+        "Jackery Explorer 1000 v2 portable power station in black and orange with a handle and AC outlets",
+        "Home backup", "Jackery Explorer 1000 v2",
+        "1,024 Wh, not expandable. Usually around $560.",
+    )
+    card_jackery_2000 = fn_product_card(
+        "B0DFG2WDQH", img_jackery_2000,
+        "Jackery Explorer 2000 v2 portable power station in black and orange with a handle and AC outlets",
+        "Home backup", "Jackery Explorer 2000 v2",
+        "2,042 Wh, not expandable. Usually around $1,000.",
+    )
+    card_solix = fn_product_card(
+        "B0FVFGL38H", img_solix,
+        "Anker SOLIX C2000 Gen 2 portable power station in grey and black with a front display and AC outlets",
+        "Home backup", "Anker SOLIX C2000 Gen 2",
+        "2,048 Wh, expandable to 4 kWh. Usually around $950.",
+    )
     a = _amazon
+
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2259,32 +2358,31 @@ def write_field_notes_grid_goes_dark():
         <p>It is not a louder house. It is not a fortress. Someone in that room simply kept a battery ready for the fridge, the router, and the lamp by the sofa. The hidden-home idea, at its quietest, is comfort that stays on when the rest of the block goes dark.</p>
       </div>
 
+      <div class="fn-glance">
+        <h2>Our picks at a glance</h2>
+        <nav class="fn-jumps" aria-label="Jump to a tier">
+          <a href="#pocket">Pocket</a>
+          <a href="#everyday">Everyday carry</a>
+          <a href="#camping">Camping</a>
+          <a href="#home-backup">Home backup</a>
+        </nav>
+        <div class="shop-grid">
+{card_twelve}
+{card_anker_20}
+{card_daran}
+{card_ecoflow}
+        </div>
+      </div>
+
       <figure class="fn-figure">
         <img src="room-lit-interior.jpg" width="1280" height="720" alt="A warm living room at night: a linen sofa, a lamp, curtains, and a quiet interior while the street outside stays dark." />
         <figcaption>Inside the house that still has light.</figcaption>
       </figure>
 
       <div class="prose fn-copy">
-        <p>Some people take the idea further than a battery in the mudroom.</p>
-      </div>
-
-      <div class="embed-wrap" style="max-width:70ch;">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/nJn0SM2OjLY"
-          title="What if your home had a secret nuclear bunker underneath? — Home in America"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-          loading="lazy"></iframe>
-      </div>
-      <p class="fn-credit">Video: <a href="https://www.youtube.com/watch?v=nJn0SM2OjLY" rel="noopener noreferrer">What if your home had a secret nuclear bunker underneath?</a> by <a href="https://www.youtube.com/@homeinamerica" rel="noopener noreferrer">Home in America</a>. Used here as an embed, with credit.</p>
-
-      <div class="prose fn-copy">
-        <p>Most of us are not pouring a bunker under the house. We just want the lamp, the wifi, and the fridge to keep going. That is what the rest of this guide is for.</p>
-
         <h2>Four sizes of quiet power</h2>
         <p>Power, in a hidden home, comes in four sizes. Three of them you can carry. The fourth stays at the house and can keep a fridge going through an outage.</p>
-        <p>A pocket bank, about 5,000 to 10,000 milliamp hours, slips into a jacket or a bag and keeps a phone alive. An everyday-carry bank, about 20,000 to 27,000 milliamp hours, with at least 65 watts of output, can feed a laptop through a work day or a weekend away. A camping-size power station, around 300 watt-hours, has real AC outlets and will run lights, a fan, and phones for a night in a tent or a trunk. Home-backup stations start at about 1,000 watt-hours: larger batteries that can carry a fridge, the wifi, and the lights, and sometimes grow with extra batteries or a solar panel.</p>
+        <p>A pocket bank, about 5,000 to 10,000 milliamp hours, keeps a phone alive. An everyday-carry bank, about 20,000 to 27,000 milliamp hours, with at least 65 watts of output, can feed a laptop through a work day. A camping-size power station, around 300 watt-hours, has real AC outlets for lights, a fan, and phones for a night away from the wall. Home-backup stations start at about 1,000 watt-hours, and sometimes grow with extra batteries or a solar panel.</p>
         <p>Phone banks are usually listed in milliamp hours. Power stations are listed in watt-hours. They are not the same unit, which is why the table below keeps them on separate rows. These are planning figures, not promises. Real runtimes change with the device, the temperature, and the small losses that happen whenever power is converted.</p>
       </div>
 
@@ -2303,54 +2401,86 @@ def write_field_notes_grid_goes_dark():
         </table>
       </div>
 
-      <h2>What we would put in the bag, and by the door</h2>
-      <figure class="fn-figure">
-        <img src="room-sidetable.jpg" width="1280" height="720" alt="A quiet sitting-room corner with a wooden side table, a woven basket, and linen curtains. A compact power bank sits on the lower shelf of the table, tucked away beside the basket." />
-        <figcaption>An everyday-carry bank, tucked under the side table beside the basket.</figcaption>
-      </figure>
-
-      <div class="prose fn-copy">
-        <p>For the pocket, we keep coming back to the <a href="{a('B0GMRFYVZ9')}" {AMAZON_REL}>Twelve South PowerCapsule 10K</a>. It is already on our gear page, and it looks like it belongs in a Lock &amp; Linen room: a slim 10,000 milliamp-hour bank wrapped in vegan leather, in a color called Dune, with Qi2 magnetic wireless charging up to 15 watts and a USB-C port besides. It is usually around $45. About two phone charges, quietly, in a jacket pocket.</p>
-        <p>When the day includes a laptop, you want more capacity and at least 65 watts — 140 watts if the machine is a larger one. The <a href="{a('B0F66NH2ZX')}" {AMAZON_REL}>Anker Prime Power Bank, 20,100 mAh, 220 W</a> is the everyday-carry we would take first. It holds 20,100 milliamp hours, still light enough for a bag and under the usual carry-on threshold, with 220 watts of total output and up to 140 watts from one USB-C port. It is usually around $180. If you want more headroom for a weekend, the <a href="{a('B0F66LNB8D')}" {AMAZON_REL}>Anker Prime 26,250 mAh, 300 W</a> is the same idea, only larger: 26,250 milliamp hours, 300 watts total, still under 100 watt-hours so it can fly in a carry-on, usually around $230.</p>
-        <p>For a night away from the wall, the step up is a small power station with real AC outlets. The <a href="{a('B0GKGFWY69')}" {AMAZON_REL}>DaranEner 600W / 288Wh</a>, also already on the gear page, is camping-size rather than a home unit: 288 watt-hours, 600 watts rated, two AC outlets, a 100-watt USB-C port, and a weight of about nine pounds. It is usually around $175. Lights, a fan, and phones for a night in a tent or a trunk.</p>
-        <p>The fourth tier stays home. That is the longer story.</p>
+      <div class="fn-section" id="pocket">
+        <div class="prose fn-copy">
+          <h2>Pocket</h2>
+          <p>For the pocket, we keep coming back to the <a href="{a('B0GMRFYVZ9')}" {AMAZON_REL}>Twelve South PowerCapsule 10K</a>. It is already on our gear page, and it looks like it belongs in a Lock &amp; Linen room: a slim 10,000 milliamp-hour bank wrapped in vegan leather, in a color called Dune, with Qi2 magnetic wireless charging up to 15 watts and a USB-C port besides. It is usually around $45. About two phone charges, quietly, in a jacket pocket.</p>
+        </div>
+        <div class="shop-grid" style="max-width: 280px;">
+{card_twelve}
+        </div>
       </div>
 
-      <h2>When the house needs to stay on</h2>
-      <figure class="fn-figure">
-        <img src="room-cabinet-nook.jpg" width="1280" height="720" alt="A warm mudroom at night: boots, a linen tote, and a wooden cabinet. A compact power station sits in the open nook beside a woven basket, tucked away rather than on display. The street outside the window is dark." />
-        <figcaption>A compact station, left in the cabinet nook.</figcaption>
-      </figure>
-
-      <div class="prose fn-copy">
-        <p>A home-backup power station is a large battery with AC outlets, charged from the wall or from a solar panel. The simplest path is the one we would start with: when the power goes out, move the fridge plug, the router, and a lamp onto the station’s outlets. No wiring. The box can sit in a mudroom or a closet, quietly, with no fumes and none of the clatter of a generator.</p>
-        <p>If you want selected house circuits to switch over without walking plugs around, a licensed electrician can install a transfer switch or an inlet under local permits. That is work for a professional. Never run a cord from a station or a generator into a wall outlet — it can put power on the lines, and it is unsafe for anyone working on them.</p>
-        <p>How large a station you want depends on how long you would like the essentials to run. For a fridge, a router, a few lights, and phones, plan on about 1.5 kilowatt-hours a day. A fridge alone is about one kilowatt-hour a day. Runtime is a budget, not a guarantee. A more efficient fridge and LED lamps will stretch it; a space heater or a window air conditioner will spend it quickly.</p>
+      <div class="fn-section" id="everyday">
+        <div class="prose fn-copy">
+          <h2>Everyday carry</h2>
+        </div>
+        <figure class="fn-figure">
+          <img src="room-sidetable.jpg" width="1280" height="720" alt="A quiet sitting-room corner with a wooden side table, a woven basket, and linen curtains. A compact power bank sits on the lower shelf of the table, tucked away beside the basket." />
+          <figcaption>An everyday-carry bank, tucked under the side table beside the basket.</figcaption>
+        </figure>
+        <div class="prose fn-copy">
+          <p>When the day includes a laptop, you want more capacity and at least 65 watts — 140 watts if the machine is a larger one. The <a href="{a('B0F66NH2ZX')}" {AMAZON_REL}>Anker Prime Power Bank, 20,100 mAh, 220 W</a> is the everyday-carry we would take first. It holds 20,100 milliamp hours, still light enough for a bag and under the usual carry-on threshold, with 220 watts of total output and up to 140 watts from one USB-C port. It is usually around $180. If you want more headroom for a weekend, the <a href="{a('B0F66LNB8D')}" {AMAZON_REL}>Anker Prime 26,250 mAh, 300 W</a> is the same idea, only larger: 26,250 milliamp hours, 300 watts total, still under 100 watt-hours so it can fly in a carry-on, usually around $230.</p>
+        </div>
+        <div class="shop-grid">
+{card_anker_20}
+{card_anker_26}
+        </div>
       </div>
 
-      <div class="fn-table-wrap">
-        <table class="fn-table">
-          <thead>
-            <tr><th>Station size</th><th>About how long it covers that essentials load</th><th>Notes</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>1,000–1,500 Wh</td><td>About 1 day</td><td>The Jackery Explorer 1000 v2 and the base EcoFlow DELTA 3 Plus live here</td></tr>
-            <tr><td>2,000–3,000 Wh</td><td>About 2–3 days</td><td>The Jackery Explorer 2000 v2 lives here</td></tr>
-            <tr><td>Expandable, plus solar</td><td>Beyond that</td><td>Add a matching expansion battery, and recharge from solar during the day, so the same station covers a longer outage</td></tr>
-          </tbody>
-        </table>
+      <div class="fn-section" id="camping">
+        <div class="prose fn-copy">
+          <h2>Camping</h2>
+          <p>For a night away from the wall, the step up is a small power station with real AC outlets. The <a href="{a('B0GKGFWY69')}" {AMAZON_REL}>DaranEner 600W / 288Wh</a>, also already on the gear page, is camping-size rather than a home unit: 288 watt-hours, 600 watts rated, two AC outlets, a 100-watt USB-C port, and a weight of about nine pounds. It is usually around $175. Lights, a fan, and phones for a night in a tent or a trunk.</p>
+        </div>
+        <div class="shop-grid" style="max-width: 280px;">
+{card_daran}
+        </div>
       </div>
 
-      <div class="prose fn-copy">
-        <p>For about a day of those essentials, the <a href="{a('B0D7PPG25F')}" {AMAZON_REL}>Jackery Explorer 1000 v2</a> is the simple start: 1,024 watt-hours, 1,500 watts of AC output, usually around $560. It is not expandable. It is the station you buy when you want one quiet box by the door and nothing else to think about.</p>
-        <p>If two or three days feels more like it, the <a href="{a('B0DFG2WDQH')}" {AMAZON_REL}>Jackery Explorer 2000 v2</a> steps up to 2,042 watt-hours and 2,200 watts, usually around $1,000. Still quiet, still meant for indoors, still not expandable.</p>
-        <p>The expandable pick we would lead with is the <a href="{a('B0DCC2BVFW')}" {AMAZON_REL}>EcoFlow DELTA 3 Plus</a>. It starts at the same 1,024 watt-hours as the smaller Jackery, with 1,800 watts of AC output, and it can grow to about 5 kilowatt-hours with compatible EcoFlow batteries. It is usually around $720. This is the “start at a day, grow if you want more” station. Prices and sellers move — look at the live listing before you buy.</p>
-        <p>If that EcoFlow offer looks off, the alternate is the <a href="{a('B0FVFGL38H')}" {AMAZON_REL}>Anker SOLIX C2000 Gen 2</a>. It starts larger, at 2,048 watt-hours and 2,400 watts, and can expand to 4 kilowatt-hours, usually around $950 for the station-only set. Confirm that option, not a solar-panel bundle, before you follow the link, and check the live listing on the day you buy.</p>
+      <div class="fn-section" id="home-backup">
+        <div class="prose fn-copy">
+          <h2>When the house needs to stay on</h2>
+        </div>
+        <figure class="fn-figure">
+          <img src="room-cabinet-nook.jpg" width="1280" height="720" alt="A warm mudroom at night: boots, a linen tote, and a wooden cabinet. A compact power station sits in the open nook beside a woven basket, tucked away rather than on display. The street outside the window is dark." />
+          <figcaption>A compact station, left in the cabinet nook.</figcaption>
+        </figure>
+        <div class="prose fn-copy">
+          <p>A home-backup power station is a large battery with AC outlets, charged from the wall or from a solar panel. The simplest path is the one we would start with: when the power goes out, move the fridge plug, the router, and a lamp onto the station’s outlets. No wiring. The box can sit in a mudroom or a closet, quietly, with no fumes and none of the clatter of a generator.</p>
+          <p>If you want selected house circuits to switch over without walking plugs around, a licensed electrician can install a transfer switch or an inlet under local permits. That is work for a professional. Never run a cord from a station or a generator into a wall outlet — it can put power on the lines, and it is unsafe for anyone working on them.</p>
+          <p>How large a station you want depends on how long you would like the essentials to run. For a fridge, a router, a few lights, and phones, plan on about 1.5 kilowatt-hours a day. A fridge alone is about one kilowatt-hour a day. Runtime is a budget, not a guarantee. A more efficient fridge and LED lamps will stretch it; a space heater or a window air conditioner will spend it quickly.</p>
+        </div>
+
+        <div class="fn-table-wrap">
+          <table class="fn-table">
+            <thead>
+              <tr><th>Station size</th><th>About how long it covers that essentials load</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1,000–1,500 Wh</td><td>About 1 day</td><td>The Jackery Explorer 1000 v2 and the base EcoFlow DELTA 3 Plus live here</td></tr>
+              <tr><td>2,000–3,000 Wh</td><td>About 2–3 days</td><td>The Jackery Explorer 2000 v2 lives here</td></tr>
+              <tr><td>Expandable, plus solar</td><td>Beyond that</td><td>Add a matching expansion battery, and recharge from solar during the day, so the same station covers a longer outage</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="prose fn-copy">
+          <p>For about a day of those essentials, the <a href="{a('B0D7PPG25F')}" {AMAZON_REL}>Jackery Explorer 1000 v2</a> is the simple start: 1,024 watt-hours, 1,500 watts of AC output, usually around $560. It is not expandable. If two or three days feels more like it, the <a href="{a('B0DFG2WDQH')}" {AMAZON_REL}>Jackery Explorer 2000 v2</a> steps up to 2,042 watt-hours and 2,200 watts, usually around $1,000, still not expandable.</p>
+          <p>The expandable pick we would lead with is the <a href="{a('B0DCC2BVFW')}" {AMAZON_REL}>EcoFlow DELTA 3 Plus</a>. It starts at the same 1,024 watt-hours as the smaller Jackery, with 1,800 watts of AC output, and it can grow to about 5 kilowatt-hours with compatible EcoFlow batteries. It is usually around $720. Prices and sellers move — look at the live listing before you buy.</p>
+          <p>If that EcoFlow offer looks off, the alternate is the <a href="{a('B0FVFGL38H')}" {AMAZON_REL}>Anker SOLIX C2000 Gen 2</a>. It starts larger, at 2,048 watt-hours and 2,400 watts, and can expand to 4 kilowatt-hours, usually around $950 for the station-only set. Confirm that option, not a solar-panel bundle, before you follow the link, and check the live listing on the day you buy.</p>
+        </div>
+        <div class="shop-grid">
+{card_ecoflow}
+{card_jackery_1000}
+{card_jackery_2000}
+{card_solix}
+        </div>
       </div>
 
       <div class="prose fn-copy fn-article-end">
         <h2>The house that still has light</h2>
-        <p>In the end, the picture is simple. The block is dark. One room is not. A lamp is on. The fridge is still holding. The router has not given up. You do not need a bunker under the house for that. You need a battery the right size for the life you already have, sitting quietly until the evening asks for it.</p>
+        <p>In the end, the picture is simple. The block is dark. One room is not. A lamp is on. The fridge is still holding. The router has not given up. You need a battery the right size for the life you already have, sitting quietly until the evening asks for it.</p>
         <p>The full gear list is at <a href="{prefix}guides/gear-wed-put-in-these-homes/index.html">lockandlinen.com/gear</a>.</p>
       </div>
     </div>
@@ -2361,7 +2491,6 @@ def write_field_notes_grid_goes_dark():
 </html>
 """
     (out / "index.html").write_text(html)
-
 
 
 def write_robots_and_sitemap():
