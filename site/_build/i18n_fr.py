@@ -20,6 +20,8 @@ from urllib.parse import urljoin, urlsplit
 
 from bs4 import BeautifulSoup, NavigableString, Tag, Comment, Doctype
 
+import amazon_ca
+
 ROOT = Path("/workspace/lockandlinen-site")
 PUBLIC = ROOT / "site" / "public"
 I18N = ROOT / "site" / "_i18n"
@@ -506,6 +508,7 @@ def main(extract: bool = False):
             div.decompose()  # the whole FR page is French; the short EN-page summary is redundant
         translate_soup(soup, fr, missing)
         rewrite_urls(soup, rel, page_map)
+        amazon_ca.rewrite_fr_amazon_links(soup)
         soup.html["lang"] = FR_LANG
         canon = soup.find("link", rel="canonical")
         if canon:
@@ -514,6 +517,7 @@ def main(extract: bool = False):
         fr_html = fr_html.replace('<html lang="%s">' % FR_LANG, '<html lang="%s">' % FR_LANG)
         fr_html = inject_head(fr_html, hreflang_html(en_clean) + '<meta property="og:locale" content="fr_CA" />\n<meta property="og:locale:alternate" content="en_US" />\n' + LANG_SCRIPT)
         fr_html = inject_switch(fr_html, lang_switch_html(en_clean, fr_path(en_clean), "fr"))
+        fr_html = amazon_ca.rewrite_fr_amazon_text(fr_html)
         out.write_text(fr_html)
         # ---- English page: add hreflang + switch + lang router
         en_html = inject_head(src, hreflang_html(en_clean) + LANG_SCRIPT)

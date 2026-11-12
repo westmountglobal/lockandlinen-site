@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Local QA for the EN/FR site: twins, toggle round-trip, hreflang, broken links, affiliate parity."""
 import re, sys
+from collections import Counter
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit
+
+import amazon_ca
 from bs4 import BeautifulSoup
 
 PUBLIC = Path("/workspace/lockandlinen-site/site/public")
@@ -79,10 +82,25 @@ def amz(s):
 for p in en:
     r = rel_of(p)
     e, f = amz(soups[r]), amz(soups.get("fr/" + r, BeautifulSoup("", "html.parser")))
-    if e != f: errors.append(f"{r}: Amazon link mismatch EN {len(e)} vs FR {len(f)}")
-    for href, rel in f:
-        if "tag=lockandlinen-20" not in href or rel != "nofollow sponsored noopener noreferrer":
-            errors.append(f"fr/{r}: bad affiliate link {href} rel={rel}")
+    good_rel = "nofollow sponsored noopener noreferrer"
+    for href, rel in e + f:
+        if rel != good_rel:
+            errors.append(f"{r}: bad affiliate rel {rel!r} on {href}")
+    def expected_fr(href):
+        m = re.search(r"/dp/([A-Z0-9]{10})", href)
+        if not m:
+            return href
+        return amazon_ca.ca_product_url(m.group(1)) or href
+    exp = [expected_fr(h) for h, _ in e]
+    got = [h for h, _ in f]
+    if Counter(exp) != Counter(got):
+        errors.append(f"{r}: Amazon FR hrefs mismatch (EN {len(e)} vs FR {len(f)})")
+        missing = list((Counter(exp) - Counter(got)).elements())
+        extra = list((Counter(got) - Counter(exp)).elements())
+        for h in missing[:6]:
+            errors.append(f"  missing: {h}")
+        for h in extra[:6]:
+            errors.append(f"  extra: {h}")
 print("Amazon links on FR pages:", sum(len(amz(soups[rel_of(p)])) for p in fr))
 
 for w in warns: print("WARN", w)
