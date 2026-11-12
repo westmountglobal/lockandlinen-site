@@ -1412,6 +1412,55 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
   .ll-cookie-btn { flex: 1 1 0; min-width: 0; padding: 0.58rem 0.7rem; font-size: 0.75rem; }
 }
 
+/* Field Notes long-form */
+.fn-hero h1 { max-width: 22ch; }
+.fn-article { padding: 2.5rem 0 3.75rem; }
+.fn-article h2 { max-width: 62ch; }
+.fn-copy { max-width: 62ch; }
+.fn-copy p { margin-bottom: 1.1rem; font-size: 1.08rem; color: #2a2621; }
+.fn-copy a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+.fn-copy a:hover { color: var(--lagoon); }
+.fn-figure { margin: 1.75rem 0 2rem; max-width: 70ch; }
+.fn-figure img {
+  display: block; width: 100%; height: auto;
+  border-radius: 10px;
+  background: #1c2320;
+}
+.fn-figure figcaption {
+  padding: 0.7rem 0.1rem 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.fn-table-wrap { overflow-x: auto; margin: 1.35rem 0 2rem; max-width: 70ch; }
+.fn-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.92rem; line-height: 1.45;
+}
+.fn-table th, .fn-table td {
+  text-align: left; vertical-align: top;
+  padding: 0.65rem 0.8rem 0.65rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.fn-table th {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600;
+}
+.fn-credit {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.82rem; color: var(--muted);
+  margin: 0.65rem 0 0; max-width: 62ch;
+}
+.fn-picks { list-style: none; padding: 0; margin: 1.1rem 0 1.8rem; max-width: 62ch; }
+.fn-picks li { margin: 0 0 0.95rem; padding: 0 0 0.95rem; border-bottom: 1px solid var(--line); }
+.fn-picks li:last-child { border-bottom: 0; }
+.fn-picks a { color: var(--ink); }
+.fn-article-end { margin-top: 2.2rem; }
+.fn-card-meta { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem; }
+
 """
 
 
@@ -1634,6 +1683,7 @@ def header(prefix: str) -> str:
         <a href="{prefix}index.html#homes">Homes</a>
         <a href="{prefix}index.html#stories">Stories</a>
         <a href="{prefix}guides/quiet-security-ideas/index.html">Guide</a>
+        <a href="{prefix}field-notes/index.html">Field Notes</a>
         <a href="{prefix}guides/gear-wed-put-in-these-homes/index.html">Gear</a>
         <a href="{prefix}about.html">About</a>
         <a href="{prefix}contact/index.html">Contact</a>
@@ -1650,6 +1700,7 @@ def footer(ai_note: str, prefix: str) -> str:
         <a href="{prefix}index.html">Homes</a>
         <a href="{prefix}index.html#stories">Stories</a>
         <a href="{prefix}guides/quiet-security-ideas/index.html">Guide</a>
+        <a href="{prefix}field-notes/index.html">Field Notes</a>
         <a href="{prefix}guides/gear-wed-put-in-these-homes/index.html">Gear</a>
         <a href="{prefix}about.html">About</a>
         <a href="{prefix}privacy/index.html">Privacy</a>
@@ -2109,6 +2160,210 @@ def write_guide():
     (out / "index.html").write_text(html)
 
 
+
+FIELD_NOTES_CONTENT = ROOT / "site" / "_content" / "field-notes"
+AMAZON_REL = 'rel="nofollow sponsored noopener noreferrer"'
+
+
+def _amazon(asin: str) -> str:
+    return f"https://www.amazon.com/dp/{asin}?tag=lockandlinen-20"
+
+
+def write_field_notes():
+    """Index + first long-form article. Images are copied from site/_content."""
+    src_root = FIELD_NOTES_CONTENT
+    dest_root = PUBLIC / "field-notes"
+    dest_root.mkdir(parents=True, exist_ok=True)
+    if src_root.exists():
+        for src in src_root.rglob("*"):
+            if src.is_file():
+                dest = dest_root / src.relative_to(src_root)
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(src, dest)
+    write_field_notes_index()
+    write_field_notes_grid_goes_dark()
+
+
+def write_field_notes_index():
+    prefix = "../"
+    out = PUBLIC / "field-notes"
+    out.mkdir(parents=True, exist_ok=True)
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("Field Notes — Lock & Linen", "Long-form notes on hidden homes and the quiet gear that belongs in them. From Lock & Linen.", "/field-notes/", f"{SITE_URL}/field-notes/when-the-grid-goes-dark/hero.jpg")}
+{FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
+</head>
+<body>
+{header(prefix)}
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="section-label">Field Notes</p>
+      <h1>Notes from hidden homes</h1>
+      <div class="prose guide-intro">
+        <p>Longer pieces on comfort that stays on, and the quiet objects that belong in these rooms. Written to be read through, with pictures.</p>
+      </div>
+      <div class="ideas-grid" style="margin-top:2rem;">
+        <a class="idea-card" href="when-the-grid-goes-dark/index.html">
+          <div class="thumb"><img src="when-the-grid-goes-dark/hero.jpg" alt="A quiet street at night; one house is still lit" /></div>
+          <div class="body">
+            <p class="eyebrow">Field Notes</p>
+            <h3>When the Grid Goes Dark</h3>
+            <p>The power bank guide for your hidden home — from a bank in a jacket pocket to a station that can keep a fridge going through an outage.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+{footer(DEFAULT_AI_NOTE, prefix)}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
+def write_field_notes_grid_goes_dark():
+    prefix = "../../"
+    slug = "when-the-grid-goes-dark"
+    out = PUBLIC / "field-notes" / slug
+    out.mkdir(parents=True, exist_ok=True)
+    img = "images" if (out / "images").exists() or True else "."
+    # images are copied to field-notes/when-the-grid-goes-dark/*.jpg
+    # Prefer a clean images/ subfolder if we copied flat; use relative filenames in the article folder.
+    a = _amazon
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("When the Grid Goes Dark: The Power Bank Guide for Your Hidden Home — Lock & Linen", "When the block goes dark, one house is still lit. A long guide to the power you can carry, and the kind that can keep a hidden home going through an outage.", "/field-notes/when-the-grid-goes-dark/", f"{SITE_URL}/field-notes/when-the-grid-goes-dark/hero.jpg")}
+{FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
+</head>
+<body>
+{header(prefix)}
+
+  <section class="hero fn-hero" aria-label="When the Grid Goes Dark">
+    <img src="hero.jpg" width="1280" height="720" alt="A quiet residential street at night during a power outage. Almost every house is dark; one mid-block house is still warmly lit, gold lamplight through linen curtains." />
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="eyebrow">Field Notes</p>
+      <h1>When the Grid Goes Dark</h1>
+      <p class="tagline">The power bank guide for your hidden home.</p>
+    </div>
+  </section>
+
+  <article class="fn-article">
+    <div class="wrap">
+      <div class="prose fn-copy">
+        <p>The street has gone quiet in the particular way a block does when the power fails. Porch lights that usually mark the way home are out. Windows that held the evening have gone black. And then, halfway down, one house is still lit — a gold wash on the siding, a lamp behind linen curtains, the kind of light that makes you look twice.</p>
+        <p>It is not a louder house. It is not a fortress. Someone in that room simply kept a battery ready for the fridge, the router, and the lamp by the sofa. The hidden-home idea, at its quietest, is comfort that stays on when the rest of the block goes dark.</p>
+      </div>
+
+      <figure class="fn-figure">
+        <img src="room-lit-interior.jpg" width="1280" height="720" alt="A warm living room at night: a linen sofa, a lamp, curtains, and a quiet interior while the street outside stays dark." />
+        <figcaption>Inside the house that still has light.</figcaption>
+      </figure>
+
+      <div class="prose fn-copy">
+        <p>Some people take the idea further than a battery in the mudroom.</p>
+      </div>
+
+      <div class="embed-wrap" style="max-width:70ch;">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/nJn0SM2OjLY"
+          title="What if your home had a secret nuclear bunker underneath? — Home in America"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"></iframe>
+      </div>
+      <p class="fn-credit">Video: <a href="https://www.youtube.com/watch?v=nJn0SM2OjLY" rel="noopener noreferrer">What if your home had a secret nuclear bunker underneath?</a> by <a href="https://www.youtube.com/@homeinamerica" rel="noopener noreferrer">Home in America</a>. Used here as an embed, with credit.</p>
+
+      <div class="prose fn-copy">
+        <p>Most of us are not pouring a bunker under the house. We just want the lamp, the wifi, and the fridge to keep going. That is what the rest of this guide is for.</p>
+
+        <h2>Four sizes of quiet power</h2>
+        <p>Power, in a hidden home, comes in four sizes. Three of them you can carry. The fourth stays at the house and can keep a fridge going through an outage.</p>
+        <p>A pocket bank, about 5,000 to 10,000 milliamp hours, slips into a jacket or a bag and keeps a phone alive. An everyday-carry bank, about 20,000 to 27,000 milliamp hours, with at least 65 watts of output, can feed a laptop through a work day or a weekend away. A camping-size power station, around 300 watt-hours, has real AC outlets and will run lights, a fan, and phones for a night in a tent or a trunk. Home-backup stations start at about 1,000 watt-hours: larger batteries that can carry a fridge, the wifi, and the lights, and sometimes grow with extra batteries or a solar panel.</p>
+        <p>Phone banks are usually listed in milliamp hours. Power stations are listed in watt-hours. They are not the same unit, which is why the table below keeps them on separate rows. These are planning figures, not promises. Real runtimes change with the device, the temperature, and the small losses that happen whenever power is converted.</p>
+      </div>
+
+      <div class="fn-table-wrap">
+        <table class="fn-table">
+          <thead>
+            <tr><th>Need</th><th>Rough energy</th><th>What that means in a bank or station</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>One phone charge</td><td>About 4,000–5,000 mAh</td><td>A 10,000 mAh bank is about two phone charges; a 20,000 mAh bank is about four</td></tr>
+            <tr><td>A laptop</td><td>A bank of 20,000 mAh or more that can do 65W (140W is more comfortable for a 16-inch machine)</td><td>Everyday-carry territory</td></tr>
+            <tr><td>One camping night (lights, a fan, phones)</td><td>About 300 Wh</td><td>A compact power station</td></tr>
+            <tr><td>A fridge</td><td>About 1 kWh (1,000 Wh) a day</td><td>Home-backup territory</td></tr>
+            <tr><td>Essentials for a day (fridge, router, lights, phones)</td><td>About 1.5 kWh a day</td><td>A 1,000–1,500 Wh station is about one day; 2,000–3,000 Wh is about two or three</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What we would put in the bag, and by the door</h2>
+      <figure class="fn-figure">
+        <img src="room-sidetable.jpg" width="1280" height="720" alt="A quiet sitting-room corner with a wooden side table, a woven basket, and linen curtains. A compact power bank sits on the lower shelf of the table, tucked away beside the basket." />
+        <figcaption>An everyday-carry bank, tucked under the side table beside the basket.</figcaption>
+      </figure>
+
+      <div class="prose fn-copy">
+        <p>For the pocket, we keep coming back to the <a href="{a('B0GMRFYVZ9')}" {AMAZON_REL}>Twelve South PowerCapsule 10K</a>. It is already on our gear page, and it looks like it belongs in a Lock &amp; Linen room: a slim 10,000 milliamp-hour bank wrapped in vegan leather, in a color called Dune, with Qi2 magnetic wireless charging up to 15 watts and a USB-C port besides. It is usually around $45. About two phone charges, quietly, in a jacket pocket.</p>
+        <p>When the day includes a laptop, you want more capacity and at least 65 watts — 140 watts if the machine is a larger one. The <a href="{a('B0F66NH2ZX')}" {AMAZON_REL}>Anker Prime Power Bank, 20,100 mAh, 220 W</a> is the everyday-carry we would take first. It holds 20,100 milliamp hours, still light enough for a bag and under the usual carry-on threshold, with 220 watts of total output and up to 140 watts from one USB-C port. It is usually around $180. If you want more headroom for a weekend, the <a href="{a('B0F66LNB8D')}" {AMAZON_REL}>Anker Prime 26,250 mAh, 300 W</a> is the same idea, only larger: 26,250 milliamp hours, 300 watts total, still under 100 watt-hours so it can fly in a carry-on, usually around $230.</p>
+        <p>For a night away from the wall, the step up is a small power station with real AC outlets. The <a href="{a('B0GKGFWY69')}" {AMAZON_REL}>DaranEner 600W / 288Wh</a>, also already on the gear page, is camping-size rather than a home unit: 288 watt-hours, 600 watts rated, two AC outlets, a 100-watt USB-C port, and a weight of about nine pounds. It is usually around $175. Lights, a fan, and phones for a night in a tent or a trunk.</p>
+        <p>The fourth tier stays home. That is the longer story.</p>
+      </div>
+
+      <h2>When the house needs to stay on</h2>
+      <figure class="fn-figure">
+        <img src="room-cabinet-nook.jpg" width="1280" height="720" alt="A warm mudroom at night: boots, a linen tote, and a wooden cabinet. A compact power station sits in the open nook beside a woven basket, tucked away rather than on display. The street outside the window is dark." />
+        <figcaption>A compact station, left in the cabinet nook.</figcaption>
+      </figure>
+
+      <div class="prose fn-copy">
+        <p>A home-backup power station is a large battery with AC outlets, charged from the wall or from a solar panel. The simplest path is the one we would start with: when the power goes out, move the fridge plug, the router, and a lamp onto the station’s outlets. No wiring. The box can sit in a mudroom or a closet, quietly, with no fumes and none of the clatter of a generator.</p>
+        <p>If you want selected house circuits to switch over without walking plugs around, a licensed electrician can install a transfer switch or an inlet under local permits. That is work for a professional. Never run a cord from a station or a generator into a wall outlet — it can put power on the lines, and it is unsafe for anyone working on them.</p>
+        <p>How large a station you want depends on how long you would like the essentials to run. For a fridge, a router, a few lights, and phones, plan on about 1.5 kilowatt-hours a day. A fridge alone is about one kilowatt-hour a day. Runtime is a budget, not a guarantee. A more efficient fridge and LED lamps will stretch it; a space heater or a window air conditioner will spend it quickly.</p>
+      </div>
+
+      <div class="fn-table-wrap">
+        <table class="fn-table">
+          <thead>
+            <tr><th>Station size</th><th>About how long it covers that essentials load</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1,000–1,500 Wh</td><td>About 1 day</td><td>The Jackery Explorer 1000 v2 and the base EcoFlow DELTA 3 Plus live here</td></tr>
+            <tr><td>2,000–3,000 Wh</td><td>About 2–3 days</td><td>The Jackery Explorer 2000 v2 lives here</td></tr>
+            <tr><td>Expandable, plus solar</td><td>Beyond that</td><td>Add a matching expansion battery, and recharge from solar during the day, so the same station covers a longer outage</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose fn-copy">
+        <p>For about a day of those essentials, the <a href="{a('B0D7PPG25F')}" {AMAZON_REL}>Jackery Explorer 1000 v2</a> is the simple start: 1,024 watt-hours, 1,500 watts of AC output, usually around $560. It is not expandable. It is the station you buy when you want one quiet box by the door and nothing else to think about.</p>
+        <p>If two or three days feels more like it, the <a href="{a('B0DFG2WDQH')}" {AMAZON_REL}>Jackery Explorer 2000 v2</a> steps up to 2,042 watt-hours and 2,200 watts, usually around $1,000. Still quiet, still meant for indoors, still not expandable.</p>
+        <p>The expandable pick we would lead with is the <a href="{a('B0DCC2BVFW')}" {AMAZON_REL}>EcoFlow DELTA 3 Plus</a>. It starts at the same 1,024 watt-hours as the smaller Jackery, with 1,800 watts of AC output, and it can grow to about 5 kilowatt-hours with compatible EcoFlow batteries. It is usually around $720. This is the “start at a day, grow if you want more” station. Prices and sellers move — look at the live listing before you buy.</p>
+        <p>If that EcoFlow offer looks off, the alternate is the <a href="{a('B0FVFGL38H')}" {AMAZON_REL}>Anker SOLIX C2000 Gen 2</a>. It starts larger, at 2,048 watt-hours and 2,400 watts, and can expand to 4 kilowatt-hours, usually around $950 for the station-only set. Confirm that option, not a solar-panel bundle, before you follow the link, and check the live listing on the day you buy.</p>
+      </div>
+
+      <div class="prose fn-copy fn-article-end">
+        <h2>The house that still has light</h2>
+        <p>In the end, the picture is simple. The block is dark. One room is not. A lamp is on. The fridge is still holding. The router has not given up. You do not need a bunker under the house for that. You need a battery the right size for the life you already have, sitting quietly until the evening asks for it.</p>
+        <p>The full gear list is at <a href="{prefix}guides/gear-wed-put-in-these-homes/index.html">lockandlinen.com/gear</a>.</p>
+      </div>
+    </div>
+  </article>
+
+{footer(DEFAULT_AI_NOTE, prefix)}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
+
 def write_robots_and_sitemap():
     (PUBLIC / "robots.txt").write_text(
         f"""User-agent: *
@@ -2117,7 +2372,7 @@ Allow: /
 Sitemap: {SITE_URL}/sitemap.xml
 """
     )
-    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/"]
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/"]
     for s in STORIES:
         paths.append(f"/stories/{s['slug']}/")
     urls = []
@@ -2195,11 +2450,12 @@ def main():
     write_privacy()
     write_contact()
     write_guide()
+    write_field_notes()
     write_gear_shortlink()
     write_robots_and_sitemap()
     manifest = [{"slug": s["slug"], "yt": s["yt"], "title": s["title"]} for s in STORIES]
     (ROOT / "site" / "_build" / "manifest.json").write_text(json.dumps(manifest, indent=2))
-    print("Done.", len(STORIES), "stories + privacy/contact/guide")
+    print("Done.", len(STORIES), "stories + privacy/contact/guide + field notes")
 
 
 if __name__ == "__main__":

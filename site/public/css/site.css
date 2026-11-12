@@ -581,3 +581,52 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
   .ll-cookie-btn { flex: 1 1 0; min-width: 0; padding: 0.58rem 0.7rem; font-size: 0.75rem; }
 }
 
+/* Field Notes long-form */
+.fn-hero h1 { max-width: 22ch; }
+.fn-article { padding: 2.5rem 0 3.75rem; }
+.fn-article h2 { max-width: 62ch; }
+.fn-copy { max-width: 62ch; }
+.fn-copy p { margin-bottom: 1.1rem; font-size: 1.08rem; color: #2a2621; }
+.fn-copy a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+.fn-copy a:hover { color: var(--lagoon); }
+.fn-figure { margin: 1.75rem 0 2rem; max-width: 70ch; }
+.fn-figure img {
+  display: block; width: 100%; height: auto;
+  border-radius: 10px;
+  background: #1c2320;
+}
+.fn-figure figcaption {
+  padding: 0.7rem 0.1rem 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.fn-table-wrap { overflow-x: auto; margin: 1.35rem 0 2rem; max-width: 70ch; }
+.fn-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.92rem; line-height: 1.45;
+}
+.fn-table th, .fn-table td {
+  text-align: left; vertical-align: top;
+  padding: 0.65rem 0.8rem 0.65rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.fn-table th {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600;
+}
+.fn-credit {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.82rem; color: var(--muted);
+  margin: 0.65rem 0 0; max-width: 62ch;
+}
+.fn-picks { list-style: none; padding: 0; margin: 1.1rem 0 1.8rem; max-width: 62ch; }
+.fn-picks li { margin: 0 0 0.95rem; padding: 0 0 0.95rem; border-bottom: 1px solid var(--line); }
+.fn-picks li:last-child { border-bottom: 0; }
+.fn-picks a { color: var(--ink); }
+.fn-article-end { margin-top: 2.2rem; }
+.fn-card-meta { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem; }
+
