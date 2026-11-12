@@ -879,6 +879,9 @@ nav {
   color: var(--muted);
 }
 nav a:hover { color: var(--ink); }
+.nav-priority,
+.nav-toggle,
+.nav-toggle-btn { display: none; }
 
 .hero {
   position: relative;
@@ -1483,8 +1486,145 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
   .fn-glance .shop-grid,
   .fn-section .shop-grid { grid-template-columns: 1fr 1fr; }
 }
+@media (max-width: 860px) {
+  .header-inner { position: relative; gap: 0.75rem; }
+  .nav-priority {
+    display: inline-block;
+    margin-left: auto;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--lagoon); font-weight: 600;
+    white-space: nowrap;
+  }
+  .nav-priority:hover { color: var(--ink); }
+  .nav-toggle {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); border: 0;
+  }
+  .nav-toggle-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    flex: 0 0 auto;
+    min-height: 2.2rem; padding: 0.35rem 0.7rem;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--card); color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer;
+  }
+  .nav-toggle-open { display: none; }
+  .nav-toggle:checked ~ .nav-toggle-btn .nav-toggle-closed { display: none; }
+  .nav-toggle:checked ~ .nav-toggle-btn .nav-toggle-open { display: inline; }
+  .site-header .primary-nav {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 100%;
+    z-index: 45;
+    flex-direction: column;
+    gap: 0;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: 0.35rem 1.25rem 0.85rem;
+    box-shadow: 0 10px 24px rgba(28,26,23,0.08);
+  }
+  .site-header .primary-nav a {
+    display: block;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.84rem;
+  }
+  .site-header .primary-nav a:last-child { border-bottom: 0; }
+  .nav-toggle:checked ~ .primary-nav { display: flex; }
+}
+
+.home-feature { padding: 1.35rem 0 0; }
+.fn-feature {
+  display: grid;
+  grid-template-columns: 1.15fr 0.9fr;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  color: inherit;
+}
+.fn-feature:hover { border-color: #cbbda6; }
+.fn-feature .thumb {
+  aspect-ratio: 16 / 9;
+  background: #1c2320;
+  overflow: hidden;
+  min-height: 0;
+}
+.fn-feature .thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+}
+.fn-feature .body {
+  padding: 1.35rem 1.4rem 1.45rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.fn-feature .body .eyebrow { opacity: 1; color: var(--lagoon); margin-bottom: 0.4rem; }
+.fn-feature h2 {
+  font-size: clamp(1.45rem, 2.6vw, 1.9rem);
+  font-weight: 500; letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+  max-width: none;
+}
+.fn-feature p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.92rem; color: var(--muted);
+  margin: 0 0 1rem;
+  max-width: 42ch;
+}
+.btn-feature {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.7rem 1rem;
+  background: var(--lagoon); color: #fff;
+  border-radius: 8px; border: 1px solid var(--lagoon-deep);
+}
+.fn-feature:hover .btn-feature { filter: brightness(1.05); }
+
+.fn-banner {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+  margin: 1.25rem 0 0.4rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  color: inherit;
+  max-width: 52rem;
+}
+.fn-banner:hover { border-color: #cbbda6; }
+.fn-banner img {
+  width: 100%; height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover; object-position: center;
+  background: #1c2320;
+}
+.fn-banner-body {
+  padding: 0.9rem 1.05rem 1rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.fn-banner-body .eyebrow { opacity: 1; color: var(--lagoon); margin-bottom: 0.25rem; }
+.fn-banner-title {
+  font-size: 1.15rem; font-weight: 500; letter-spacing: -0.01em;
+  margin: 0 0 0.25rem;
+}
+.fn-banner-copy {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.84rem; color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+.fn-banner .btn-feature { align-self: flex-start; }
+.fn-banner:hover .btn-feature { filter: brightness(1.05); }
+
 @media (max-width: 720px) {
-  nav { flex-wrap: wrap; justify-content: flex-end; row-gap: 0.35rem; }
+  .fn-feature { grid-template-columns: 1fr; }
+  .fn-feature .body { padding: 1.1rem 1.05rem 1.2rem; }
+  .fn-banner { grid-template-columns: 1fr; }
 }
 
 """
@@ -1705,7 +1845,13 @@ def header(prefix: str) -> str:
     return f"""  <header class="site-header">
     <div class="header-inner">
       <a class="wordmark" href="{prefix}index.html">Lock <span>&amp;</span> Linen</a>
-      <nav aria-label="Primary">
+      <a class="nav-priority" href="{prefix}field-notes/index.html">Field Notes</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-btn">
+        <span class="nav-toggle-closed">Menu</span>
+        <span class="nav-toggle-open">Close</span>
+      </label>
+      <nav class="primary-nav" aria-label="Primary">
         <a href="{prefix}index.html#homes">Homes</a>
         <a href="{prefix}index.html#stories">Stories</a>
         <a href="{prefix}guides/quiet-security-ideas/index.html">Guide</a>
@@ -1993,6 +2139,22 @@ def write_index():
       <p class="eyebrow">Concept homes · Stories</p>
       <h1>Quiet fortification, softly furnished</h1>
       <p class="tagline">AI-rendered hideaways — private, self-sufficient, and quietly fortified.</p>
+    </div>
+  </section>
+
+  <section class="home-feature" aria-label="Field Notes">
+    <div class="wrap">
+      <a class="fn-feature" href="field-notes/when-the-grid-goes-dark/index.html">
+        <div class="thumb">
+          <img src="field-notes/when-the-grid-goes-dark/hero.jpg" width="1280" height="720" alt="A quiet residential street at night during a power outage. One mid-block house is still warmly lit." />
+        </div>
+        <div class="body">
+          <p class="eyebrow">Field Notes</p>
+          <h2>When the Grid Goes Dark</h2>
+          <p>The power bank guide for your hidden home — from a bank in a jacket pocket to a station that can keep a fridge going through an outage.</p>
+          <span class="btn-feature">Read the power guide</span>
+        </div>
+      </a>
     </div>
   </section>
 
