@@ -100,6 +100,36 @@
     revokeAnalytics();
   }
 
+  function isFrenchPage() {
+    return /^fr/i.test(document.documentElement.getAttribute("lang") || "");
+  }
+
+  function bannerHtml() {
+    if (isFrenchPage()) {
+      return '<div class="ll-cookie-inner">' +
+        '<p id="ll-cookie-title" class="ll-cookie-title">Témoins et analyse d’audience</p>' +
+        '<div id="ll-cookie-desc" class="ll-cookie-copy">' +
+          '<p lang="fr">Nous utilisons Google Analytics uniquement pour comprendre le trafic sur ce site. Pas de publicité. Consultez la <a href="/fr/privacy/#consent">politique de confidentialité</a>.</p>' +
+        "</div>" +
+        '<div class="ll-cookie-actions">' +
+          '<button type="button" class="ll-cookie-btn" data-ll-refuse>Refuser</button>' +
+          '<button type="button" class="ll-cookie-btn" data-ll-accept>Accepter</button>' +
+        "</div>" +
+      "</div>";
+    }
+    return '<div class="ll-cookie-inner">' +
+        '<p id="ll-cookie-title" class="ll-cookie-title">Témoins et analyse / Cookies and analytics</p>' +
+        '<div id="ll-cookie-desc" class="ll-cookie-copy">' +
+          '<p lang="fr">Nous utilisons Google Analytics uniquement pour comprendre le trafic sur ce site. Pas de publicité. Consultez la <a href="/fr/privacy/#consent">politique de confidentialité</a>.</p>' +
+          '<p lang="en">We use Google Analytics only to understand how this site is used. No advertising. See the <a href="/privacy/#consent">privacy policy</a>.</p>' +
+        "</div>" +
+        '<div class="ll-cookie-actions">' +
+          '<button type="button" class="ll-cookie-btn" data-ll-refuse>Refuser / Refuse</button>' +
+          '<button type="button" class="ll-cookie-btn" data-ll-accept>Accepter / Accept</button>' +
+        "</div>" +
+      "</div>";
+  }
+
   function ensureBanner() {
     if (document.getElementById("ll-cookie-banner")) return;
     var wrap = document.createElement("div");
@@ -111,18 +141,7 @@
     wrap.setAttribute("aria-describedby", "ll-cookie-desc");
     wrap.tabIndex = -1;
     wrap.hidden = true;
-    wrap.innerHTML =
-      '<div class="ll-cookie-inner">' +
-        '<p id="ll-cookie-title" class="ll-cookie-title">Témoins et analyse / Cookies and analytics</p>' +
-        '<div id="ll-cookie-desc" class="ll-cookie-copy">' +
-          '<p lang="fr">Nous utilisons Google Analytics uniquement pour comprendre le trafic sur ce site. Pas de publicité. Consultez la <a href="/privacy/#consent">politique de confidentialité</a>.</p>' +
-          '<p lang="en">We use Google Analytics only to understand how this site is used. No advertising. See the <a href="/privacy/#consent">privacy policy</a>.</p>' +
-        "</div>" +
-        '<div class="ll-cookie-actions">' +
-          '<button type="button" class="ll-cookie-btn" data-ll-refuse>Refuser / Refuse</button>' +
-          '<button type="button" class="ll-cookie-btn" data-ll-accept>Accepter / Accept</button>' +
-        "</div>" +
-      "</div>";
+    wrap.innerHTML = bannerHtml();
     document.body.appendChild(wrap);
     wrap.querySelector("[data-ll-refuse]").addEventListener("click", refuse);
     wrap.querySelector("[data-ll-accept]").addEventListener("click", accept);

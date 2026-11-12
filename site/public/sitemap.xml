@@ -1,103 +1,353 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://lockandlinen.com/</loc>
-    <changefreq>weekly</changefreq>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lockandlinen.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/about.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/about.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/about.html" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/privacy/</loc>
+    <loc>https://lockandlinen.com/fr/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/about.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/about.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/about.html" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://lockandlinen.com/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/contact/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/guides/quiet-security-ideas/</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://lockandlinen.com/guides/gear-wed-put-in-these-homes/</loc>
+    <loc>https://lockandlinen.com/fr/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/contact/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://lockandlinen.com/field-notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/field-notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://lockandlinen.com/field-notes/when-the-grid-goes-dark/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/when-the-grid-goes-dark/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/when-the-grid-goes-dark/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/when-the-grid-goes-dark/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/island-home/</loc>
+    <loc>https://lockandlinen.com/fr/field-notes/when-the-grid-goes-dark/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/when-the-grid-goes-dark/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/when-the-grid-goes-dark/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/when-the-grid-goes-dark/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/cliffside/</loc>
+    <loc>https://lockandlinen.com/guides/gear-wed-put-in-these-homes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/guides/gear-wed-put-in-these-homes/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/guides/gear-wed-put-in-these-homes/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/guides/gear-wed-put-in-these-homes/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/canyon/</loc>
+    <loc>https://lockandlinen.com/fr/guides/gear-wed-put-in-these-homes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/guides/gear-wed-put-in-these-homes/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/guides/gear-wed-put-in-these-homes/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/guides/gear-wed-put-in-these-homes/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/lighthouse/</loc>
+    <loc>https://lockandlinen.com/guides/quiet-security-ideas/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/guides/quiet-security-ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/guides/quiet-security-ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/guides/quiet-security-ideas/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/missile-silo/</loc>
+    <loc>https://lockandlinen.com/fr/guides/quiet-security-ideas/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/guides/quiet-security-ideas/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/guides/quiet-security-ideas/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/guides/quiet-security-ideas/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/fjord-boathouse/</loc>
+    <loc>https://lockandlinen.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/volcanic-plateau/</loc>
+    <loc>https://lockandlinen.com/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/treehouse/</loc>
+    <loc>https://lockandlinen.com/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/privacy/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/cliff-monastery/</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://lockandlinen.com/stories/cave-dwelling/</loc>
+    <loc>https://lockandlinen.com/fr/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/privacy/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://lockandlinen.com/stories/black-aframe/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/black-aframe/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/black-aframe/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/black-aframe/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/black-aframe/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/black-aframe/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/black-aframe/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/black-aframe/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://lockandlinen.com/stories/bunker-lodge/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/bunker-lodge/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/bunker-lodge/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/bunker-lodge/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/marsh-stilt/</loc>
+    <loc>https://lockandlinen.com/fr/stories/bunker-lodge/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/bunker-lodge/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/bunker-lodge/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/bunker-lodge/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/glacier-cabin/</loc>
+    <loc>https://lockandlinen.com/stories/canyon/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/canyon/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/canyon/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/canyon/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/canyon/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/canyon/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/canyon/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/canyon/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://lockandlinen.com/stories/canyon-homestead/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/canyon-homestead/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/canyon-homestead/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/canyon-homestead/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://lockandlinen.com/stories/sea-cliff-homestead/</loc>
+    <loc>https://lockandlinen.com/fr/stories/canyon-homestead/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/canyon-homestead/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/canyon-homestead/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/canyon-homestead/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/cave-dwelling/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/cave-dwelling/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/cave-dwelling/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/cave-dwelling/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/cave-dwelling/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/cave-dwelling/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/cave-dwelling/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/cave-dwelling/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/cliff-monastery/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/cliff-monastery/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/cliff-monastery/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/cliff-monastery/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/cliff-monastery/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/cliff-monastery/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/cliff-monastery/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/cliff-monastery/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/cliffside/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/cliffside/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/cliffside/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/cliffside/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/cliffside/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/cliffside/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/cliffside/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/cliffside/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/fjord-boathouse/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/fjord-boathouse/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/fjord-boathouse/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/fjord-boathouse/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/fjord-boathouse/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/fjord-boathouse/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/fjord-boathouse/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/fjord-boathouse/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/glacier-cabin/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/glacier-cabin/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/glacier-cabin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/glacier-cabin/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/glacier-cabin/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/glacier-cabin/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/glacier-cabin/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/glacier-cabin/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/island-home/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/island-home/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/island-home/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/island-home/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/island-home/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/island-home/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/island-home/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/island-home/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/lighthouse/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/lighthouse/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/lighthouse/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/lighthouse/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/lighthouse/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/lighthouse/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/lighthouse/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/lighthouse/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/marsh-stilt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/marsh-stilt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/marsh-stilt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/marsh-stilt/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/marsh-stilt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/marsh-stilt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/marsh-stilt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/marsh-stilt/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/missile-silo/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/missile-silo/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/missile-silo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/missile-silo/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/missile-silo/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/missile-silo/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/missile-silo/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/missile-silo/" />
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://lockandlinen.com/stories/mountain-homestead/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/mountain-homestead/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/mountain-homestead/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/mountain-homestead/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/mountain-homestead/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/mountain-homestead/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/mountain-homestead/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/mountain-homestead/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/sea-cliff-homestead/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/sea-cliff-homestead/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/sea-cliff-homestead/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/sea-cliff-homestead/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/sea-cliff-homestead/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/sea-cliff-homestead/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/sea-cliff-homestead/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/sea-cliff-homestead/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/treehouse/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/treehouse/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/treehouse/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/treehouse/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/treehouse/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/treehouse/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/treehouse/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/treehouse/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/stories/volcanic-plateau/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/volcanic-plateau/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/volcanic-plateau/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/volcanic-plateau/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/stories/volcanic-plateau/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/stories/volcanic-plateau/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/stories/volcanic-plateau/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/stories/volcanic-plateau/" />
     <changefreq>weekly</changefreq>
   </url>
 </urlset>
