@@ -505,11 +505,6 @@ def main(extract: bool = False):
         for div in soup.select('.fr-summary[lang="fr"]'):
             div.decompose()  # the whole FR page is French; the short EN-page summary is redundant
         translate_soup(soup, fr, missing)
-        # Associates disclosure sits at the bottom, just above the footer, on FR pages.
-        foot = soup.find("footer")
-        for wrap in soup.select(".affiliate-near-wrap"):
-            if foot is not None:
-                foot.insert_before(wrap.extract())
         rewrite_urls(soup, rel, page_map)
         soup.html["lang"] = FR_LANG
         canon = soup.find("link", rel="canonical")

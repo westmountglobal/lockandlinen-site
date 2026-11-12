@@ -108,7 +108,7 @@
     border-color: var(--line);
   }
   .gear-group { scroll-margin-top: calc(var(--header-h) + 3.4rem); }
-  .affiliate-near-wrap { margin: 0; }
+  .affiliate-near-wrap { margin: 0 auto; }
   .affiliate-near-wrap .affiliate-near { margin: 0.7rem 0 0; }
   .gear-group:first-child .gear-section { margin-top: 1.5rem; }
   html.catalog-filtered .gear-group:not([hidden]) .gear-section { margin-top: 1.5rem; }
@@ -150,7 +150,9 @@
 <div aria-label="Catégories d’équipement" class="gear-tabs" role="tablist"> <a aria-controls="gear-catalog" aria-selected="true" class="is-active" data-filter="all" href="#all" id="tab-all" role="tab" tabindex="0">Tout</a> <a aria-controls="entry" aria-selected="false" data-filter="entry" href="#entry" id="tab-entry" role="tab" tabindex="-1">Entrée et portes</a> <a aria-controls="window" aria-selected="false" data-filter="window" href="#window" id="tab-window" role="tab" tabindex="-1">Fenêtres et vitrage</a> <a aria-controls="power" aria-selected="false" data-filter="power" href="#power" id="tab-power" role="tab" tabindex="-1">Trousse panne de courant</a> <a aria-controls="privacy" aria-selected="false" data-filter="privacy" href="#privacy" id="tab-privacy" role="tab" tabindex="-1">Intimité et signal</a> <a aria-controls="linen" aria-selected="false" data-filter="linen" href="#linen" id="tab-linen" role="tab" tabindex="-1">Lin douillet et lumière</a> <a aria-controls="emergency" aria-selected="false" data-filter="emergency" href="#emergency" id="tab-emergency" role="tab" tabindex="-1">Eau d’urgence et premiers soins</a> </div>
 </div>
 </div>
-
+<div class="wrap affiliate-near-wrap">
+<p class="affiliate-near">Certains liens de cette page sont des liens d’affiliation Amazon. Nous pouvons toucher une commission, sans frais supplémentaires pour vous.</p>
+</div>
 <div class="wrap" id="gear-catalog">
 <div aria-labelledby="tab-privacy" class="gear-group" data-category="privacy" id="privacy" role="tabpanel">
 <div class="gear-section">
@@ -333,9 +335,7 @@
 </div>
 </div>
 </section>
-<div class="wrap affiliate-near-wrap">
-<p class="affiliate-near">En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.</p>
-</div><footer>
+<footer>
 <div class="footer-inner">
 <div class="footer-brand">Lock <span>&amp;</span> Linen</div>
 <div class="disclosures">
