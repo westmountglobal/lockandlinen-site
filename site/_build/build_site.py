@@ -1626,6 +1626,10 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
 .fn-banner .btn-feature { align-self: flex-start; }
 .fn-banner:hover .btn-feature { filter: brightness(1.05); }
 
+.home-feature .fn-feature + .fn-feature { margin-top: 1.25rem; }
+.fn-banner + .fn-banner { margin-top: 1rem; }
+.fn-figure.fn-figure--portrait { max-width: 28rem; }
+
 @media (max-width: 720px) {
   .fn-feature { grid-template-columns: 1fr; }
   .fn-feature .body { padding: 1.1rem 1.05rem 1.2rem; }
@@ -2168,6 +2172,17 @@ def write_index():
 
   <section class="home-feature" aria-label="Field Notes">
     <div class="wrap">
+      <a class="fn-feature" href="field-notes/closed-up-for-the-evening/index.html">
+        <div class="thumb">
+          <img src="field-notes/closed-up-for-the-evening/hero.jpg" width="1280" height="720" alt="A softly lit entryway at dusk: a closed off-white front door, a brass lamp on an oak console, and linen curtains." />
+        </div>
+        <div class="body">
+          <p class="eyebrow">Field Notes</p>
+          <h2>Closed Up for the Evening</h2>
+          <p>Quiet layers for the doors, the windows, and the glass of a hidden home.</p>
+          <span class="btn-feature">Read the guide</span>
+        </div>
+      </a>
       <a class="fn-feature" href="field-notes/when-the-grid-goes-dark/index.html">
         <div class="thumb">
           <img src="field-notes/when-the-grid-goes-dark/hero.jpg" width="1280" height="720" alt="A quiet residential street at night during a power outage. One mid-block house is still warmly lit." />
@@ -2413,6 +2428,7 @@ def write_field_notes():
                 shutil.copy2(src, dest)
     write_field_notes_index()
     write_field_notes_grid_goes_dark()
+    write_field_notes_closed_up()
 
 
 def write_field_notes_index():
@@ -2436,6 +2452,14 @@ def write_field_notes_index():
         <p>Longer pieces on comfort that stays on, and the quiet objects that belong in these rooms. Written to be read through, with pictures.</p>
       </div>
       <div class="ideas-grid" style="margin-top:2rem;">
+        <a class="idea-card" href="closed-up-for-the-evening/index.html">
+          <div class="thumb"><img src="closed-up-for-the-evening/hero.jpg" alt="A softly lit entryway at dusk, with a closed door, a brass lamp, and linen curtains" /></div>
+          <div class="body">
+            <p class="eyebrow">Field Notes</p>
+            <h3>Closed Up for the Evening</h3>
+            <p>Quiet layers for the doors, the windows, and the glass of a hidden home.</p>
+          </div>
+        </a>
         <a class="idea-card" href="when-the-grid-goes-dark/index.html">
           <div class="thumb"><img src="when-the-grid-goes-dark/hero.jpg" alt="A quiet street at night; one house is still lit" /></div>
           <div class="body">
@@ -2682,6 +2706,208 @@ def write_field_notes_grid_goes_dark():
     (out / "index.html").write_text(html)
 
 
+def write_field_notes_closed_up():
+    prefix = "../../"
+    slug = "closed-up-for-the-evening"
+    out = PUBLIC / "field-notes" / slug
+    out.mkdir(parents=True, exist_ok=True)
+
+    img_addalock = "https://m.media-amazon.com/images/I/71coaNix4cL._AC_SL1500_.jpg"
+    img_buddybar = "https://m.media-amazon.com/images/I/51FWoCaY1HL._AC_SL1500_.jpg"
+    img_sabre = "https://m.media-amazon.com/images/I/61HQzV1nC-L._AC_SL1500_.jpg"
+    img_prime_slide = "https://m.media-amazon.com/images/I/71bRtrW8lBL._AC_SL1500_.jpg"
+    img_prime_flip = "https://m.media-amazon.com/images/I/61BiTnQYnVL._AC_SL1500_.jpg"
+    img_ultrapro = "https://m.media-amazon.com/images/I/713mRL8qmxL._AC_SL1500_.jpg"
+    img_bdf = "https://m.media-amazon.com/images/I/91ws31QbJFL._AC_SL1500_.jpg"
+    img_rabbitgoo = "https://m.media-amazon.com/images/I/81ODG9ldiIL._AC_SL1500_.jpg"
+
+    card_addalock = fn_product_card(
+        "B00186URTY", img_addalock,
+        "Addalock portable door lock, a small silver lock body with a sliding rod",
+        "Portable lock", "Addalock portable door lock",
+        "Hooks into the strike plate of an inward-swinging door. $14.95 as of November 12, 2026.",
+    )
+    card_buddybar = fn_product_card(
+        "B002BQ4VBU", img_buddybar,
+        "Buddybar door security bar, a powder-coated steel bar with a rubber foot",
+        "Security bar", "Buddybar door security bar",
+        "Powder-coated steel, 36 to 51 inches. $118.95 as of November 12, 2026.",
+    )
+    card_sabre = fn_product_card(
+        "B00M30SQGA", img_sabre,
+        "SABRE wedge door stop alarm, a black floor wedge with a built-in siren",
+        "Wedge alarm", "SABRE wedge door stop alarm",
+        "A floor wedge with a 120-decibel alarm. $9.79 as of November 12, 2026.",
+    )
+    card_prime_slide = fn_product_card(
+        "B00BAFIQF0", img_prime_slide,
+        "Prime-Line sliding window security lock, an aluminum thumb-screw clamp, pack of four",
+        "Track lock", "Prime-Line sliding window security lock",
+        "A thumb-screw clamp for sliding-window tracks. $5.39 for a pack of four, as of November 12, 2026.",
+    )
+    card_prime_flip = fn_product_card(
+        "B000P0SHTQ", img_prime_flip,
+        "Prime-Line U 9929 window flip lock in antique brass, two-pack",
+        "Flip lock", "Prime-Line U 9929 window flip lock",
+        "A hinged stop for wood double-hung windows. $8.16 for a two-pack, as of November 12, 2026.",
+    )
+    card_ultrapro = fn_product_card(
+        "B00178HMCI", img_ultrapro,
+        "UltraPro window and door alarm, two-pack of white magnetic sensors",
+        "Contact alarm", "UltraPro window and door alarm, 2-pack",
+        "A two-piece magnetic sensor with a chime or siren. $12.88 as of November 12, 2026.",
+    )
+    card_bdf = fn_product_card(
+        "B00CX5Z4B0", img_bdf,
+        "BDF S8MC 8 mil clear safety window film, 36-inch by 12-foot roll",
+        "Safety film", "BDF S8MC 8 mil clear window film, 36 in × 12 ft",
+        "8-mil clear film, 36 in × 12 ft. $69.99 as of November 12, 2026.",
+    )
+    card_rabbitgoo = fn_product_card(
+        "B00RDVE2L2", img_rabbitgoo,
+        "rabbitgoo frosted glass privacy film, static-cling roll",
+        "Privacy film", "rabbitgoo frosted glass privacy film",
+        "Static-cling frosted privacy film, 17.5 × 78.7 in. $5.99 as of November 12, 2026.",
+    )
+    a = _amazon
+    ai_note = (
+        "Images in this article are AI-generated illustrations, not product photos or real homes. "
+        "Products shown are generic and are not the listed items. For information only; follow your "
+        "local building and fire codes, and use a professional for large film installations."
+    )
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("Closed Up for the Evening: Quiet Fortification for Your Hidden Home — Lock & Linen", "The street has turned blue, the way it does just after the lamps come on. Quiet layers for the doors, the windows, and the glass of a hidden home.", "/field-notes/closed-up-for-the-evening/", f"{SITE_URL}/field-notes/closed-up-for-the-evening/hero.jpg")}
+{FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
+</head>
+<body>
+{header(prefix)}
+
+  <section class="hero fn-hero" aria-label="Closed Up for the Evening">
+    <img src="hero.jpg" width="1280" height="720" alt="A softly lit entryway at dusk: a closed off-white front door, a brass lamp on an oak console, a wool throw on a bench, linen curtains, and a small plain wedge resting on the floor by the door." />
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="eyebrow">Field Notes</p>
+      <h1>Closed Up for the Evening</h1>
+      <p class="tagline">Quiet fortification for your hidden home.</p>
+    </div>
+  </section>
+
+  <article class="fn-article">
+    <div class="wrap">
+      <div class="prose fn-copy">
+        <p>The street has turned blue, the way it does just after the lamps come on. The kettle clicks off. Someone draws the linen curtains halfway. And then, without anyone quite deciding to, the house is closed up for the evening.</p>
+        <p>It is not a fortress. It is not a house that looks like it is waiting for trouble. It is the quiet layer under the comfort: a door that sits the way you want it to, a window that opens only as far as you choose, glass that does a little more than let the light in. Most of it costs less than a good throw blanket. Almost none of it shows.</p>
+      </div>
+
+      <p class="affiliate-near affiliate-note">Some links on this page are Amazon affiliate links. We may earn a commission at no extra cost to you.</p>
+      <div class="fn-glance">
+        <h2>Three quiet layers</h2>
+        <nav class="fn-jumps" aria-label="Jump to a layer">
+          <a href="#door">At the door</a>
+          <a href="#windows">At the windows</a>
+          <a href="#glass">On the glass</a>
+        </nav>
+        <div class="prose fn-copy">
+          <p>A hidden home closes up in three places. The doors, where the coming and going happens. The windows, the openings we think about least. And the glass itself, which can be made more private, and a little more resilient, without changing how a room looks.</p>
+          <p>None of these are a guarantee. None of them replace a good deadbolt, a solid door, or knowing your neighbors. They are small, practical additions — most of them renter-friendly, most of them gone without a trace when you move.</p>
+        </div>
+        <div class="fn-table-wrap">
+          <table class="fn-table">
+            <thead>
+              <tr><th>Layer</th><th>What it is</th><th>What it is designed to do</th><th>Install</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Door: portable lock</td><td>A small lock body with metal claws that hook into the strike plate of an inward-swinging door</td><td>Add a second point of hold from the inside</td><td>No tools; seconds</td></tr>
+              <tr><td>Door: security bar</td><td>An adjustable steel bar wedged between the knob and the floor</td><td>Brace a closed door from the inside</td><td>No tools; adjusts to the door</td></tr>
+              <tr><td>Door: wedge alarm</td><td>A floor wedge with a built-in siren</td><td>Sound an alarm when the door presses on it</td><td>No tools; one 9V battery</td></tr>
+              <tr><td>Window: track lock</td><td>A clamp that screws onto a sliding window's track</td><td>Hold the sash closed, or open only a few inches for air</td><td>No tools</td></tr>
+              <tr><td>Window: flip lock</td><td>A small hinged stop for wood double-hung windows</td><td>Block the lower sash from lifting past a set point</td><td>Small screws or nails</td></tr>
+              <tr><td>Window: contact alarm</td><td>A two-piece magnetic sensor with a chime or siren</td><td>Let you know when a door or window opens</td><td>Adhesive tape</td></tr>
+              <tr><td>Glass: safety film</td><td>A clear, thick film applied to the inside of the glass</td><td>Hold glass together if it breaks, and filter UV</td><td>Squeegee and water solution; afternoon project</td></tr>
+              <tr><td>Glass: privacy film</td><td>A frosted static-cling film</td><td>Blur the view in while letting soft light through</td><td>Water only; removable</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="fn-section" id="door">
+        <div class="prose fn-copy">
+          <h2>At the door</h2>
+        </div>
+        <figure class="fn-figure">
+          <img src="room-bedroom-door.jpg" width="1280" height="720" alt="A calm cabin bedroom at night: a linen bed and wool throw, a ceramic lamp on a walnut nightstand, and a plain charcoal bar resting under the knob of the closed bedroom door." />
+          <figcaption>A bar under the bedroom door at night.</figcaption>
+        </figure>
+        <div class="prose fn-copy">
+          <p>The simplest piece we know is the <a href="{a('B00186URTY')}" {AMAZON_REL}>Addalock portable door lock</a>, already on our gear page. Its metal claws hook into the strike plate of an inward-swinging door, the door closes on them, a rod slides in through the lock body, and the door has a second point of hold from the inside. No tools, no screws, nothing left behind on the frame. It travels in a small pouch, so it belongs as much to a rental cabin or a hotel room as to home. As of November 12, 2026, it was $14.95, in stock, sold by Rishon Enterprises Inc. and shipped from Amazon.</p>
+          <p>For a front door, or a bedroom door at night, the step up is a bar. The <a href="{a('B002BQ4VBU')}" {AMAZON_REL}>Buddybar door security bar</a>, also on the gear page, is 8.2 pounds of powder-coated steel with no plastic parts, and it extends from 36 to 51 inches to fit most doors. It braces under the knob from the inside, on carpet, tile, wood, or concrete. It is the most expensive thing in this guide — $118.95 on November 12, in stock, sold by MPO Global and shipped from Amazon — and the one we would buy once and keep for years.</p>
+          <p>The third door piece does the least and says the most. The <a href="{a('B00M30SQGA')}" {AMAZON_REL}>SABRE wedge door stop alarm</a> slides under the door like any doorstop, on a non-skid pad, and sounds a 120-decibel alarm when the door presses down on it. One 9-volt battery, one low-battery light. SABRE notes it needs about a 7/8-inch gap under the door to trigger, so check yours first. It was $9.79 on November 12, in stock, sold by Amazon.com.</p>
+        </div>
+        <div class="shop-grid">
+{card_addalock}
+{card_buddybar}
+{card_sabre}
+        </div>
+      </div>
+
+      <div class="fn-section" id="windows">
+        <div class="prose fn-copy">
+          <h2>At the windows</h2>
+        </div>
+        <figure class="fn-figure">
+          <img src="room-window-sill.jpg" width="1280" height="720" alt="The inside corner of a sliding window in warm evening light: a small plain aluminum thumb-screw stop on the track, an oatmeal linen curtain, a ceramic vase with a dried grass stem." />
+          <figcaption>A small stop on the track, so the window opens only as far as you choose.</figcaption>
+        </figure>
+        <div class="prose fn-copy">
+          <p>Windows are where a house breathes. The best window hardware lets it keep breathing. For sliding windows, the <a href="{a('B00BAFIQF0')}" {AMAZON_REL}>Prime-Line sliding window security lock</a> is a small aluminum clamp with a thumb screw that tightens onto the track. Set it against the sash and the window stays shut. Set it a few inches back and the window opens just that far, for air on a mild night. It fits rails up to 1/8 inch wide — measure before you buy — and needs no tools. It was $5.39 for a pack of four on November 12, in stock, sold by Amazon.com.</p>
+          <p>Older wood double-hung windows want something different. The <a href="{a('B000P0SHTQ')}" {AMAZON_REL}>Prime-Line U 9929 window flip lock</a> is a small hinged piece in antique brass that sits on the side of the frame. Flip it out and the lower sash cannot lift past it; flip it back and the window opens fully. It is designed for wood single- and double-hung windows, and Prime-Line notes it is not recommended for dual-pane windows, so check yours. It was $8.16 for a two-pack, in stock, sold by Amazon.com. In antique brass, it looks as if it was always part of the house.</p>
+          <p>And then there is simply knowing. The <a href="{a('B00178HMCI')}" {AMAZON_REL}>UltraPro window and door alarm, 2-pack</a>, already on the gear page, is a two-piece magnetic sensor that sticks to the frame with tape. Open the window and it plays a soft chime — or, switched over, a 120-decibel siren. No app, no wifi, no monthly fee; it runs on the included button batteries. It was $12.88 on November 12, down from a typical price of $16.36, in stock, sold by Amazon.com. We like it on the window nobody uses, and as a chime on the back door.</p>
+          <p>One thing to keep in mind: a bedroom window is also a way out. Choose locks that open from the inside in a second, and never fix shut a window someone may need in an emergency. Follow your local fire and building codes.</p>
+        </div>
+        <div class="shop-grid">
+{card_prime_slide}
+{card_prime_flip}
+{card_ultrapro}
+        </div>
+      </div>
+
+      <div class="fn-section" id="glass">
+        <div class="prose fn-copy">
+          <h2>On the glass</h2>
+        </div>
+        <figure class="fn-figure fn-figure--portrait">
+          <img src="room-frosted-window.jpg" width="1080" height="1350" alt="A tall wood double-hung window in a reading nook at night, the lower pane softly frosted so the street outside is only a blur, a linen curtain pulled aside, a lamp glowing on a walnut side table, a sheepskin on a wooden chair." />
+          <figcaption>From inside, a soft white glow. From outside, a lit window and nothing more.</figcaption>
+        </figure>
+        <div class="prose fn-copy">
+          <p>Window film is the most invisible thing in this guide, and the one people ask us about most.</p>
+          <p>The <a href="{a('B00CX5Z4B0')}" {AMAZON_REL}>BDF S8MC security and safety window film, 8 mil clear, 36 in × 12 ft</a> is the same film as the larger roll on our gear page, in a size that suits a door light or a couple of ground-floor windows. It is a crystal-clear, 8-mil film applied to the inside of the glass. BDF says it is designed to absorb impact and hold shattered glass together, and lists it at 99% UV rejection, which also helps slow the fading of rugs and linen near a sunny window. It is not meant for heat control. It is a real afternoon project: a squeegee and knife come in the box, and a professional installer is worth it for large panes. It was $69.99 on November 12, in stock, sold by BuyDecorativeFilm and shipped from Amazon. (The 36 in × 49 ft roll on the gear page was $180.99 with delivery not until December 1–12.)</p>
+          <p>For privacy rather than strength, a frosted film does something curtains cannot: it keeps the light and loses the view. The <a href="{a('B00RDVE2L2')}" {AMAZON_REL}>rabbitgoo frosted glass privacy film, 17.5 × 78.7 in</a> is a static-cling film that goes on with water, no glue, and peels off without residue — easy for a rental, easy to trim to a bathroom window or a front-door sidelight. It is a privacy film, not a security film. It was $5.99 on November 12, in stock, sold by Authorized Rabbitgoo Seller Globegou and shipped from Amazon. On a street-facing window, it does exactly what a hidden home wants. From inside, a soft white glow. From outside, a lit window and nothing more.</p>
+        </div>
+        <div class="shop-grid">
+{card_bdf}
+{card_rabbitgoo}
+        </div>
+      </div>
+
+      <div class="prose fn-copy fn-article-end">
+        <h2>Closed up for the evening</h2>
+        <p>In the end, it is the same small ritual. The kettle, the lamp, the curtains. A bar under the bedroom door. A window open three inches and no further. A pane that glows instead of showing. Nobody walking past would notice any of it, and that is rather the point. The house looks the way it always has — softly furnished, lamplit, a little hidden — and it is closed up for the evening.</p>
+        <p>The full gear list is at <a href="{prefix}guides/gear-wed-put-in-these-homes/index.html">lockandlinen.com/gear</a>.</p>
+      </div>
+    </div>
+  </article>
+
+{footer(ai_note, prefix)}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
 def write_robots_and_sitemap():
     (PUBLIC / "robots.txt").write_text(
         f"""User-agent: *
@@ -2690,7 +2916,7 @@ Allow: /
 Sitemap: {SITE_URL}/sitemap.xml
 """
     )
-    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/"]
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/"]
     for s in STORIES:
         paths.append(f"/stories/{s['slug']}/")
     urls = []

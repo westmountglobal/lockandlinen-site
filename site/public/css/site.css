@@ -795,6 +795,10 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
 .fn-banner .btn-feature { align-self: flex-start; }
 .fn-banner:hover .btn-feature { filter: brightness(1.05); }
 
+.home-feature .fn-feature + .fn-feature { margin-top: 1.25rem; }
+.fn-banner + .fn-banner { margin-top: 1rem; }
+.fn-figure.fn-figure--portrait { max-width: 28rem; }
+
 @media (max-width: 720px) {
   .fn-feature { grid-template-columns: 1fr; }
   .fn-feature .body { padding: 1.1rem 1.05rem 1.2rem; }
