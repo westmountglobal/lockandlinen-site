@@ -2442,7 +2442,7 @@ def write_field_notes():
     dest_root.mkdir(parents=True, exist_ok=True)
     if src_root.exists():
         for src in src_root.rglob("*"):
-            if src.is_file():
+            if src.is_file() and src.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp", ".svg", ".gif"}:
                 dest = dest_root / src.relative_to(src_root)
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(src, dest)
@@ -2936,20 +2936,26 @@ def write_field_notes_water_filtration():
     out = PUBLIC / "field-notes" / slug
     out.mkdir(parents=True, exist_ok=True)
     a = _amazon
-    ai_note = 'Images are AI-generated, for illustration.'
+    ai_note = (
+        "Concept-home visuals elsewhere on this site are AI-generated. "
+        "Photographs on this page are stock images used for illustration; "
+        "they are not photos of the products named here, and they do not show test results or performance."
+    )
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
-{head_meta("What's in the Glass: A Quiet Guide to Water at Home — Lock & Linen", 'Water is the quietest system in a house. What to test, what each filter is built for, and what it costs by the litre.', "/field-notes/water-filtration-guide/")}
+{head_meta("What's in the Glass: A Quiet Guide to Water at Home — Lock & Linen", 'Water is the quietest system in a house. What to test, what each filter is built for, and what it costs by the litre.', "/field-notes/water-filtration-guide/", f"{SITE_URL}/field-notes/water-filtration-guide/hero.jpg")}
 <meta name="robots" content="noindex,nofollow" />
 {FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
 </head>
 <body>
 {header(prefix)}
 
-  <section class="page-hero">
-    <div class="wrap">
-      <p class="section-label">Field Notes</p>
+  <section class="hero fn-hero" aria-label="What's in the Glass">
+    <img src="hero.jpg" width="1600" height="1143" alt="A clear glass being filled with water on a dark surface, with droplets around the base." />
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="eyebrow">Field Notes</p>
       <h1>What's in the Glass</h1>
       <p class="tagline">A Quiet Guide to Water at Home</p>
     </div>
@@ -3024,25 +3030,45 @@ def write_field_notes_water_filtration():
       <div class="prose fn-copy">
         <p><em>Side note for US readers:</em> the EPA's lead figure is an action level for public systems, 15 µg/L, moving to 10 µg/L on Nov 1, 2027. Its PFOA and PFOS limits are 4.0 ng/L each, for those two compounds, a different measure from Canada's 25-PFAS objective.</p>
         <h3>How to test</h3>
+        <figure class="fn-figure fn-figure--portrait">
+          <img src="testing-lab-vessels.jpg" width="1200" height="1799" alt="Three clear laboratory flasks of different shapes, filled with water, standing on a dark wooden table." loading="lazy" />
+          <figcaption>Laboratory glassware, of the kind a water test might use.</figcaption>
+        </figure>
         <p>For a Québec well, start where the ministry does: an accredited lab. As a mail-in option, the <a href="https://mytapscore.com/products/home-water-test-advanced" rel="noopener noreferrer">Tap Score Advanced Home Water Test</a> is the kit we would order: $299.00 on Tap Score's store, shipping included, about five business days at the lab, covering metals, minerals, bacteria, hardness, silica and VOCs, plus a home strip for chlorine and hydrogen sulfide. Its description does not list PFAS, so ask for a dedicated PFAS test if that is your question. For a Québec well it is an alternative, not a substitute for the accredited lab. Home strips are a screen, never a lab result.</p>
         <h2>Part 2: Match the filter to the problem</h2>
         <p>A filter's box says a lot; its certification says less and means more. Look for "certified to NSF/ANSI [standard] for the claims on the performance data sheet," from a named certifier (NSF International, WQA or IAPMO R&amp;T). In short: <strong>42</strong> is taste, odour and particulates; <strong>53</strong> is health claims, only those named on the sheet; <strong>P473</strong> is PFOA/PFOS; <strong>58</strong> is reverse osmosis; <strong>401</strong> is emerging compounds; <strong>372</strong> is the device's own low-lead build; <strong>44</strong> is softeners; <strong>55</strong> is UV, where Class A is for water that may carry pathogens and Class B is supplemental.</p>
         <h3>Chlorine taste and odour</h3>
+        <figure class="fn-figure fn-figure--portrait">
+          <img src="pitcher.jpg" width="819" height="1280" alt="A clear glass pitcher of water standing in warm sunlight on a wooden table." loading="lazy" />
+          <figcaption>A pitcher of water at the table. A filter pitcher is the quietest first step for taste.</figcaption>
+        </figure>
         <p>The simplest fix is also the quietest. The <a href="https://www.brita.com/products/brita-tahoe-water-pitcher-elite-filter/" rel="noopener noreferrer">Brita Tahoe Water Pitcher with Elite Filter</a> is a 10-cup pitcher, $41.99 on Brita's store. Its official performance data sheet lists the Elite filter as certified to NSF/ANSI 42 for chlorine and Class I particulates, NSF/ANSI 53 for health-effects claims including lead, and NSF/ANSI 401 for the emerging compounds listed on the sheet. <a href="https://www.brita.com/products/brita-elite-replacement-filters/" rel="noopener noreferrer">Elite filters</a> were $19.99, each rated for 120 gallons (454 litres), about six months for the average family. Its sheet does not list PFOA or PFOS, and it is not for bacteria or nitrate.</p>
         <h3>Lead and PFOA/PFOS</h3>
+        <figure class="fn-figure">
+          <img src="filter-housing.jpg" width="1200" height="800" alt="A compact point-of-use water-filter housing with a clear chamber of polyphosphate crystals and a blue cap, photographed on a white background." loading="lazy" />
+          <figcaption>A compact filter housing of the kind that sits on a supply line under the sink.</figcaption>
+        </figure>
         <p>For a filter that stays plumbed in, the <a href="https://www.aquasana.com/under-sink-water-filters/claryum-3-stage-max-flow/brushed-nickel-100391704.html" rel="noopener noreferrer">Aquasana Claryum 3-Stage Max Flow</a> (AQ-6300M-BN) sits under the sink and feeds its own faucet. Aquasana states it is WQA tested and certified to NSF/ANSI 42, 53 (which includes P473) and 401, for the claims on the performance data sheet. It was $224.99 on Aquasana's store on Nov 13. <a href="https://www.aquasana.com/water-filter-replacements/under-sink-water-filter-replacements/claryum-3-stage-filter-replacements-100236384.html" rel="noopener noreferrer">Replacement filters</a> were $83.99 a set, rated for 800 gallons or up to six months.</p>
         <h3>Beyond what carbon covers: reverse osmosis</h3>
         <p>Reverse osmosis pushes water through a membrane. Which contaminants a system covers depends on its sheet, so read it before counting on nitrate or fluoride.</p>
-        <p>Under the sink, the <a href="{a('B0987FCQQW')}" rel="nofollow sponsored noopener noreferrer">Waterdrop G3P800</a> is a tankless system. Waterdrop states it is certified by IAPMO R&amp;T to NSF/ANSI 42, 53 and 58 for the claims on the performance data sheet, and to NSF/ANSI 372 for low lead. <a href="https://www.waterdropfilter.com/products/tankless-reverse-osmosis-system-wd-g3p800-w-fc-1" rel="noopener noreferrer">On Waterdrop's own store</a> it was $849 on Nov 13; the Amazon price varies. Its <a href="https://www.waterdropfilter.com/products/waterdrop-g3p800-ro-system-replacement-filters" rel="noopener noreferrer">replacement filters</a> run in three stages, and the maker's own table puts the average annual cost at $159.97.</p>
+        <figure class="fn-figure fn-figure--portrait">
+          <img src="reverse-osmosis.jpg" width="1200" height="1802" alt="A laboratory flask of water in the foreground, with a bank of reverse-osmosis membrane vessels behind it, lit in blue." loading="lazy" />
+          <figcaption>Inside a reverse-osmosis plant: a flask of water in front of the membrane vessels. Photo: Camilogapa, <a href="https://commons.wikimedia.org/wiki/File:Future,_water.jpg" rel="nofollow noopener noreferrer">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow noopener noreferrer">CC BY 4.0</a>.</figcaption>
+        </figure>
+        <p>Under the sink, the <a href="https://www.waterdropfilter.com/products/tankless-reverse-osmosis-system-wd-g3p800-w-fc-1" rel="nofollow noopener noreferrer">Waterdrop G3P800</a> is a tankless system. Waterdrop states it is certified by IAPMO R&amp;T to NSF/ANSI 42, 53 and 58 for the claims on the performance data sheet, and to NSF/ANSI 372 for low lead. <a href="https://www.waterdropfilter.com/products/tankless-reverse-osmosis-system-wd-g3p800-w-fc-1" rel="nofollow noopener noreferrer">On Waterdrop's own store</a> it was $849 on Nov 13; the <a href="{a('B0987FCQQW')}" rel="nofollow sponsored noopener noreferrer">Amazon</a> price varies. Its <a href="https://www.waterdropfilter.com/products/waterdrop-g3p800-ro-system-replacement-filters" rel="nofollow noopener noreferrer">replacement filters</a> run in three stages, and the maker's own table puts the average annual cost at $159.97.</p>
         <p>Without plumbing, the <a href="https://aquatru.com/products/countertop-reverse-osmosis-water-purifier" rel="noopener noreferrer">AquaTru Classic</a> sits on the counter. Its performance data sheet says it is certified by IAPMO R&amp;T according to NSF/ANSI 42, 53, 58, 372, 401 and P473, for the claims specified on that sheet. It was $475.00 on AquaTru's store for the Classic with the VOC carbon filter. Its sheet rules out water of unknown microbiological quality without disinfection, and sets inlet limits for hardness and iron.</p>
         <h3>Sediment, and the whole house</h3>
-        <p>The <a href="{a('B08PR79GYC')}" rel="nofollow sponsored noopener noreferrer">3M AP904</a> Sanitary Quick Change system is a whole-house carbon filter for chlorine taste and odour and sediment down to 5 microns. 3M's brochure says it is tested and certified to NSF/ANSI 42 for the substances on its performance data sheet. It was $426.00 at <a href="https://www.freshwatersystems.com/products/3m-aqua-pure-whole-house-sanitary-quick-change-water-filter-system-ap904" rel="noopener noreferrer">Fresh Water Systems</a>, with the AP917HD-S cartridge at <a href="https://www.freshwatersystems.com/products/3m-aqua-pure-ap917hd-s-high-flow-sqc-cto-filter-with-scale-inhibitor" rel="noopener noreferrer">$327.04</a>, rated for 100,000 gallons and about a year under most conditions. It is not certified on that brochure for lead or PFAS, and its scale-inhibiting media is not a softener. Installation is usually a plumber's job.</p>
+        <figure class="fn-figure">
+          <img src="whole-house-carbon.jpg" width="793" height="584" alt="Large blue activated-carbon filter tanks and control panels in a water-treatment plant." loading="lazy" />
+          <figcaption>Activated-carbon filters at plant scale. A whole-house carbon filter at home is a smaller version of the same idea, and usually a plumber's job. Photo: Ventrovert, <a href="https://commons.wikimedia.org/wiki/File:Activated_Carbon_Filters.png" rel="nofollow noopener noreferrer">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow noopener noreferrer">CC BY 4.0</a>.</figcaption>
+        </figure>
+        <p>The <a href="https://www.freshwatersystems.com/products/3m-aqua-pure-whole-house-sanitary-quick-change-water-filter-system-ap904" rel="nofollow noopener noreferrer">3M AP904</a> Sanitary Quick Change system is a whole-house carbon filter for chlorine taste and odour and sediment down to 5 microns. 3M's brochure says it is tested and certified to NSF/ANSI 42 for the substances on its performance data sheet. It was $426.00 at <a href="https://www.freshwatersystems.com/products/3m-aqua-pure-whole-house-sanitary-quick-change-water-filter-system-ap904" rel="nofollow noopener noreferrer">Fresh Water Systems</a>, with the AP917HD-S cartridge at <a href="https://www.freshwatersystems.com/products/3m-aqua-pure-ap917hd-s-high-flow-sqc-cto-filter-with-scale-inhibitor" rel="nofollow noopener noreferrer">$327.04</a>, rated for 100,000 gallons and about a year under most conditions. The <a href="{a('B08PR79GYC')}" rel="nofollow sponsored noopener noreferrer">Amazon</a> listing is also available. It is not certified on that brochure for lead or PFAS, and its scale-inhibiting media is not a softener. Installation is usually a plumber's job.</p>
         <h3>Hardness and scale</h3>
         <p>Hardness is calcium and magnesium, with no Health Canada guideline: it is about kettles and fixtures, not health. The <a href="https://ecopure.com/product/31000-grain-water-softener-ep31/" rel="noopener noreferrer">EcoPure EP31</a> is a 31,000-grain softener the maker describes for households of about one to four people, at 3 to 14 grains per gallon. Price varies; we could not verify one. Softened water carries more sodium, so households watching sodium can ask a clinician, or keep a separate unsoftened drinking tap.</p>
         <h3>Iron, manganese and the sulfur smell</h3>
         <p>Orange stains, a metallic taste, a rotten-egg smell. These want a system sized to a lab result, usually by a professional. We have no certified iron filter to recommend today, and would rather say so than guess.</p>
         <h3>Bacteria on a well</h3>
-        <p>UV can be a last stage after sediment filtration, because it needs clear water. The <a href="https://viqua.com/product/vh200-v/" rel="noopener noreferrer">Viqua VH200-V</a> is a whole-home UV unit rated up to 7.8 gpm (29.5 L/min). NSF lists it to <strong>NSF/ANSI 55 Class B</strong>. Class B is only for the supplemental bactericidal treatment of drinking water that is already considered microbiologically safe and of known quality, or that has been tested and deemed acceptable for human consumption by the local health agency. It is designed to reduce normally occurring non-pathogenic nuisance microorganisms. It is not a disinfection system for contaminated, untreated, or microbiologically unsafe water, and it must not be used as one. If a well tests positive for <em>E. coli</em>, or if a boil-water advisory is in effect, follow the public-health advice above, repair and retest, and look to a Class A system or a professional design if disinfection of potentially unsafe water is required — not this unit. It was $815.00 at <a href="https://www.freshwatersystems.com/products/viqua-vh200-v-uv-system-nsf-55-class-b-7-8gpm-120-volt" rel="noopener noreferrer">Fresh Water Systems</a>, with a 9,000-hour lamp life stated by the maker.</p>
+        <p>UV can be a last stage after sediment filtration, because it needs clear water. The <a href="https://viqua.com/product/vh200-v/" rel="noopener noreferrer">Viqua VH200-V</a> is a whole-home UV unit rated up to 7.8 gpm (29.5 L/min). NSF lists it to <strong>NSF/ANSI 55 Class B</strong>. Class B is only for the supplemental bactericidal treatment of drinking water that is already considered microbiologically safe and of known quality, or that has been tested and deemed acceptable for human consumption by the local health agency. It is designed to reduce normally occurring non-pathogenic nuisance microorganisms. It is not a disinfection system for contaminated, untreated, or microbiologically unsafe water, and it must not be used as one. If a well tests positive for <em>E. coli</em>, or if a boil-water advisory is in effect, follow the public-health advice above, repair and retest, and look to a Class A system or a professional design if disinfection of potentially unsafe water is required — not this unit. It was $815.00 at <a href="https://www.freshwatersystems.com/products/viqua-vh200-v-uv-system-nsf-55-class-b-7-8gpm-120-volt" rel="noopener noreferrer">Fresh Water Systems</a>, with a 9,000-hour lamp life stated by the maker, and a <a href="https://www.freshwatersystems.com/products/viqua-ql-200-uv-lamp-quartz-sleeve-combo-kit-for-vh200-series-uv-systems" rel="nofollow noopener noreferrer">QL-200 lamp and sleeve kit</a> at $165.00.</p>
         <p>Dedicated iron and manganese filters, and UV systems certified to NSF/ANSI 55 Class A, do exist for those specific problems; a lab result and a qualified installer are the way to choose one.</p>
         <h3>Whole house or one tap?</h3>
         <p>Pitchers, under-sink filters and countertop RO treat the water you drink and cook with. Whole-house filters, softeners and UV treat everything, and usually need a plumber. Most city homes need only the first kind.</p>
@@ -3061,7 +3087,7 @@ def write_field_notes_water_filtration():
             <tr><td>AquaTru Classic</td><td>$475.00</td><td>Price varies</td><td>600 gal pre-filter, 600 gal VOC filter, 1,200 gal membrane</td><td>Price varies: filter price ÷ (gallons × 3.785), per stage</td></tr>
             <tr><td>3M AP904 (whole house)</td><td>$426.00</td><td>$327.04, about once a year</td><td>100,000 gal × 3.785 = 378,500 L</td><td>$327.04 ÷ 378,500 L ≈ $0.0009 / L, for every tap in the house</td></tr>
             <tr><td>EcoPure EP31</td><td>Price varies</td><td>Salt, plus optional cleaner every four months; price varies</td><td>—</td><td>Not a drinking-water filter</td></tr>
-            <tr><td>Viqua VH200-V</td><td>$815.00</td><td>$165.00 lamp and sleeve kit (QL-200)</td><td>9,000 lamp hours</td><td>Per hour, not per litre: $165.00 ÷ 9,000 h ≈ $0.018 / h</td></tr>
+            <tr><td>Viqua VH200-V</td><td>$815.00</td><td>$165.00 <a href="https://www.freshwatersystems.com/products/viqua-ql-200-uv-lamp-quartz-sleeve-combo-kit-for-vh200-series-uv-systems" rel="nofollow noopener noreferrer">lamp and sleeve kit (QL-200)</a></td><td>9,000 lamp hours</td><td>Per hour, not per litre: $165.00 ÷ 9,000 h ≈ $0.018 / h</td></tr>
             <tr><td>Tap Score lab test</td><td>$299.00</td><td>Retest as needed</td><td>—</td><td>A test, not a filter</td></tr>
             <tr><td><strong>Your bottled water</strong></td><td>—</td><td>—</td><td>Litres in the pack: ____</td><td>Pack price ____ ÷ litres ____ = ____ / L</td></tr>
           </tbody>
@@ -3072,6 +3098,7 @@ def write_field_notes_water_filtration():
         <p>The payoff is modest and plain: a known yearly filter budget, fewer single-use bottles, and water that tastes the way you like, from your own tap.</p>
         <h2>The glass at the end of the day</h2>
         <p>Evening, and the house is closing up. Curtains drawn, a lamp on in the kitchen, the last glass poured at the counter. Nothing looks different from the morning, and that is the point. A hidden home keeps its quietest systems in order: tested, matched with care, then left to do their work.</p>
+                <p class="fn-credit">Photo credits: glass of water via <a href="https://www.pexels.com/photo/clear-glass-cup-with-water-416528/" rel="nofollow noopener noreferrer">Pexels (Pixabay)</a>, <a href="https://www.pexels.com/license/" rel="nofollow noopener noreferrer">Pexels License</a>; laboratory flasks by <a href="https://www.pexels.com/photo/glass-laboratory-vessels-filled-with-water-9629687/" rel="nofollow noopener noreferrer">Ivan S / Pexels</a>, Pexels License; pitcher by <a href="https://pixabay.com/photos/water-jug-food-drink-glass-1256127/" rel="nofollow noopener noreferrer">mariouli / Pixabay</a>, <a href="https://pixabay.com/service/license-summary/" rel="nofollow noopener noreferrer">Pixabay Content License</a>; filter housing by <a href="https://pixabay.com/photos/chemical-87781/" rel="nofollow noopener noreferrer">byrev / Pixabay</a>, Pixabay Content License; reverse-osmosis plant by <a href="https://commons.wikimedia.org/wiki/File:Future,_water.jpg" rel="nofollow noopener noreferrer">Camilogapa / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow noopener noreferrer">CC BY 4.0</a>; activated-carbon tanks by <a href="https://commons.wikimedia.org/wiki/File:Activated_Carbon_Filters.png" rel="nofollow noopener noreferrer">Ventrovert / Wikimedia Commons</a>, CC BY 4.0. These photographs illustrate the subject of each section; they are not pictures of the products named in the article.</p>
         <h2>Sources</h2>
         <ul>
           <li>Health Canada, Guidelines for Canadian Drinking Water Quality – Summary Tables (December 2025): <a href="https://www.canada.ca/en/health-canada/services/environmental-workplace-health/reports-publications/water-quality/guidelines-canadian-drinking-water-quality-summary-table.html" rel="noopener noreferrer">https://www.canada.ca/en/health-canada/services/environmental-workplace-health/reports-publications/water-quality/guidelines-canadian-drinking-water-quality-summary-table.html</a></li>
