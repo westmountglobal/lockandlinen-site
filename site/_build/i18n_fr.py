@@ -37,6 +37,8 @@ VOID = {"br", "img", "input", "wbr", "hr", "source", "meta", "link"}
 TRANSLATABLE_ATTRS = ("alt", "title", "aria-label", "placeholder", "data-label")
 META_KEYS = {"description", "og:title", "og:description", "twitter:title", "twitter:description", "og:image:alt"}
 NOINDEX_REDIRECTS = {"gear/index.html"}
+# Built and translated, but kept out of sitemap.xml (preview / unlisted pages).
+UNLISTED_PAGES = {"field-notes/water-filtration-guide/index.html"}
 
 
 def en_pages() -> list[Path]:
@@ -439,7 +441,7 @@ def fr_gear_redirect() -> str:
 def write_sitemap(page_map: dict) -> None:
     urls = []
     for rel in page_map:
-        if rel in NOINDEX_REDIRECTS:
+        if rel in NOINDEX_REDIRECTS or rel in UNLISTED_PAGES:
             continue
         en_clean = clean_path(rel)
         en = SITE_URL + en_clean

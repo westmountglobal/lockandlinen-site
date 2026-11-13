@@ -649,6 +649,26 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
 .shop-grid.shop-grid--single,
 .fn-section .shop-grid.shop-grid--single { grid-template-columns: minmax(0, 1fr); max-width: 280px; }
 .affiliate-note { margin: 0 0 1.4rem; max-width: 62ch; }
+.page-hero .tagline {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-style: italic;
+  color: var(--muted);
+  max-width: 40ch;
+}
+.fn-copy h3 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 1.7rem 0 0.7rem;
+  max-width: 62ch;
+}
+.fn-copy ul {
+  margin: 0 0 1.3rem;
+  padding-left: 1.25rem;
+  max-width: 62ch;
+}
+.fn-copy li { margin: 0 0 0.55rem; }
 .fn-article h2[id] { scroll-margin-top: 5rem; }
 .btn-amazon {
   background: var(--lagoon); color: #fff; border-color: var(--lagoon-deep);
