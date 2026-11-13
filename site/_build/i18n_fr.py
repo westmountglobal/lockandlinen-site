@@ -38,7 +38,7 @@ TRANSLATABLE_ATTRS = ("alt", "title", "aria-label", "placeholder", "data-label")
 META_KEYS = {"description", "og:title", "og:description", "twitter:title", "twitter:description", "og:image:alt"}
 NOINDEX_REDIRECTS = {"gear/index.html"}
 # Built and translated, but kept out of sitemap.xml (preview / unlisted pages).
-UNLISTED_PAGES = {"field-notes/water-filtration-guide/index.html"}
+UNLISTED_PAGES = set()
 
 
 def en_pages() -> list[Path]:

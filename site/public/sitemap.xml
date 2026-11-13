@@ -57,6 +57,20 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://lockandlinen.com/field-notes/water-filtration-guide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/water-filtration-guide/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/water-filtration-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/water-filtration-guide/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/field-notes/water-filtration-guide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/water-filtration-guide/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/water-filtration-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/water-filtration-guide/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://lockandlinen.com/field-notes/when-the-grid-goes-dark/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/when-the-grid-goes-dark/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/when-the-grid-goes-dark/" />

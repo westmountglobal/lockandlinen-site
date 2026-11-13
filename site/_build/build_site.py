@@ -2192,6 +2192,17 @@ def write_index():
 
   <section class="home-feature" aria-label="Field Notes">
     <div class="wrap">
+      <a class="fn-feature" href="field-notes/water-filtration-guide/index.html">
+        <div class="thumb">
+          <img src="field-notes/water-filtration-guide/hero.jpg" width="1600" height="1143" alt="A clear glass being filled with water on a dark surface, with droplets around the base." />
+        </div>
+        <div class="body">
+          <p class="eyebrow">Field Notes</p>
+          <h2>What's in the Glass</h2>
+          <p>A quiet guide to water at home — what to test, what each filter is built for, and what it costs by the litre.</p>
+          <span class="btn-feature">Read the guide</span>
+        </div>
+      </a>
       <a class="fn-feature" href="field-notes/closed-up-for-the-evening/index.html">
         <div class="thumb">
           <img src="field-notes/closed-up-for-the-evening/hero.jpg" width="1280" height="720" alt="A softly lit entryway at dusk: a closed off-white front door, a brass lamp on an oak console, and linen curtains." />
@@ -2473,6 +2484,14 @@ def write_field_notes_index():
         <p>Longer pieces on comfort that stays on, and the quiet objects that belong in these rooms. Written to be read through, with pictures.</p>
       </div>
       <div class="ideas-grid" style="margin-top:2rem;">
+        <a class="idea-card" href="water-filtration-guide/index.html">
+          <div class="thumb"><img src="water-filtration-guide/hero.jpg" alt="A clear glass being filled with water on a dark surface, with droplets around the base." /></div>
+          <div class="body">
+            <p class="eyebrow">Field Notes</p>
+            <h3>What's in the Glass</h3>
+            <p>A quiet guide to water at home — what to test, what each filter is built for, and what it costs by the litre.</p>
+          </div>
+        </a>
         <a class="idea-card" href="closed-up-for-the-evening/index.html">
           <div class="thumb"><img src="closed-up-for-the-evening/hero.jpg" alt="A softly lit entryway at dusk, with a closed door, a brass lamp, and linen curtains" /></div>
           <div class="body">
@@ -2930,7 +2949,7 @@ def write_field_notes_closed_up():
 
 
 def write_field_notes_water_filtration():
-    """Unlisted preview of the water filtration guide. Not in the index, sitemap, or nav cards."""
+    """Water filtration Field Notes guide. Indexed and listed with the other live articles."""
     prefix = "../../"
     slug = "water-filtration-guide"
     out = PUBLIC / "field-notes" / slug
@@ -2983,7 +3002,6 @@ def write_field_notes_water_filtration():
 <html lang="en">
 <head>
 {head_meta("What's in the Glass: A Quiet Guide to Water at Home — Lock & Linen", 'Water is the quietest system in a house. What to test, what each filter is built for, and what it costs by the litre.', "/field-notes/water-filtration-guide/", f"{SITE_URL}/field-notes/water-filtration-guide/hero.jpg")}
-<meta name="robots" content="noindex,nofollow" />
 {FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
 </head>
 <body>
@@ -3196,7 +3214,7 @@ Allow: /
 Sitemap: {SITE_URL}/sitemap.xml
 """
     )
-    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/"]
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/", "/field-notes/water-filtration-guide/"]
     for s in STORIES:
         paths.append(f"/stories/{s['slug']}/")
     urls = []
