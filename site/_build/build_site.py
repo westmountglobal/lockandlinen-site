@@ -3004,10 +3004,22 @@ def write_field_notes_water_filtration():
       <div class="prose fn-copy">
         <p>Morning, before anyone has said much. The tap runs for a moment, the kettle fills, and someone holds a glass up to the window the way you would check a wine: light through it, nothing to see. Water is the quietest system in a house. It arrives, it leaves, and it keeps going while the rest of the day happens around it.</p>
         <p>Most days it asks nothing of you. But a home that runs on its own deserves one careful look at what comes out of the tap, out of the same care that chose the linen and the lamp. This guide is that look: what to test, what each filter is built for, and what it costs by the litre.</p>
+      </div>
+
+      <p class="affiliate-near affiliate-note">Some links on this page are Amazon affiliate links. We may earn a commission at no extra cost to you.</p>
+      <div class="fn-glance">
         <h2>Our picks at a glance</h2>
+        <div class="prose fn-copy">
         <p>These are picks for specific problems, not a kit to buy all at once. Test first. The result tells you which row, if any, is yours.</p>
-        <p class="affiliate-near affiliate-note">Some links on this page are Amazon affiliate links. We may earn a commission at no extra cost to you.</p>
         <p>Prices are in US dollars as listed on Nov 13, 2026, and may differ in Canada.</p>
+        </div>
+        <div class="shop-grid">
+{card_elite}
+{card_aquasana}
+{card_aquasana_repl}
+{card_waterdrop}
+{card_aquatru}
+        </div>
       </div>
       <div class="fn-table-wrap">
         <table class="fn-table">
