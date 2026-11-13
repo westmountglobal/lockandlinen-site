@@ -26,12 +26,13 @@ None are used to imply a named product's performance.
 - Used at: Chlorine taste and odour / Goût et odeur de chlore
 - Note: a glass water pitcher, not a branded filter pitcher
 
-## filter-housing.jpg
-- Source page: https://pixabay.com/photos/chemical-87781/
-- Photographer: byrev
-- License: Pixabay Content License (https://pixabay.com/service/license-summary/)
-- Source file available without an account: 1280 × 853
-- Used at: Lead and PFOA/PFOS / Plomb et PFOA/PFOS (under-sink / supply-line housing)
+## carbon-block.jpg
+- Source page: https://commons.wikimedia.org/wiki/File:Activated_Carbon.jpg
+- Photographer: Ravedave
+- License: CC BY 2.5 (attribution required; https://creativecommons.org/licenses/by/2.5/)
+- Original size: 2419 × 1740; web size: 1200 × 863
+- Used at: Lead and PFOA/PFOS / Plomb et PFOA/PFOS
+- Replaced filter-housing.jpg (Pixabay chemical-87781 by byrev), a polyphosphate scale-filter housing that does not remove lead.
 
 ## reverse-osmosis.jpg
 - Source page: https://commons.wikimedia.org/wiki/File:Future,_water.jpg
