@@ -2192,6 +2192,17 @@ def write_index():
 
   <section class="home-feature" aria-label="Field Notes">
     <div class="wrap">
+      <a class="fn-feature" href="field-notes/a-door-you-dont-own/index.html">
+        <div class="thumb">
+          <img src="field-notes/a-door-you-dont-own/hero.jpg" width="1137" height="640" alt="The inside of a plain apartment door in warm evening light, a lever handle and a linen runner on the floor." />
+        </div>
+        <div class="body">
+          <p class="eyebrow">Field Notes</p>
+          <h2>A Door You Don't Own</h2>
+          <p>A rented door comes with rules. Three removable pieces that go on and come off by hand, with no drill and no screws.</p>
+          <span class="btn-feature">Read the field note</span>
+        </div>
+      </a>
       <a class="fn-feature" href="field-notes/water-filtration-guide/index.html">
         <div class="thumb">
           <img src="field-notes/water-filtration-guide/hero.jpg" width="1600" height="1143" alt="A clear glass being filled with water on a dark surface, with droplets around the base." />
@@ -2461,6 +2472,7 @@ def write_field_notes():
     write_field_notes_grid_goes_dark()
     write_field_notes_closed_up()
     write_field_notes_water_filtration()
+    write_field_notes_door_you_dont_own()
 
 
 def write_field_notes_index():
@@ -2484,6 +2496,14 @@ def write_field_notes_index():
         <p>Longer pieces on comfort that stays on, and the quiet objects that belong in these rooms. Written to be read through, with pictures.</p>
       </div>
       <div class="ideas-grid" style="margin-top:2rem;">
+        <a class="idea-card" href="a-door-you-dont-own/index.html">
+          <div class="thumb"><img src="a-door-you-dont-own/hero.jpg" alt="The inside of a plain apartment door in warm evening light, a lever handle and a linen runner on the floor." /></div>
+          <div class="body">
+            <p class="eyebrow">Field Notes</p>
+            <h3>A Door You Don't Own</h3>
+            <p>A rented door comes with rules. Three removable pieces that go on and come off by hand, with no drill and no screws.</p>
+          </div>
+        </a>
         <a class="idea-card" href="water-filtration-guide/index.html">
           <div class="thumb"><img src="water-filtration-guide/hero.jpg" alt="A clear glass being filled with water on a dark surface, with droplets around the base." /></div>
           <div class="body">
@@ -3206,6 +3226,196 @@ def write_field_notes_water_filtration():
     (out / "index.html").write_text(html)
 
 
+def write_field_notes_door_you_dont_own():
+    """Door-gear Field Notes guide. Indexed and listed with the other live articles."""
+    prefix = "../../"
+    slug = "a-door-you-dont-own"
+    out = PUBLIC / "field-notes" / slug
+    out.mkdir(parents=True, exist_ok=True)
+    a = _amazon
+    rel = AMAZON_REL
+    hero_alt = "The inside of a plain apartment door in warm evening light, a lever handle and a linen runner on the floor."
+
+    def card(asin, badge, title, blurb, aria):
+        url = a(asin)
+        return f"""        <div class="shop-grid shop-grid--single">
+          <article class="product">
+            <span class="ph-badge">{badge}</span>
+            <a class="ph-img" href="{url}" {rel}>
+              <span class="ph-placeholder" role="img" aria-label="{aria}">[Photo placeholder: our own photo to come]</span>
+            </a>
+            <div class="ph-body">
+              <h3>{title}</h3>
+              <p>{blurb}</p>
+              <a class="btn-soon btn-amazon" href="{url}" {rel}>View on Amazon</a>
+            </div>
+          </article>
+        </div>
+"""
+
+    card_addalock = card(
+        "B00186URTY",
+        "Portable lock",
+        "Addalock portable door lock",
+        "A one-piece metal lock that hooks into the strike plate of an inward-opening door and is used from the inside. No tools, per the listing.",
+        "A small metal portable lock hooked into the strike plate of a door frame, with its red handle in place",
+    )
+    card_buddybar = card(
+        "B002BQ4VBU",
+        "Door bar",
+        "Buddybar Door Jammer",
+        "An adjustable steel bar that braces under the handle of an inward-opening door, with a rubber foot on the floor. Adjusts from 36 to 51 inches, per the listing.",
+        "An adjustable steel bar angled from under a door handle down to a rubber foot on a wood floor",
+    )
+    card_ultrapro = card(
+        "B00178HMCI",
+        "Door alarm",
+        "UltraPro window and door alarm",
+        "A two-piece magnetic alarm that sounds or chimes when the door opens. Mounts with included double-sided tape, per the listing.",
+        "A small two-piece alarm on a door edge and its frame, the two pieces separating as the door opens",
+    )
+
+    ai_note = (
+        "The hero image on this page is an AI-generated scene, used for illustration. "
+        "It is not a photograph of a real apartment or of the products named here."
+    )
+    og = f"{SITE_URL}/field-notes/a-door-you-dont-own/hero.jpg"
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("A Door You Don't Own: Three Removable Pieces — Lock & Linen", "A rented door comes with rules. Three removable pieces — a portable lock, a door bar and a two-piece alarm — that go on and come off by hand, with no drill and no screws.", "/field-notes/a-door-you-dont-own/", og)}
+{FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
+</head>
+<body>
+{header(prefix)}
+
+  <section class="hero fn-hero" aria-label="A Door You Don't Own">
+    <img src="hero.jpg" width="1137" height="640" alt="{hero_alt}" />
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="eyebrow">Field Notes</p>
+      <h1>A Door You Don't Own</h1>
+      <p class="tagline">Three removable pieces.</p>
+    </div>
+  </section>
+
+  <article class="fn-article">
+    <div class="wrap">
+      <div class="prose fn-copy">
+        <p>A rented door comes with rules. The frame, the deadbolt and the strike plate belong to someone else, and whatever goes on them usually has to come off again at the end of the lease. That rules out most hardware. It does not rule out everything.</p>
+        <p>Did you know that there is a small family of door pieces made to be added and removed by hand, without a drill or a screw? They travel in a bag and, according to the makers, go on without tools. This guide looks at three of them, the same three in our short video: a portable lock, a door bar and a two-piece door alarm. What each one is, how it is used, which doors it fits, and what to check before you bring one home.</p>
+      </div>
+
+      <p class="affiliate-near affiliate-note">Some links on this page are Amazon affiliate links. We may earn a commission at no extra cost to you.</p>
+      <p class="affiliate-near">{esc(AMAZON_DISCLOSURE_EN)}</p>
+
+      <div class="fn-glance">
+        <h2>The three pieces at a glance</h2>
+        <div class="fn-table-wrap">
+          <table class="fn-table">
+            <thead>
+              <tr>
+                <th>The piece</th>
+                <th>What it is</th>
+                <th>Which doors</th>
+                <th>Used from</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Portable lock</td>
+                <td>A one-piece metal lock that hooks into the strike plate</td>
+                <td>Inward-opening</td>
+                <td>Inside only</td>
+              </tr>
+              <tr>
+                <td>Door bar</td>
+                <td>An adjustable steel bar from under the handle to the floor</td>
+                <td>Inward-opening</td>
+                <td>Inside only</td>
+              </tr>
+              <tr>
+                <td>Door alarm</td>
+                <td>Two small pieces, one on the door and one on the frame</td>
+                <td>Any door it can stick to</td>
+                <td>Either side, once set</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="fn-section" id="which-way">
+        <h2>First, which way does the door open?</h2>
+        <div class="prose fn-copy">
+          <p>Before anything else, stand inside and open the door. If it swings toward you, into the room, it is an inward-opening door, and you can see the hinges from where you stand. Some doors open the other way, outward, away from the room, and it is worth knowing which kind you have before ordering anything.</p>
+          <p>This is the one point that decides the rest. <strong>The portable lock and the door bar are for inward-opening doors only; they are set from the inside, so they only work while someone is home.</strong> Both need the door to close toward them, and neither is meant for a door that opens outward. Take them off before you leave, and make sure everyone in the home can get out quickly. The door alarm is different: it is two small pieces that stick to the door and the frame, so it does not depend on which way the door swings.</p>
+        </div>
+      </div>
+
+      <div class="fn-section" id="portable-lock">
+        <h2>The portable lock</h2>
+        <div class="prose fn-copy">
+          <p>The <a href="{a('B00186URTY')}" {rel}>Addalock portable door lock</a> comes first. Its maker, Rishon Enterprises, says it has been sold in the US since 2003, and the original has the Addalock name engraved on its metal body and comes in a red pouch.</p>
+          <p>It is used in three steps. With the door open, the lock's metal claws go into the strike plate, the opening in the frame where the door's latch normally sits. The door closes on them. Then the red handle's rod slides into the lock body on the inside of the door, and the door has a second point of hold from the room side. To leave, the steps run in reverse.</p>
+          <p>The listing describes it as a one-piece lock that installs in seconds with no tools, and says it works on most inward-swinging hinged doors, whether or not the door's own latch lines up with its opening in the frame. It fits in a bag, and the listing places it as much in hotel rooms, dorms and short-term rentals as at home. The listing's suggested uses run from a front door or a hotel door to a dorm room or a bedroom.</p>
+        </div>
+{card_addalock}
+      </div>
+
+      <div class="fn-section" id="door-bar">
+        <h2>The door bar</h2>
+        <div class="prose fn-copy">
+          <p>The <a href="{a('B002BQ4VBU')}" {rel}>Buddybar Door Jammer</a> does a different job in the same spirit. It is an adjustable steel bar: the top sits under the door's knob or lever, and the bottom ends in a rubber foot that rests on the floor, out from the door, so the bar braces the door from the inside.</p>
+          <p>The listing gives the details. The bar is 16-gauge powder-coated steel with no plastic parts, weighs 8.2 lb, and adjusts from 36 to 51 inches to fit most doors. It installs in seconds with pressure and a steel-teeth locking mechanism, with no tools and no assembly. The foot is a 2 by 4 inch rubber-coated, articulating steel foot that the maker describes as non-marring, and the listing says it works on carpet, tile, vinyl, concrete and wood.</p>
+          <p>Like the portable lock, it belongs to an inward-opening door and to the room side of it. It also needs a handle to sit under and floor to stand on, so it is worth looking at both before ordering: a long runner or a deep threshold changes where the foot lands. The maker cautions against using it on throw rugs.</p>
+        </div>
+{card_buddybar}
+      </div>
+
+      <div class="fn-section" id="door-alarm">
+        <h2>The door alarm</h2>
+        <div class="prose fn-copy">
+          <p>The third piece does not hold anything. The <a href="{a('B00178HMCI')}" {rel}>UltraPro window and door alarm</a> is a small alarm body and a magnet. One goes on the door, the other on the frame beside it. When the door opens and the two pieces separate, the alarm sounds.</p>
+          <p>According to the listing, it mounts with the included double-sided tape and needs no wiring and no tools. Pack size varies by listing; check before you buy. A side switch chooses between off, a chime and an alarm, which the maker gives as 120 decibels. It runs on LR44 button batteries, which are included, and has an LED that shows when the battery is low. The listing also suggests it for windows, cabinets and drawers.</p>
+          <p>Because it sticks rather than hooks or braces, it works on doors that open either way. It is also the one piece of the three that attaches to the door itself, which matters on a door you don't own; more on that below.</p>
+        </div>
+{card_ultrapro}
+      </div>
+
+      <div class="fn-section" id="renting">
+        <h2>Renting: removable, and the lease first</h2>
+        <div class="prose fn-copy">
+          <p>All three pieces go on without drilling, as they are sold. The portable lock and the door bar are put on and taken off by hand each time, and leave nothing on the frame. The alarm stays up between uses, held by tape, so it is the one to think about before sticking it to a rented door or frame.</p>
+          <p>Renting? These are portable and install without tools, but check your lease and ask your landlord before adding any lock or alarm. Double-sided tape can mark surfaces. This page is general information, not legal advice.</p>
+          <p>A final note on fit. Every door is a little different, so check each listing's details against your own door before ordering: which way it opens, the space under the handle, the floor in front of it, and a clean spot on the frame for the alarm. For more on quiet layers at the door and windows, see our earlier field note, <a href="https://lockandlinen.com/field-notes/closed-up-for-the-evening/">Closed Up for the Evening</a>. All three pieces are also on our <a href="https://lockandlinen.com/guides/gear-wed-put-in-these-homes/">gear page</a>.</p>
+        </div>
+      </div>
+
+      <div class="fn-article-end">
+        <h2>The door at the end of the day</h2>
+        <div class="prose fn-copy">
+          <p>Evening, and the door is closed. The deadbolt is turned, and the small lock is in its pouch on the side table for the next trip. A hidden home does not have to be owned to be kept quiet.</p>
+        </div>
+      </div>
+
+      <div class="prose fn-copy">
+        <h2>Sources</h2>
+        <ul>
+          <li>Product details: each linked Amazon.com listing (Addalock B00186URTY, Buddybar B002BQ4VBU, UltraPro B00178HMCI), loaded Nov 14, 2026.</li>
+          <li>Addalock, maker site (Rishon Enterprises): <a href="https://www.addalock.com/" rel="noopener noreferrer">https://www.addalock.com/</a></li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+{footer(ai_note, prefix)}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
 def write_robots_and_sitemap():
     (PUBLIC / "robots.txt").write_text(
         f"""User-agent: *
@@ -3214,7 +3424,7 @@ Allow: /
 Sitemap: {SITE_URL}/sitemap.xml
 """
     )
-    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/", "/field-notes/water-filtration-guide/"]
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/", "/field-notes/water-filtration-guide/", "/field-notes/a-door-you-dont-own/"]
     for s in STORIES:
         paths.append(f"/stories/{s['slug']}/")
     urls = []
