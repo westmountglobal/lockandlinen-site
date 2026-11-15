@@ -3433,54 +3433,58 @@ def write_field_notes_quiet_pantry():
     rel = AMAZON_REL
     hero_alt = "A linen curtain half drawn across oak pantry shelves with labeled jars, a wooden can rack, lidded buckets and silver storage bags."
 
-    def card(asin, badge, title, blurb):
-        url = a(asin)
-        return f"""        <article class="product no-photo">
-          <span class="ph-badge">{badge}</span>
-          <div class="ph-body">
-            <h3>{title}</h3>
-            <p>{blurb}</p>
-            <a class="btn-soon btn-amazon" href="{url}" {rel}>View on Amazon</a>
-          </div>
-        </article>
-"""
+    # Main Amazon listing photos, same hotlink pattern as the water, grid, evening and gear guides.
+    # Image IDs taken from each product page's main/hiRes/landing image on 15 Nov 2026.
+    img_fifo = "https://m.media-amazon.com/images/I/81HMFwaPYlL._AC_SL1500_.jpg"
+    img_yoget = "https://m.media-amazon.com/images/I/61PmLtOFcjL._AC_SL1500_.jpg"
+    img_oxo = "https://m.media-amazon.com/images/I/713QJMtFkYL._AC_SL1500_.jpg"
+    img_wallaby = "https://m.media-amazon.com/images/I/71tkQxXP4LL._AC_SL1500_.jpg"
+    img_buckets = "https://m.media-amazon.com/images/I/81TKqAT6idL._AC_SL1500_.jpg"
+    img_gamma = "https://m.media-amazon.com/images/I/615Z6AdjTUL._AC_SL1500_.jpg"
 
-    card_fifo = card(
-        "B004DB7XCA",
+    card_fifo = fn_product_card(
+        "B004DB7XCA", img_fifo,
+        "White can rack holding three rows of canned vegetables that roll forward",
         "Rotation",
         "FIFO Can Tracker, 54 cans",
         "A gravity rack for up to 54 cans: load at the top, take the oldest from the bottom.",
     )
-    card_yoget = card(
-        "B07Y9W3PBT",
+    card_yoget = fn_product_card(
+        "B07Y9W3PBT", img_yoget,
+        "Two rolls of white food labels with blue and red Date and Contents lines",
         "Rotation",
         "Yoget removable food labels, 300",
         "Two rolls of 1 \u00d7 3 inch write-on labels with Date and Contents lines.",
     )
-    card_oxo = card(
-        "B0HB5XCNCS",
+    card_oxo = fn_product_card(
+        "B0HB5XCNCS", img_oxo,
+        "Two clear square containers with push-button lids, labelled Flour and Sugar and filled with flour and sugar",
         "Everyday shelf",
         "OXO Good Grips 2-piece POP container set",
         "Two 4.4 qt push-button containers sized for 5 lb bags of flour or sugar.",
     )
-    card_wallaby = card(
-        "B09CCL3BNN",
+    card_wallaby = fn_product_card(
+        "B09CCL3BNN", img_wallaby,
+        "Silver one-gallon foil storage bags with packets of oxygen absorbers and sticker labels",
         "Long-term storage",
         "Wallaby 1-gallon Mylar bags with oxygen absorbers, 30-pack",
         "30 heat-sealable 1-gallon bags, 30 oxygen absorbers (400cc each) and 30 labels.",
     )
-    card_buckets = card(
-        "B0DZ7SNZ2P",
+    card_buckets = fn_product_card(
+        "B0DZ7SNZ2P", img_buckets,
+        "Six black five-gallon plastic buckets with metal handles and black lids",
         "Long-term storage",
         "United Solutions 5-gallon buckets with lids, 6-pack, black",
         "Six black 5-gallon buckets with snap-on lids, listed as food-grade and BPA-free.",
     )
-    card_gamma = card(
-        "B007KAZ1W0",
+    card_gamma = fn_product_card(
+        "B007KAZ1W0", img_gamma,
+        "Red two-piece screw-top bucket lid: an adapter ring and a screw-in cover",
         "Long-term storage",
         "Gamma2 Gamma Seal lid, red",
         "A two-part screw-on lid listed to fit standard 3.5 to 7 gallon buckets.",
     )
+
 
     ai_note = (
         "The hero image on this page is an AI-generated scene, used for illustration. "
