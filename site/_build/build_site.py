@@ -2198,6 +2198,17 @@ def write_index():
 
   <section class="home-feature" aria-label="Field Notes">
     <div class="wrap">
+      <a class="fn-feature" href="field-notes/the-quiet-pantry/index.html">
+        <div class="thumb">
+          <img src="field-notes/the-quiet-pantry/hero.jpg" width="1600" height="900" alt="A linen curtain half drawn across oak pantry shelves with labeled jars, a wooden can rack, lidded buckets and silver storage bags." />
+        </div>
+        <div class="body">
+          <p class="eyebrow">Field Notes</p>
+          <h2>The Quiet Pantry</h2>
+          <p>A calm guide to food that keeps: where to store it, how long it lasts, and how to rotate a quiet pantry without a big clear-out.</p>
+          <span class="btn-feature">Read the guide</span>
+        </div>
+      </a>
       <a class="fn-feature" href="field-notes/a-door-you-dont-own/index.html">
         <div class="thumb">
           <img src="field-notes/a-door-you-dont-own/hero.jpg" width="1137" height="640" alt="The inside of a plain apartment door in warm evening light, a lever handle and a linen runner on the floor." />
@@ -2503,6 +2514,14 @@ def write_field_notes_index():
         <p>Longer pieces on comfort that stays on, and the quiet objects that belong in these rooms. Written to be read through, with pictures.</p>
       </div>
       <div class="ideas-grid" style="margin-top:2rem;">
+        <a class="idea-card" href="the-quiet-pantry/index.html">
+          <div class="thumb"><img src="the-quiet-pantry/hero.jpg" alt="A linen curtain half drawn across oak pantry shelves with labeled jars, a wooden can rack, lidded buckets and silver storage bags." /></div>
+          <div class="body">
+            <p class="eyebrow">Field Notes</p>
+            <h3>The Quiet Pantry</h3>
+            <p>A calm guide to food that keeps: where to store it, how long it lasts, and how to rotate a quiet pantry without a big clear-out.</p>
+          </div>
+        </a>
         <a class="idea-card" href="a-door-you-dont-own/index.html">
           <div class="thumb"><img src="a-door-you-dont-own/hero.jpg" alt="The inside of a plain apartment door in warm evening light, a lever handle and a linen runner on the floor." /></div>
           <div class="body">
@@ -3424,7 +3443,7 @@ def write_field_notes_door_you_dont_own():
 
 
 def write_field_notes_quiet_pantry():
-    """Unlisted Quiet Pantry Field Notes preview. Noindex; not in sitemap or indexes."""
+    """Quiet Pantry Field Notes guide. Indexed and listed with the other live articles."""
     prefix = "../../"
     slug = "the-quiet-pantry"
     out = PUBLIC / "field-notes" / slug
@@ -3495,7 +3514,6 @@ def write_field_notes_quiet_pantry():
 <html lang="en">
 <head>
 {head_meta("The Quiet Pantry: A Calm Guide to Food That Keeps \u2014 Lock & Linen", "A calm guide to food that keeps: where to store it, how long it lasts, and how to rotate a quiet pantry without a big clear-out.", "/field-notes/the-quiet-pantry/", og)}
-<meta name="robots" content="noindex,nofollow" />
 {FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
 </head>
 <body>
@@ -3728,7 +3746,7 @@ def write_field_notes_quiet_pantry():
 
 
 def patch_unlisted_quiet_pantry_fr():
-    """Point the FR preview at the French social image and the FR Health Canada page."""
+    """Point the FR page at the French social image and the FR Health Canada page."""
     path = PUBLIC / "fr" / "field-notes" / "the-quiet-pantry" / "index.html"
     if not path.exists():
         return
@@ -3751,7 +3769,7 @@ Allow: /
 Sitemap: {SITE_URL}/sitemap.xml
 """
     )
-    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/", "/field-notes/water-filtration-guide/", "/field-notes/a-door-you-dont-own/"]
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/", "/field-notes/water-filtration-guide/", "/field-notes/a-door-you-dont-own/", "/field-notes/the-quiet-pantry/"]
     for s in STORIES:
         paths.append(f"/stories/{s['slug']}/")
     urls = []
