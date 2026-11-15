@@ -669,7 +669,13 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
   max-width: 62ch;
 }
 .fn-copy li { margin: 0 0 0.55rem; }
-.fn-article h2[id] { scroll-margin-top: 5rem; }
+.fn-article h2[id],
+.fn-section[id] { scroll-margin-top: 5rem; }
+.product.no-photo .ph-badge {
+  position: static;
+  display: inline-block;
+  margin: 0.7rem 0.95rem 0;
+}
 .btn-amazon {
   background: var(--lagoon); color: #fff; border-color: var(--lagoon-deep);
   cursor: pointer; text-decoration: none;

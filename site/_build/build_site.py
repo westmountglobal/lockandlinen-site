@@ -1500,7 +1500,13 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
   max-width: 62ch;
 }
 .fn-copy li { margin: 0 0 0.55rem; }
-.fn-article h2[id] { scroll-margin-top: 5rem; }
+.fn-article h2[id],
+.fn-section[id] { scroll-margin-top: 5rem; }
+.product.no-photo .ph-badge {
+  position: static;
+  display: inline-block;
+  margin: 0.7rem 0.95rem 0;
+}
 .btn-amazon {
   background: var(--lagoon); color: #fff; border-color: var(--lagoon-deep);
   cursor: pointer; text-decoration: none;
@@ -2473,6 +2479,7 @@ def write_field_notes():
     write_field_notes_closed_up()
     write_field_notes_water_filtration()
     write_field_notes_door_you_dont_own()
+    write_field_notes_quiet_pantry()
 
 
 def write_field_notes_index():
@@ -3416,6 +3423,310 @@ def write_field_notes_door_you_dont_own():
     (out / "index.html").write_text(html)
 
 
+def write_field_notes_quiet_pantry():
+    """Unlisted Quiet Pantry Field Notes preview. Noindex; not in sitemap or indexes."""
+    prefix = "../../"
+    slug = "the-quiet-pantry"
+    out = PUBLIC / "field-notes" / slug
+    out.mkdir(parents=True, exist_ok=True)
+    a = _amazon
+    rel = AMAZON_REL
+    hero_alt = "A linen curtain half drawn across oak pantry shelves with labeled jars, a wooden can rack, lidded buckets and silver storage bags."
+
+    def card(asin, badge, title, blurb):
+        url = a(asin)
+        return f"""        <article class="product no-photo">
+          <span class="ph-badge">{badge}</span>
+          <div class="ph-body">
+            <h3>{title}</h3>
+            <p>{blurb}</p>
+            <a class="btn-soon btn-amazon" href="{url}" {rel}>View on Amazon</a>
+          </div>
+        </article>
+"""
+
+    card_fifo = card(
+        "B004DB7XCA",
+        "Rotation",
+        "FIFO Can Tracker, 54 cans",
+        "A gravity rack for up to 54 cans: load at the top, take the oldest from the bottom.",
+    )
+    card_yoget = card(
+        "B07Y9W3PBT",
+        "Rotation",
+        "Yoget removable food labels, 300",
+        "Two rolls of 1 \u00d7 3 inch write-on labels with Date and Contents lines.",
+    )
+    card_oxo = card(
+        "B0HB5XCNCS",
+        "Everyday shelf",
+        "OXO Good Grips 2-piece POP container set",
+        "Two 4.4 qt push-button containers sized for 5 lb bags of flour or sugar.",
+    )
+    card_wallaby = card(
+        "B09CCL3BNN",
+        "Long-term storage",
+        "Wallaby 1-gallon Mylar bags with oxygen absorbers, 30-pack",
+        "30 heat-sealable 1-gallon bags, 30 oxygen absorbers (400cc each) and 30 labels.",
+    )
+    card_buckets = card(
+        "B0DZ7SNZ2P",
+        "Long-term storage",
+        "United Solutions 5-gallon buckets with lids, 6-pack, black",
+        "Six black 5-gallon buckets with snap-on lids, listed as food-grade and BPA-free.",
+    )
+    card_gamma = card(
+        "B007KAZ1W0",
+        "Long-term storage",
+        "Gamma2 Gamma Seal lid, red",
+        "A two-part screw-on lid listed to fit standard 3.5 to 7 gallon buckets.",
+    )
+
+    ai_note = (
+        "The hero image on this page is an AI-generated scene, used for illustration. "
+        "It is not a photograph of a real pantry or of the products named here."
+    )
+    og = f"{SITE_URL}/field-notes/the-quiet-pantry/social-en-1200x630.jpg"
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("The Quiet Pantry: A Calm Guide to Food That Keeps \u2014 Lock & Linen", "A calm guide to food that keeps: where to store it, how long it lasts, and how to rotate a quiet pantry without a big clear-out.", "/field-notes/the-quiet-pantry/", og)}
+<meta name="robots" content="noindex,nofollow" />
+{FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
+</head>
+<body>
+{header(prefix)}
+
+  <section class="hero fn-hero" aria-label="The Quiet Pantry">
+    <img src="hero.jpg" width="1600" height="900" alt="{hero_alt}" />
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="eyebrow">Field Notes</p>
+      <h1>The Quiet Pantry</h1>
+      <p class="tagline">A Calm Guide to Food That Keeps</p>
+    </div>
+  </section>
+
+  <article class="fn-article">
+    <div class="wrap">
+      <div class="prose fn-copy">
+        <p>Most pantries are built by accident. A bag of rice opened in March, three cans of chickpeas bought on three different days, a jar of oats pushed to the back by a newer jar of oats. Nothing wrong with any of it. It just doesn't keep track of itself.</p>
+        <p>A quiet pantry is the same shelf with a little order behind it. Food you already eat, kept where it lasts, used oldest first, and refilled before anyone has to think about it. It is not a project and it is not a hobby. It is a few cool shelves, a calendar note and a habit, behind a curtain, out of the way. This guide covers where to keep it, how long things keep, how to store dry food for years, and how to rotate it without ever doing a big clear-out.</p>
+      </div>
+
+      <p class="affiliate-near affiliate-note">Some links on this page are Amazon affiliate links. We may earn a commission at no extra cost to you.</p>
+      <p class="affiliate-near">{esc(AMAZON_DISCLOSURE_EN)}</p>
+
+      <div class="fn-glance">
+        <h2>The pantry at a glance</h2>
+        <div class="prose fn-copy">
+          <p>These are the jobs a calm pantry does, not a kit to buy at once. Start at the top; the long shelf at the bottom is optional.</p>
+        </div>
+        <div class="fn-table-wrap">
+          <table class="fn-table">
+            <thead>
+              <tr>
+                <th>The job</th>
+                <th>What helps</th>
+                <th>Section</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Know the room is cool and dry</td>
+                <td>A thermometer-hygrometer</td>
+                <td><a href="#where-it-lives">Where it lives</a></td>
+              </tr>
+              <tr>
+                <td>Eat the oldest can first</td>
+                <td>A first-in, first-out can rack</td>
+                <td><a href="#cans">Cans</a></td>
+              </tr>
+              <tr>
+                <td>Know what's in a container and when it went in</td>
+                <td>Removable date labels</td>
+                <td><a href="#cans">Cans</a></td>
+              </tr>
+              <tr>
+                <td>Keep everyday flour and sugar closed up</td>
+                <td>Canisters with a tight lid</td>
+                <td><a href="#working-shelf">The working shelf</a></td>
+              </tr>
+              <tr>
+                <td>Keep dry staples for years</td>
+                <td>Mylar bags with oxygen absorbers, in a bucket with a reusable lid</td>
+                <td><a href="#long-shelf">The long shelf</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="fn-section">
+        <h2>How much, and why a little at a time</h2>
+        <div class="prose fn-copy">
+          <p>Did you know that both Ottawa and Qu\u00e9bec City put the starting line in the same place? Health Canada asks households to be ready to look after themselves for at least 72 hours, and the Gouvernement du Qu\u00e9bec's home emergency kit calls for non-perishable food for at least the first three days. That is the floor, not the ceiling, and it is smaller than most people imagine: a few days of meals you would actually cook.</p>
+          <p>Utah State University Extension's food storage guide gives a gentle way to grow past it: buy foods you enjoy and are likely to eat, and slowly buy a little extra each week until you reach the amount you want. No single big shop, no stack of unfamiliar food. Health Canada adds a practical note: keep food allergies, celiac disease and food intolerances in mind when you choose what to keep.</p>
+        </div>
+      </div>
+
+      <div class="fn-section" id="where-it-lives">
+        <h2>Where it lives: cool, dry, dark, off the floor</h2>
+        <div class="prose fn-copy">
+          <p>Where food sits matters as much as what it sits in. The USDA's Food Safety and Inspection Service is specific: store canned foods and other shelf-stable products in a cool, dry place, and never above or beside the stove, under the sink, in a damp garage or basement, or anywhere exposed to high or low temperature extremes. Temperatures below 85 \u00b0F (about 29 \u00b0C) are best. Above 100 \u00b0F (about 38 \u00b0C), FSIS calls heat harmful to canned goods, and notes that the risk of spoilage jumps sharply as storage temperatures rise.</p>
+          <p>Cooler is better still. Utah State's guide puts the optimal range at roughly 40 to 70 \u00b0F (about 4 to 21 \u00b0C), and cites Brigham Young University research in which stored wheat kept acceptable quality for 25 years in a cool basement and only 5 years in a hot garage or attic. The same guide names moisture as the other critical factor: dry foods that pick up moisture from the room can grow mold, yeast and bacteria, and damp air rusts cans and breaks down paper packaging. In a humid room, it notes, a dehumidifier may be needed.</p>
+          <p>Two more details from the same page are easy to miss. Direct sunlight speeds the breakdown of both food and packaging. And food should sit off the floor, because flooring, especially raw concrete, can leach chemicals that pass through plastics and rust metal. A shelf a few inches up is enough.</p>
+          <p>For a Canadian home there is one more line worth reading twice: canned foods should not be allowed to freeze. Utah State explains that freezing can bulge cans and cause seam failures. An unheated garage in January is the wrong room.</p>
+          <p>Humidity is hard to judge by feel. A small digital thermometer-hygrometer on the shelf turns "cool and dry" from a guess into a reading. Look for one that shows both temperature and humidity and keeps a high and low record, so you can see what the room did overnight. Put it on the pantry shelf for a week, in summer and again in winter, and you will know whether the room works.</p>
+        </div>
+      </div>
+
+      <div class="fn-section" id="cans">
+        <h2>Cans, and the oldest-first rule</h2>
+        <div class="prose fn-copy">
+          <p>Commercially canned food is the backbone of most pantries, and the USDA gives clear timelines. High-acid canned foods such as tomatoes, fruit, juices and pickles keep their best quality for 12 to 18 months. Low-acid canned foods such as meat, poultry, fish, soups and most vegetables keep 2 to 5 years, as long as the can stays in good condition in a cool, clean, dry place. Some canned foods, such as certain canned hams and seafood, are not shelf stable at all; those are labelled "Keep Refrigerated."</p>
+          <p>Did you know the date on a can is about quality, not safety? FSIS explains that, except for infant formula, the dates manufacturers print tell you when food will be at its best, not when it becomes unsafe. A "Best if Used By" date is not a safety date. The flip side matters too: the can itself does the work. FSIS says to discard cans that are leaking, bulging, deeply dented or heavily rusted. A deep dent is one you can lay your finger into, and any sharp dent on a seam is a reason to let it go. Light surface rust that wipes off with a finger or a paper towel is not serious.</p>
+          <p>Rotation is what keeps those timelines on your side. Utah State calls it FIFO, first in, first out: use the oldest food first. FSIS suggests checking the pantry every few weeks and using cans you have had on hand for a while. One way to do that without thinking is a shelf that does the sorting for you. A gravity can rack is loaded from the top and dispenses from the bottom, so the can you reach for is always the one that has waited longest. The <a href="{a('B004DB7XCA')}" {rel}>FIFO Can Tracker</a> is one: the listing gives a capacity of up to 54 cans, a size of 16 by 16 by 12 inches, and says units connect together to grow.</p>
+          <p>The other half of rotation is a date you can read. Utah State recommends writing the purchase month and year on each can lid with a marker, and labelling home-packaged dry food with the product name and date. For canisters and bags that get reused, a removable label is tidier than marker on plastic. <a href="{a('B07Y9W3PBT')}" {rel}>Yoget removable food labels</a> come as two rolls of 150, each 1 by 3 inches, with lines for date and contents; the listing says they peel off without residue.</p>
+        </div>
+        <div class="shop-grid">
+{card_fifo}
+{card_yoget}
+        </div>
+      </div>
+
+      <div class="fn-section" id="working-shelf">
+        <h2>The working shelf</h2>
+        <div class="prose fn-copy">
+          <p>Not everything in a pantry is meant to wait for years. The working shelf holds what you cook with every week: flour, sugar, rice, pasta, oats. FSIS gives rice and dried pasta a shelf life of about 2 years. The aim here is simpler than long storage: keep moisture and insects out, and make the oldest bag the obvious one to open.</p>
+          <p>Utah State's guidance on dried foods is to keep them in clean, dry, insect-proof containers with tightly fitted lids, because heavy plastic bags are acceptable but are not insect- or rodent-proof. Health Canada's version is shorter: store food in watertight containers. A clear canister also shows you, at a glance, when it's time to open the next bag.</p>
+          <p>The <a href="{a('B0HB5XCNCS')}" {rel}>OXO Good Grips 2-piece POP container set</a> is built for exactly this shelf. According to the listing, the two 4.4-quart containers fit standard 5-pound bags of flour or sugar, close with a push-button seal the maker describes as airtight, come printed with clear ingredient lettering, and keep a half-cup scoop clipped under each lid. They stack with other POP pieces, which keeps a shelf looking like one system instead of a collection.</p>
+        </div>
+        <div class="shop-grid shop-grid--single">
+{card_oxo}
+        </div>
+      </div>
+
+      <div class="fn-section" id="long-shelf">
+        <h2>The long shelf: buckets, Mylar and oxygen absorbers</h2>
+        <div class="prose fn-copy">
+          <p>For dry staples you want to keep for years, Utah State's food storage guide is unusually direct about the best container: a foil-type pouch, sealed with oxygen absorbers, placed inside a 5-gallon bucket or similar container that acts as a barrier to rodents. Each layer does one job.</p>
+          <p><strong>The bag.</strong> Foil laminate pouches, often called by the trade name Mylar, sharply reduce how much oxygen and moisture pass through. They are not rodent-proof on their own; the guide notes that rodents can easily chew into them, which is why the bucket matters. It recommends closing the bags with a heat-sealing unit after adding the absorbers, and not with a clothes iron, which gives a poor seal. For scale, a 1-gallon bag holds about 6.8 pounds (3.1 kg) of white rice, 7 pounds (3.2 kg) of wheat, or 5 pounds (2.3 kg) of dry milk.</p>
+          <p><strong>The oxygen absorber.</strong> Did you know an oxygen absorber is mostly iron powder? In a sealed bag, the iron rusts, and in doing so it binds the oxygen. Utah State Extension says the goal is to bring the oxygen down to 0.01 percent or less, and gives sizes as a rule of thumb: 50cc for a US quart (about 0.95 L) container, 300cc for a US gallon container or a #10 can, and three 500cc packets for a 5-gallon container. Once a package of absorbers is opened, use them within 15 minutes, and keep any spares in an airtight glass jar. Some foods gain nothing from absorbers at all; the same fact sheet lists wheat, beans, corn and peas as not oxygen-sensitive.</p>
+          <p><strong>The one rule that is not optional.</strong> Foods stored with oxygen absorbers must be dry, about 10 percent moisture or less. Utah State is explicit: storing moist foods in reduced-oxygen packaging can lead to botulism. The National Center for Home Food Preservation lists the conditions in which Clostridium botulinum grows: a moist, low-acid food, a temperature between 40 and 120 \u00b0F, and less than 2 percent oxygen. It also notes that some foods seem dry but still hold enough moisture to cause problems, especially home-dried foods, so this layer is for thoroughly dried foods only. Utah State says vacuum sealing follows the same rule: it is for dry foods only, and is not a preservation method by itself. Dehydrated and freeze-dried foods, rice, and other dry staples belong in this layer. Anything moist does not.</p>
+          <p>The <a href="{a('B09CCL3BNN')}" {rel}>Wallaby 1-gallon Mylar bags with oxygen absorbers</a> come as a matched set: the listing includes 30 heat-sealable 1-gallon bags, 30 oxygen absorbers of 400cc each, packed in sets of ten, and 30 labels. That is more absorber than the 300cc per gallon in Utah State's rule of thumb. One note from the listing worth knowing in advance: the bags may not shrink like a vacuum bag, because the absorbers remove only the oxygen, about a fifth of the air.</p>
+          <p><strong>The bucket.</strong> Utah State describes food-grade buckets as high-density polyethylene (HDPE), with a slow oxygen transfer that lets oxygen in over several years; its rule of thumb is that they store food for up to 5 years on their own. Lids should have a sealing gasket. Use only containers made for food: the guide's advice is that when in doubt, assume it is not food grade, and never reuse a bucket that held something other than food.</p>
+          <p>The <a href="{a('B0DZ7SNZ2P')}" {rel}>United Solutions 5-gallon buckets</a> come six to a pack with snap-on lids and metal handles, and the listing describes them as food-grade and BPA-free. That is the seller's claim, typically referring to US food-contact rules, not a verified Canadian certification. In black, they look like plain household storage on a low shelf.</p>
+          <p><strong>The lid you open.</strong> A snap-on lid is fine for a bucket you won't touch for years, but Utah State notes that some lids can only be used once and may deform after opening. For the bucket you dip into, it points to a reusable screw-top design called the gamma seal, and to a bucket wrench for opening it. The <a href="{a('B007KAZ1W0')}" {rel}>Gamma2 Gamma Seal lid</a> is that lid: the listing says it fits standard 3.5, 5, 6 and 7-gallon buckets and is made from food-grade, BPA-free HDPE. As with the buckets, that is the listing's claim, typically referring to US food-contact rules, not a verified Canadian certification. Check the rim of your own bucket against the listing before you buy; bucket rims vary.</p>
+        </div>
+        <div class="shop-grid">
+{card_wallaby}
+{card_buckets}
+{card_gamma}
+        </div>
+      </div>
+
+      <div class="fn-section">
+        <h2>Out of sight, still in reach</h2>
+        <div class="prose fn-copy">
+          <p>A pantry can be calm to look at. Plain containers, the same canisters in a row, buckets in one colour on a low shelf, and a linen curtain or a closet door in front of the deep storage. The point is not to hide food from anyone. It is that a house feels quieter when its supplies are put away in one place, the way linens live in a closet and not on the sofa.</p>
+          <p>The Gouvernement du Qu\u00e9bec makes the practical version of the same point: keep your emergency supplies in a practical, easy-to-reach place, ideally gathered in one spot, and stored properly, for example in bins or on shelves. If you have children, tell them where it is. Health Canada adds one detail for flood-prone areas: store food on high shelves, away from water that could be contaminated. And keep a manual can opener with the cans. It is on both governments' lists.</p>
+        </div>
+      </div>
+
+      <div class="fn-section">
+        <h2>Once a year, and a little every week</h2>
+        <div class="fn-table-wrap">
+          <table class="fn-table">
+            <thead>
+              <tr>
+                <th>How often</th>
+                <th>What to do</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Every week</td>
+                <td>Cook from the pantry, oldest first, and add a little back</td>
+                <td>USU Extension</td>
+              </tr>
+              <tr>
+                <td>Every few weeks</td>
+                <td>Look over the shelves; use the cans you've had longest</td>
+                <td>USDA FSIS</td>
+              </tr>
+              <tr>
+                <td>Every 6 to 12 months</td>
+                <td>Rotate stored food and water through the kitchen</td>
+                <td>USU Extension</td>
+              </tr>
+              <tr>
+                <td>Once a year</td>
+                <td>Check the kit still fits your household; replace expired food and the water</td>
+                <td>Gouvernement du Qu\u00e9bec, Health Canada</td>
+              </tr>
+              <tr>
+                <td>Twice a year, summer and winter</td>
+                <td>Read the thermometer-hygrometer's highs and lows</td>
+                <td>Lock &amp; Linen habit, based on the FSIS and USU ranges above</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose fn-copy">
+          <p>Pick a date that already means something, the first snowfall or the day the clocks change, and let the yearly check ride along with it.</p>
+        </div>
+      </div>
+
+      <div class="fn-article-end">
+        <h2>The shelf at the end of the day</h2>
+        <div class="prose fn-copy">
+          <p>Evening, and the kitchen is winding down. The curtain is drawn across the shelves, the oldest can is already at the front for tomorrow, and nothing needs counting. A hidden home keeps its food the way it keeps everything else: in order, out of the way, and ready without fuss.</p>
+        </div>
+      </div>
+
+      <div class="prose fn-copy">
+        <h2>Sources</h2>
+        <ul>
+          <li>USDA Food Safety and Inspection Service, Shelf-Stable Food Safety (updated Oct 24, 2024): <a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/shelf-stable-food" rel="noopener noreferrer">https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/shelf-stable-food</a></li>
+          <li>USDA Food Safety and Inspection Service, Food Product Dating (updated Apr 23, 2025): <a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating" rel="noopener noreferrer">https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-product-dating</a></li>
+          <li>Utah State University Extension, Food Storage Booklet (2013): <a href="https://extension.usu.edu/preserve-the-harvest/files/Food-Storage-Booklet.pdf" rel="noopener noreferrer">https://extension.usu.edu/preserve-the-harvest/files/Food-Storage-Booklet.pdf</a></li>
+          <li>Utah State University Extension, Oxygen Absorbers fact sheet: <a href="https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1196&amp;context=extension_curall" rel="noopener noreferrer">https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1196&amp;context=extension_curall</a></li>
+          <li>Utah State University Extension, Packaging Foods: <a href="https://extension.usu.edu/preserve-the-harvest/food-storage-packaging" rel="noopener noreferrer">https://extension.usu.edu/preserve-the-harvest/food-storage-packaging</a></li>
+          <li>National Center for Home Food Preservation, Ensuring Safe Canned Foods: <a href="https://nchfp.uga.edu/how/general-canning-information/ensuring-safe-canned-foods/" rel="noopener noreferrer">https://nchfp.uga.edu/how/general-canning-information/ensuring-safe-canned-foods/</a></li>
+          <li>National Center for Home Food Preservation, \u201cDry Canning\u201d Isn't Canning (Apr 16, 2020): <a href="https://nchfp.uga.edu/blog/dry-canning-isnt-canning-to-me" rel="noopener noreferrer">https://nchfp.uga.edu/blog/dry-canning-isnt-canning-to-me</a></li>
+          <li>Health Canada, Food and drinking water safety in an emergency: <a href="https://www.canada.ca/en/health-canada/services/food-drinking-water-safe-emergency.html" rel="noopener noreferrer">https://www.canada.ca/en/health-canada/services/food-drinking-water-safe-emergency.html</a></li>
+          <li>Gouvernement du Qu\u00e9bec, Faire son plan familial d\u2019urgence et sa trousse d\u2019urgence (in French): <a href="https://www.quebec.ca/securite-situations-urgence/urgences-sinistres-risques-naturels/comment-se-preparer-a-la-maison" rel="noopener noreferrer">https://www.quebec.ca/securite-situations-urgence/urgences-sinistres-risques-naturels/comment-se-preparer-a-la-maison</a></li>
+          <li>Product details: each linked Amazon.com listing, loaded Nov 13, 2026.</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+{footer(ai_note, prefix)}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
+def patch_unlisted_quiet_pantry_fr():
+    """Point the FR preview at the French social image and the FR Health Canada page."""
+    path = PUBLIC / "fr" / "field-notes" / "the-quiet-pantry" / "index.html"
+    if not path.exists():
+        return
+    html = path.read_text()
+    html = html.replace(
+        f"{SITE_URL}/field-notes/the-quiet-pantry/social-en-1200x630.jpg",
+        f"{SITE_URL}/field-notes/the-quiet-pantry/social-fr-1200x630.jpg",
+    )
+    html = html.replace(
+        "https://www.canada.ca/en/health-canada/services/food-drinking-water-safe-emergency.html",
+        "https://www.canada.ca/fr/sante-canada/services/salubrite-aliments-eau-potable-situation-urgence.html",
+    )
+    path.write_text(html)
+
 def write_robots_and_sitemap():
     (PUBLIC / "robots.txt").write_text(
         f"""User-agent: *
@@ -3510,6 +3821,7 @@ def main():
     print("Done.", len(STORIES), "stories + privacy/contact/guide + field notes")
     import i18n_fr  # French twins under /fr/, EN|FR switch, hreflang, sitemap alternates
     i18n_fr.main()
+    patch_unlisted_quiet_pantry_fr()
 
 
 if __name__ == "__main__":
