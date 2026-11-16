@@ -3262,43 +3262,39 @@ def write_field_notes_door_you_dont_own():
     rel = AMAZON_REL
     hero_alt = "The inside of a plain apartment door in warm evening light, a lever handle and a linen runner on the floor."
 
-    def card(asin, badge, title, blurb, aria):
-        url = a(asin)
+    # Main Amazon images, confirmed from each listing's first hiRes on amazon.com, Nov 15, 2026.
+    # Same image IDs already used on Closed Up for the Evening and the gear showcase.
+    img_addalock = "https://m.media-amazon.com/images/I/71coaNix4cL._AC_SL1500_.jpg"
+    img_buddybar = "https://m.media-amazon.com/images/I/51FWoCaY1HL._AC_SL1500_.jpg"
+    img_ultrapro = "https://m.media-amazon.com/images/I/713mRL8qmxL._AC_SL1500_.jpg"
+
+    def card(asin, image, alt, badge, title, blurb):
+        inner = fn_product_card(asin, image, alt, badge, title, blurb).rstrip()
         return f"""        <div class="shop-grid shop-grid--single">
-          <article class="product">
-            <span class="ph-badge">{badge}</span>
-            <a class="ph-img" href="{url}" {rel}>
-              <span class="ph-placeholder" role="img" aria-label="{aria}">[Photo placeholder: our own photo to come]</span>
-            </a>
-            <div class="ph-body">
-              <h3>{title}</h3>
-              <p>{blurb}</p>
-              <a class="btn-soon btn-amazon" href="{url}" {rel}>View on Amazon</a>
-            </div>
-          </article>
+{inner}
         </div>
 """
 
     card_addalock = card(
-        "B00186URTY",
+        "B00186URTY", img_addalock,
+        "Addalock portable door lock, a small silver lock body with a sliding rod",
         "Portable lock",
         "Addalock portable door lock",
         "A one-piece metal lock that hooks into the strike plate of an inward-opening door and is used from the inside. No tools, per the listing.",
-        "A small metal portable lock hooked into the strike plate of a door frame, with its red handle in place",
     )
     card_buddybar = card(
-        "B002BQ4VBU",
+        "B002BQ4VBU", img_buddybar,
+        "Buddybar door security bar, a powder-coated steel bar with a rubber foot",
         "Door bar",
         "Buddybar Door Jammer",
         "An adjustable steel bar that braces under the handle of an inward-opening door, with a rubber foot on the floor. Adjusts from 36 to 51 inches, per the listing.",
-        "An adjustable steel bar angled from under a door handle down to a rubber foot on a wood floor",
     )
     card_ultrapro = card(
-        "B00178HMCI",
+        "B00178HMCI", img_ultrapro,
+        "UltraPro window and door alarm, two-pack of white magnetic sensors",
         "Door alarm",
         "UltraPro window and door alarm",
         "A two-piece magnetic alarm that sounds or chimes when the door opens. Mounts with included double-sided tape, per the listing.",
-        "A small two-piece alarm on a door edge and its frame, the two pieces separating as the door opens",
     )
 
     ai_note = (
