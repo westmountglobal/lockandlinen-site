@@ -2237,6 +2237,17 @@ def write_index():
 
   <section class="home-feature" aria-label="Field Notes">
     <div class="wrap">
+      <a class="fn-feature" href="field-notes/a-quiet-share-of-the-sun/index.html">
+        <div class="thumb">
+          <img src="field-notes/a-quiet-share-of-the-sun/hero.jpg" width="1600" height="900" alt="A modest Québec house in light winter snow, with a small array of solar panels on the south roof and evergreens in the yard." />
+        </div>
+        <div class="body">
+          <p class="eyebrow">Field Notes</p>
+          <h2>A Quiet Share of the Sun</h2>
+          <p>A matching guide to which solar setup fits a Québec home: a whole-home array tied to Hydro-Québec, a hybrid with a battery, or a smaller portable or cabin system.</p>
+          <span class="btn-feature">Read the guide</span>
+        </div>
+      </a>
       <a class="fn-feature" href="field-notes/the-quiet-pantry/index.html">
         <div class="thumb">
           <img src="field-notes/the-quiet-pantry/hero.jpg" width="1600" height="900" alt="A linen curtain half drawn across oak pantry shelves with labeled jars, a wooden can rack, lidded buckets and silver storage bags." />
@@ -2554,6 +2565,14 @@ def write_field_notes_index():
         <p>Longer pieces on comfort that stays on, and the quiet objects that belong in these rooms. Written to be read through, with pictures.</p>
       </div>
       <div class="ideas-grid" style="margin-top:2rem;">
+        <a class="idea-card" href="a-quiet-share-of-the-sun/index.html">
+          <div class="thumb"><img src="a-quiet-share-of-the-sun/hero.jpg" alt="A modest Québec house in light winter snow, with a small array of solar panels on the south roof and evergreens in the yard." /></div>
+          <div class="body">
+            <p class="eyebrow">Field Notes</p>
+            <h3>A Quiet Share of the Sun</h3>
+            <p>A matching guide to which solar setup fits a Québec home: a whole-home array tied to Hydro-Québec, a hybrid with a battery, or a smaller portable or cabin system.</p>
+          </div>
+        </a>
         <a class="idea-card" href="the-quiet-pantry/index.html">
           <div class="thumb"><img src="the-quiet-pantry/hero.jpg" alt="A linen curtain half drawn across oak pantry shelves with labeled jars, a wooden can rack, lidded buckets and silver storage bags." /></div>
           <div class="body">
@@ -3783,7 +3802,7 @@ def write_field_notes_quiet_pantry():
 
 
 def write_field_notes_quiet_sun():
-    """Unlisted Field Notes preview: A Quiet Share of the Sun. Noindex; not in sitemap or indexes."""
+    """Field Notes: A Quiet Share of the Sun."""
     prefix = "../../"
     slug = "a-quiet-share-of-the-sun"
     out = PUBLIC / "field-notes" / slug
@@ -3799,7 +3818,6 @@ def write_field_notes_quiet_sun():
 <html lang="en">
 <head>
 {head_meta("A Quiet Share of the Sun: Which Solar Setup Fits \u2014 Lock & Linen", "A matching guide to which solar setup fits a Québec home: a whole-home array tied to Hydro-Québec, a hybrid with a battery, or a smaller portable or cabin system.", "/field-notes/a-quiet-share-of-the-sun/", og)}
-<meta name="robots" content="noindex,nofollow" />
 {FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
 </head>
 <body>
@@ -3846,7 +3864,7 @@ def patch_unlisted_quiet_pantry_fr():
 
 
 def patch_unlisted_solar_fr():
-    """Point the FR preview at the French social image and the French Hydro-Québec pages."""
+    """Point the FR page at the French social image and the French Hydro-Québec pages."""
     path = PUBLIC / "fr" / "field-notes" / "a-quiet-share-of-the-sun" / "index.html"
     if not path.exists():
         return
@@ -3878,7 +3896,7 @@ Allow: /
 Sitemap: {SITE_URL}/sitemap.xml
 """
     )
-    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/", "/field-notes/water-filtration-guide/", "/field-notes/a-door-you-dont-own/", "/field-notes/the-quiet-pantry/"]
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/", "/field-notes/water-filtration-guide/", "/field-notes/a-door-you-dont-own/", "/field-notes/the-quiet-pantry/", "/field-notes/a-quiet-share-of-the-sun/"]
     for s in STORIES:
         paths.append(f"/stories/{s['slug']}/")
     urls = []
