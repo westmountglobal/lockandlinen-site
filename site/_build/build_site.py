@@ -507,6 +507,23 @@ add_nc_story(
     ig="https://www.instagram.com/reel/DfYTHqkgPvH/",
     fb="https://www.facebook.com/reel/997783876017483",
 )
+# n03_treehouse caption.txt and labels.json were in a folder that is no
+# longer on the machine. Use the published card and aside so a rebuild
+# matches the live treehouse page and homepage card.
+for _s in STORIES:
+    if _s["slug"] == "treehouse":
+        _s["card_blurb"] = (
+            "Timber pods in the canopy: one spiral stair up, rope bridges between rooms, "
+            "rain tanks, Faraday-lined pods and a vault down in the roots. *illustrative"
+        )
+        _s["aside"] = [
+            "Canopy kitchen garden",
+            "Spiral stair, one way up",
+            "Motion-sensor lights",
+            "Faraday-lined pods",
+            "Vault in the roots",
+        ]
+        break
 
 add_nc_story(
     "cliff-monastery",
@@ -670,15 +687,19 @@ def add_formula_story(slug, yt, title, tagline, h2, body, aside, shop, card, img
     )
 
 
-f01 = json.loads((FORMULA01 / "script.json").read_text())
+# desert-compound-test was removed on purpose (Elias, 17 Nov 2026) and is not
+# restored. The copy below is the published text from the live story pages, so
+# a full rebuild no longer reads that folder. The first Canyon paragraph keeps
+# the live typo ("watch..") so the rebuilt page matches what is already public.
+# If the stills are absent, prepare_images reuses the published JPEGs.
 add_formula_story(
     slug="canyon-homestead",
     yt="jsMsVDwY_N0",
     title="The Canyon Homestead",
-    tagline=f01["hook"],
-    h2=f01["hook"],
+    tagline="Picture coming home to this.",
+    h2="Picture coming home to this.",
     body=[
-        f01["vo"].split(" Desert willow")[0] + ".",
+        "Picture coming home to this. Cliffs wrap three sides of the canyon, so there's only one way in, and one fence to watch..",
         "Desert willow softens it. A spring keeps the garden green: potatoes, corn, eggs and goat milk. Every roof makes power and catches rain.",
         "The root cellar holds the harvest, and the garage keeps two rides ready. Could your family call this home?",
     ],
@@ -708,20 +729,24 @@ add_formula_story(
     hero_file="H.raw.png",
 )
 
-f03s = json.loads((BATCH2 / "scripts.json").read_text())["f03"]
-f03r = json.loads((BATCH2 / "reels.json").read_text())["f03"]
 add_formula_story(
     slug="sea-cliff-homestead",
     yt="bVx0Dp1YlHw",
     title="The Sea-Cliff Homestead",
-    tagline=f03s["parts"][0],
-    h2=f03s["parts"][0],
+    tagline="Picture waking up to this view.",
+    h2="Picture waking up to this view.",
     body=[
-        " ".join(f03s["parts"][0:3]),
-        " ".join(f03s["parts"][3:6]),
-        " ".join(f03s["parts"][6:]),
+        "Picture waking up to this view. Sea cliffs guard three sides of the headland. The only way in is one lane and one gate.",
+        "Raised beds, potatoes, eggs and wool. Every roof catches rain and sun, and the lights wake at night. Storm-rated doors, filmed windows, and a Faraday cage inside.",
+        "The cellar is stocked, and the garage is fueled. Could you live out here?",
     ],
-    aside=f03s["lines"][:5],
+    aside=[
+        "Sea cliffs guard three sides.",
+        "One lane. One gate.",
+        "Raised beds, potatoes, eggs, wool.",
+        "Roofs catch rain and sun.",
+        "Storm-rated doors. A Faraday cage inside.",
+    ],
     shop=[
         ("Raised garden bed kit", "Potatoes and greens on the headland."),
         ("Wool throw blanket", "Soft evenings after the surf wind."),
@@ -741,19 +766,24 @@ add_formula_story(
     hero_file="H.raw.png",
 )
 
-f04s = json.loads((BATCH2 / "scripts.json").read_text())["f04"]
 add_formula_story(
     slug="mountain-homestead",
     yt="7C93FPhHNe8",
     title="The Mountain Homestead",
-    tagline=f04s["parts"][0],
-    h2=f04s["parts"][0],
+    tagline="This is what quiet looks like.",
+    h2="This is what quiet looks like.",
     body=[
-        " ".join(f04s["parts"][0:3]),
-        " ".join(f04s["parts"][3:6]),
-        " ".join(f04s["parts"][6:]),
+        "This is what quiet looks like. Granite walls rise behind, and steep drops fall away in front. One switchback road climbs to one gate.",
+        "Potatoes, cabbage, eggs and goat cheese. A mountain spring, solar roofs, and lights that wake on motion. Reinforced doors, filmed glass, and a Faraday cage for backups.",
+        "The cellar stays cool, and the garage stays fueled. Would your family move up here?",
     ],
-    aside=f04s["lines"][:5],
+    aside=[
+        "Granite behind. Steep drops in front.",
+        "One switchback road. One gate.",
+        "Potatoes, cabbage, eggs, goat cheese.",
+        "Spring water, solar roofs, motion lights.",
+        "Reinforced doors. A Faraday cage for backups.",
+    ],
     shop=[
         ("Wool throw blanket", "Quiet evenings under granite peaks."),
         ("Raised garden bed kit", "Potatoes and cabbage on the alpine bench."),
@@ -794,6 +824,15 @@ def compress_image(src: Path, dest: Path, max_w=MAX_W, max_bytes=MAX_BYTES) -> N
     im.save(dest, "JPEG", quality=70, optimize=True, progressive=True)
 
 
+def _compress_if_needed(src: Path, dest: Path, **kwargs) -> None:
+    """Reuse a published JPEG when it is already in public/; otherwise compress from src."""
+    if dest.exists():
+        return
+    if not src.exists():
+        raise SystemExit(f"Need {dest} but the source image is missing: {src}")
+    compress_image(src, dest, **kwargs)
+
+
 def prepare_images():
     # Island: reuse mockup images (compress into public)
     island_dir = PUBLIC / "stories" / "island-home" / "images"
@@ -806,27 +845,27 @@ def prepare_images():
         "gallery-cistern.jpg",
         "gallery-faraday.jpg",
     ]:
-        compress_image(MOCKUP_IMG / name, island_dir / name)
+        _compress_if_needed(MOCKUP_IMG / name, island_dir / name)
 
     # Index hero: island hero copy
-    compress_image(Path(__file__).parent / "home-hero-cliff-src.jpg", PUBLIC / "images" / "home-hero-cliff.jpg", max_w=1920, max_bytes=600_000)
+    _compress_if_needed(Path(__file__).parent / "home-hero-cliff-src.jpg", PUBLIC / "images" / "home-hero-cliff.jpg", max_w=1920, max_bytes=600_000)
 
     for s in STORIES:
         out = PUBLIC / "stories" / s["slug"] / "images"
-        compress_image(Path(__file__).parent / "banners" / f"{s['slug']}.jpg", out / "banner.jpg", max_w=1920, max_bytes=600_000)
+        _compress_if_needed(Path(__file__).parent / "banners" / f"{s['slug']}.jpg", out / "banner.jpg", max_w=1920, max_bytes=600_000)
         if s["source"] == "mockup":
             continue
         if s["source"] == "nc":
             stills = NC / s["concept_key"] / "stills"
             hero_src = stills / f"{s['hero_letter']}.raw.png"
-            compress_image(hero_src, out / "hero.jpg")
+            _compress_if_needed(hero_src, out / "hero.jpg")
             for i, (letter, _cap, _wide) in enumerate(s["still_map"]):
-                compress_image(stills / f"{letter}.raw.png", out / f"gallery-{i+1}.jpg")
+                _compress_if_needed(stills / f"{letter}.raw.png", out / f"gallery-{i+1}.jpg")
         else:
             root = Path(s["img_root"])
-            compress_image(root / s["hero_file"], out / "hero.jpg")
+            _compress_if_needed(root / s["hero_file"], out / "hero.jpg")
             for i, (fname, _cap, _wide) in enumerate(s["still_map"]):
-                compress_image(root / fname, out / f"gallery-{i+1}.jpg")
+                _compress_if_needed(root / fname, out / f"gallery-{i+1}.jpg")
 
 
 CSS = r"""
@@ -3882,6 +3921,16 @@ def write_gear_shortlink():
 def main():
     # Preserve hand-authored draft guides (e.g. showcase-draft gear page) across rebuilds.
     preserve_dirs = ["guides/gear-wed-put-in-these-homes"]
+    # Reuse already-published images so a rebuild does not depend on deleted
+    # stills (desert-compound-test, and any missing concept stills) and does
+    # not recompress live JPEGs.
+    if (PUBLIC / "images").exists():
+        preserve_dirs.append("images")
+    stories_root = PUBLIC / "stories"
+    if stories_root.exists():
+        for d in sorted(stories_root.iterdir()):
+            if (d / "images").is_dir():
+                preserve_dirs.append(f"stories/{d.name}/images")
     preserved = {}
     for rel in preserve_dirs:
         src = PUBLIC / rel
