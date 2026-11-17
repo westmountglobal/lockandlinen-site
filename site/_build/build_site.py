@@ -2491,6 +2491,7 @@ def write_field_notes():
     write_field_notes_water_filtration()
     write_field_notes_door_you_dont_own()
     write_field_notes_quiet_pantry()
+    write_field_notes_quiet_sun()
 
 
 def write_field_notes_index():
@@ -3741,6 +3742,53 @@ def write_field_notes_quiet_pantry():
     (out / "index.html").write_text(html)
 
 
+
+def write_field_notes_quiet_sun():
+    """Unlisted Field Notes preview: A Quiet Share of the Sun. Noindex; not in sitemap or indexes."""
+    prefix = "../../"
+    slug = "a-quiet-share-of-the-sun"
+    out = PUBLIC / "field-notes" / slug
+    out.mkdir(parents=True, exist_ok=True)
+    hero_alt = "A modest Québec house in light winter snow, with a small array of solar panels on the south roof and evergreens in the yard."
+    body = (FIELD_NOTES_CONTENT / slug / "body-en.html").read_text()
+    ai_note = (
+        "The hero and in-body scene images on this page are AI-generated, used for illustration. "
+        "They are not photographs of a real house or of the products named here."
+    )
+    og = f"{SITE_URL}/field-notes/a-quiet-share-of-the-sun/social-en-1200x630.jpg"
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("A Quiet Share of the Sun: Which Solar Setup Fits \u2014 Lock & Linen", "A matching guide to which solar setup fits a Québec home: a whole-home array tied to Hydro-Québec, a hybrid with a battery, or a smaller portable or cabin system.", "/field-notes/a-quiet-share-of-the-sun/", og)}
+<meta name="robots" content="noindex,nofollow" />
+{FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
+</head>
+<body>
+{header(prefix)}
+
+  <section class="hero fn-hero" aria-label="A Quiet Share of the Sun">
+    <img src="hero.jpg" width="1600" height="900" alt="{hero_alt}" />
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="eyebrow">Field Notes</p>
+      <h1>A Quiet Share of the Sun</h1>
+      <p class="tagline">Which Solar Setup Fits</p>
+    </div>
+  </section>
+
+  <article class="fn-article">
+    <div class="wrap">
+{body}
+    </div>
+  </article>
+
+{footer(ai_note, prefix)}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
 def patch_unlisted_quiet_pantry_fr():
     """Point the FR page at the French social image and the FR Health Canada page."""
     path = PUBLIC / "fr" / "field-notes" / "the-quiet-pantry" / "index.html"
@@ -3756,6 +3804,32 @@ def patch_unlisted_quiet_pantry_fr():
         "https://www.canada.ca/fr/sante-canada/services/salubrite-aliments-eau-potable-situation-urgence.html",
     )
     path.write_text(html)
+
+
+def patch_unlisted_solar_fr():
+    """Point the FR preview at the French social image and the French Hydro-Québec pages."""
+    path = PUBLIC / "fr" / "field-notes" / "a-quiet-share-of-the-sun" / "index.html"
+    if not path.exists():
+        return
+    html = path.read_text()
+    html = html.replace(
+        f"{SITE_URL}/field-notes/a-quiet-share-of-the-sun/social-en-1200x630.jpg",
+        f"{SITE_URL}/field-notes/a-quiet-share-of-the-sun/social-fr-1200x630.jpg",
+    )
+    html = html.replace(
+        "https://www.hydroquebec.com/residential/customer-space/rates/net-metering-option-i.html",
+        "https://www.hydroquebec.com/residentiel/espace-clients/tarifs/option-de-mesurage-net-option-i.html",
+    )
+    html = html.replace(
+        "https://www.hydroquebec.com/residential/energy-wise/tips/planning-solar-panel-installation.html",
+        "https://www.hydroquebec.com/residentiel/mieux-consommer/conseils/planifier-installation-panneaux-solaires.html",
+    )
+    html = html.replace(
+        "https://www.hydroquebec.com/residential/energy-wise/equipment/solar-panels.html",
+        "https://www.hydroquebec.com/residentiel/mieux-consommer/equipements/panneaux-solaires.html",
+    )
+    path.write_text(html)
+
 
 def write_robots_and_sitemap():
     (PUBLIC / "robots.txt").write_text(
@@ -3852,6 +3926,7 @@ def main():
     import i18n_fr  # French twins under /fr/, EN|FR switch, hreflang, sitemap alternates
     i18n_fr.main()
     patch_unlisted_quiet_pantry_fr()
+    patch_unlisted_solar_fr()
 
 
 if __name__ == "__main__":
