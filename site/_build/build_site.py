@@ -2542,6 +2542,7 @@ def write_field_notes():
     write_field_notes_door_you_dont_own()
     write_field_notes_quiet_pantry()
     write_field_notes_quiet_sun()
+    write_field_notes_quiet_look()
 
 
 def write_field_notes_index():
@@ -3846,6 +3847,53 @@ def write_field_notes_quiet_sun():
     (out / "index.html").write_text(html)
 
 
+
+def write_field_notes_quiet_look():
+    """Unlisted Field Notes preview: A Quiet Look at the Door. Noindex; not in sitemap or indexes."""
+    prefix = "../../"
+    slug = "a-quiet-look-at-the-door"
+    out = PUBLIC / "field-notes" / slug
+    out.mkdir(parents=True, exist_ok=True)
+    hero_alt = "A softly lit entryway at dusk, with a closed off-white front door, a brass lamp on an oak console, and linen curtains."
+    body = (FIELD_NOTES_CONTENT / slug / "body-en.html").read_text()
+    ai_note = (
+        "The hero and social images on this page are cropped from an existing Lock & Linen AI-generated scene, used for illustration. "
+        "They are not photographs of a real house or of the products named here."
+    )
+    og = f"{SITE_URL}/field-notes/a-quiet-look-at-the-door/social-en-1200x630.jpg"
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta("A Quiet Look at the Door: Choosing a Home Camera \u2014 Lock & Linen", "A short matching note on which home camera fits which job — a plug-in model by the door, an indoor camera for a room, or a solar camera for a wall without an outlet — and how to point it with care.", "/field-notes/a-quiet-look-at-the-door/", og)}
+<meta name="robots" content="noindex,nofollow" />
+{FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
+</head>
+<body>
+{header(prefix)}
+
+  <section class="hero fn-hero" aria-label="A Quiet Look at the Door">
+    <img src="hero.jpg" width="1600" height="900" alt="{hero_alt}" />
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="eyebrow">Field Notes</p>
+      <h1>A Quiet Look at the Door</h1>
+      <p class="tagline">Choosing a Home Camera</p>
+    </div>
+  </section>
+
+  <article class="fn-article">
+    <div class="wrap">
+{body}
+    </div>
+  </article>
+
+{footer(ai_note, prefix)}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
 def patch_unlisted_quiet_pantry_fr():
     """Point the FR page at the French social image and the FR Health Canada page."""
     path = PUBLIC / "fr" / "field-notes" / "the-quiet-pantry" / "index.html"
@@ -3884,6 +3932,40 @@ def patch_unlisted_solar_fr():
     html = html.replace(
         "https://www.hydroquebec.com/residential/energy-wise/equipment/solar-panels.html",
         "https://www.hydroquebec.com/residentiel/mieux-consommer/equipements/panneaux-solaires.html",
+    )
+    path.write_text(html)
+
+
+
+def patch_unlisted_cameras_fr():
+    """Point the FR preview at the French social image and the French official-source URLs."""
+    path = PUBLIC / "fr" / "field-notes" / "a-quiet-look-at-the-door" / "index.html"
+    if not path.exists():
+        return
+    html = path.read_text()
+    html = html.replace(
+        f"{SITE_URL}/field-notes/a-quiet-look-at-the-door/social-en-1200x630.jpg",
+        f"{SITE_URL}/field-notes/a-quiet-look-at-the-door/social-fr-1200x630.jpg",
+    )
+    html = html.replace(
+        "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991#se:35",
+        "https://www.legisquebec.gouv.qc.ca/fr/document/lc/CCQ-1991#se:35",
+    )
+    html = html.replace(
+        "https://www.legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991#se:36",
+        "https://www.legisquebec.gouv.qc.ca/fr/document/lc/CCQ-1991#se:36",
+    )
+    html = html.replace(
+        "https://laws-lois.justice.gc.ca/eng/acts/C-46/section-184.html",
+        "https://laws-lois.justice.gc.ca/fra/lois/c-46/section-184.html",
+    )
+    html = html.replace(
+        "https://www.publicationsduquebec.gouv.qc.ca/fileadmin/Fichiers_client/lois_et_reglements/LoisAnnuelles/en/2021/2021C25A.PDF",
+        "https://www.publicationsduquebec.gouv.qc.ca/fileadmin/Fichiers_client/lois_et_reglements/LoisAnnuelles/fr/2021/2021C25F.PDF",
+    )
+    html = html.replace(
+        "https://www.legisquebec.gouv.qc.ca/en/document/cs/P-39.1",
+        "https://www.legisquebec.gouv.qc.ca/fr/document/lc/P-39.1",
     )
     path.write_text(html)
 
@@ -3994,6 +4076,7 @@ def main():
     i18n_fr.main()
     patch_unlisted_quiet_pantry_fr()
     patch_unlisted_solar_fr()
+    patch_unlisted_cameras_fr()
 
 
 if __name__ == "__main__":
