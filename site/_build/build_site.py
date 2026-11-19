@@ -2237,6 +2237,17 @@ def write_index():
 
   <section class="home-feature" aria-label="Field Notes">
     <div class="wrap">
+      <a class="fn-feature" href="field-notes/a-quiet-look-at-the-door/index.html">
+        <div class="thumb">
+          <img src="field-notes/a-quiet-look-at-the-door/hero.jpg" width="1600" height="900" alt="A softly lit entryway at dusk, with a closed off-white front door, a brass lamp on an oak console, and linen curtains." />
+        </div>
+        <div class="body">
+          <p class="eyebrow">Field Notes</p>
+          <h2>A Quiet Look at the Door</h2>
+          <p>A short matching note on which home camera fits which job — a plug-in model by the door, an indoor camera for a room, or a solar camera for a wall without an outlet — and how to point it with care.</p>
+          <span class="btn-feature">Read the guide</span>
+        </div>
+      </a>
       <a class="fn-feature" href="field-notes/a-quiet-share-of-the-sun/index.html">
         <div class="thumb">
           <img src="field-notes/a-quiet-share-of-the-sun/hero.jpg" width="1600" height="900" alt="A modest Québec house in light winter snow, with a small array of solar panels on the south roof and evergreens in the yard." />
@@ -2566,6 +2577,14 @@ def write_field_notes_index():
         <p>Longer pieces on comfort that stays on, and the quiet objects that belong in these rooms. Written to be read through, with pictures.</p>
       </div>
       <div class="ideas-grid" style="margin-top:2rem;">
+        <a class="idea-card" href="a-quiet-look-at-the-door/index.html">
+          <div class="thumb"><img src="a-quiet-look-at-the-door/hero.jpg" alt="A softly lit entryway at dusk, with a closed off-white front door, a brass lamp on an oak console, and linen curtains." /></div>
+          <div class="body">
+            <p class="eyebrow">Field Notes</p>
+            <h3>A Quiet Look at the Door</h3>
+            <p>A short matching note on which home camera fits which job — a plug-in model by the door, an indoor camera for a room, or a solar camera for a wall without an outlet — and how to point it with care.</p>
+          </div>
+        </a>
         <a class="idea-card" href="a-quiet-share-of-the-sun/index.html">
           <div class="thumb"><img src="a-quiet-share-of-the-sun/hero.jpg" alt="A modest Québec house in light winter snow, with a small array of solar panels on the south roof and evergreens in the yard." /></div>
           <div class="body">
@@ -3849,7 +3868,7 @@ def write_field_notes_quiet_sun():
 
 
 def write_field_notes_quiet_look():
-    """Unlisted Field Notes preview: A Quiet Look at the Door. Noindex; not in sitemap or indexes."""
+    """Field Notes: A Quiet Look at the Door."""
     prefix = "../../"
     slug = "a-quiet-look-at-the-door"
     out = PUBLIC / "field-notes" / slug
@@ -3865,7 +3884,6 @@ def write_field_notes_quiet_look():
 <html lang="en">
 <head>
 {head_meta("A Quiet Look at the Door: Choosing a Home Camera \u2014 Lock & Linen", "A short matching note on which home camera fits which job — a plug-in model by the door, an indoor camera for a room, or a solar camera for a wall without an outlet — and how to point it with care.", "/field-notes/a-quiet-look-at-the-door/", og)}
-<meta name="robots" content="noindex,nofollow" />
 {FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
 </head>
 <body>
@@ -3938,7 +3956,7 @@ def patch_unlisted_solar_fr():
 
 
 def patch_unlisted_cameras_fr():
-    """Point the FR preview at the French social image and the French official-source URLs."""
+    """Point the FR page at the French social image and the French official-source URLs."""
     path = PUBLIC / "fr" / "field-notes" / "a-quiet-look-at-the-door" / "index.html"
     if not path.exists():
         return
@@ -3978,7 +3996,7 @@ Allow: /
 Sitemap: {SITE_URL}/sitemap.xml
 """
     )
-    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/", "/field-notes/water-filtration-guide/", "/field-notes/a-door-you-dont-own/", "/field-notes/the-quiet-pantry/", "/field-notes/a-quiet-share-of-the-sun/"]
+    paths = ["/", "/about.html", "/privacy/", "/contact/", "/guides/quiet-security-ideas/", "/guides/gear-wed-put-in-these-homes/", "/field-notes/", "/field-notes/when-the-grid-goes-dark/", "/field-notes/closed-up-for-the-evening/", "/field-notes/water-filtration-guide/", "/field-notes/a-door-you-dont-own/", "/field-notes/the-quiet-pantry/", "/field-notes/a-quiet-share-of-the-sun/", "/field-notes/a-quiet-look-at-the-door/"]
     for s in STORIES:
         paths.append(f"/stories/{s['slug']}/")
     urls = []
