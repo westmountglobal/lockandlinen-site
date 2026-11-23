@@ -20,7 +20,7 @@ from urllib.parse import urljoin, urlsplit
 
 from bs4 import BeautifulSoup, NavigableString, Tag, Comment, Doctype
 
-ROOT = Path("/workspace/lockandlinen-site")
+ROOT = Path(__import__("os").environ.get("LL_SITE_ROOT", "/workspace/lockandlinen-site"))  # override for dry runs
 PUBLIC = ROOT / "site" / "public"
 I18N = ROOT / "site" / "_i18n"
 SITE_URL = "https://lockandlinen.com"

@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path
 from PIL import Image
 
-ROOT = Path("/workspace/lockandlinen-site")
+ROOT = Path(__import__("os").environ.get("LL_SITE_ROOT", "/workspace/lockandlinen-site"))  # override for dry runs
 PUBLIC = ROOT / "site" / "public"
 SITE_URL = "https://lockandlinen.com"
 # Shop module stays off until Lex/Elias greenlight live Amazon links.
