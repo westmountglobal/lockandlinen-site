@@ -824,6 +824,8 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
 .home-feature .fn-feature + .fn-feature { margin-top: 1.25rem; }
 .fn-banner + .fn-banner { margin-top: 1rem; }
 .fn-figure.fn-figure--portrait { max-width: 28rem; }
+.fn-concept-note { margin: 0 0 1.6rem; }
+.fn-concept-note p { margin: 0; padding: 0.85rem 1rem; border-left: 3px solid var(--lagoon); background: rgba(0,0,0,0.035); font-size: 0.98rem; }
 
 @media (max-width: 720px) {
   .fn-feature { grid-template-columns: 1fr; }

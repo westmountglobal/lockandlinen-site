@@ -1694,6 +1694,8 @@ body.ll-cookie-open { padding-bottom: var(--ll-cookie-banner-h, 9rem); }
 .home-feature .fn-feature + .fn-feature { margin-top: 1.25rem; }
 .fn-banner + .fn-banner { margin-top: 1rem; }
 .fn-figure.fn-figure--portrait { max-width: 28rem; }
+.fn-concept-note { margin: 0 0 1.6rem; }
+.fn-concept-note p { margin: 0; padding: 0.85rem 1rem; border-left: 3px solid var(--lagoon); background: rgba(0,0,0,0.035); font-size: 0.98rem; }
 
 @media (max-width: 720px) {
   .fn-feature { grid-template-columns: 1fr; }
@@ -2237,7 +2239,7 @@ def write_index():
 
   <section class="home-feature" aria-label="Field Notes">
     <div class="wrap">
-      <a class="fn-feature" href="field-notes/a-quiet-look-at-the-door/index.html">
+{dream_home_home_cards()}      <a class="fn-feature" href="field-notes/a-quiet-look-at-the-door/index.html">
         <div class="thumb">
           <img src="field-notes/a-quiet-look-at-the-door/hero.jpg" width="1600" height="900" alt="A softly lit entryway at dusk, with a closed off-white front door, a brass lamp on an oak console, and linen curtains." />
         </div>
@@ -2554,6 +2556,7 @@ def write_field_notes():
     write_field_notes_quiet_pantry()
     write_field_notes_quiet_sun()
     write_field_notes_quiet_look()
+    write_field_notes_dream_homes()
 
 
 def write_field_notes_index():
@@ -2577,7 +2580,7 @@ def write_field_notes_index():
         <p>Longer pieces on comfort that stays on, and the quiet objects that belong in these rooms. Written to be read through, with pictures.</p>
       </div>
       <div class="ideas-grid" style="margin-top:2rem;">
-        <a class="idea-card" href="a-quiet-look-at-the-door/index.html">
+{dream_home_index_cards()}        <a class="idea-card" href="a-quiet-look-at-the-door/index.html">
           <div class="thumb"><img src="a-quiet-look-at-the-door/hero.jpg" alt="A softly lit entryway at dusk, with a closed off-white front door, a brass lamp on an oak console, and linen curtains." /></div>
           <div class="body">
             <p class="eyebrow">Field Notes</p>
@@ -3988,6 +3991,130 @@ def patch_unlisted_cameras_fr():
     path.write_text(html)
 
 
+# ---------------------------------------------------------------- Dream Homes (AI concept homes)
+# Data lives in site/_content/field-notes/<slug>/meta.json (written from the marketing drafts by
+# /workspace/marketing/articles/dream-homes/_src/site_body.py). "listed": false keeps a page unlisted:
+# robots noindex,nofollow, no homepage / Field Notes cards; the FR twin (and the EN page) are also kept
+# out of sitemap.xml by UNLISTED_PAGES in i18n_fr.py. Go public with
+# /workspace/marketing/articles/dream-homes/flip_public.sh <slug>.
+DREAM_HOME_SLUGS = [
+    "a-house-at-the-end-of-a-lavender-field",
+    "a-bath-in-the-woods",
+    "one-roof-on-the-grassland",
+    "a-white-house-down-to-the-sea",
+    "a-house-around-a-courtyard",
+]
+DREAM_HOME_TAGLINE = "Dream Homes: an AI-generated concept home"
+DREAM_HOME_AI_NOTE = (
+    "This is an AI-generated concept home, not a real property, and it is not for sale or for rent. "
+    "The hero, social and in-body images on this page are AI-generated stills from our Dream Homes reel. "
+    "The products suggested are real Amazon listings; they are not items shown in the reel."
+)
+
+
+def dream_home_meta(slug: str) -> dict:
+    return json.loads((FIELD_NOTES_CONTENT / slug / "meta.json").read_text())
+
+
+def dream_homes_listed() -> list:
+    """Listed dream homes, newest first."""
+    metas = [dream_home_meta(s) for s in DREAM_HOME_SLUGS if (FIELD_NOTES_CONTENT / s / "meta.json").exists()]
+    return sorted([m for m in metas if m.get("listed")], key=lambda m: m["date"], reverse=True)
+
+
+def dream_home_home_cards() -> str:
+    out = []
+    for m in dream_homes_listed():
+        out.append(f"""      <a class="fn-feature" href="field-notes/{m['slug']}/index.html">
+        <div class="thumb">
+          <img src="field-notes/{m['slug']}/hero.jpg" width="1600" height="900" alt="{esc(m['hero_alt_en'])}" />
+        </div>
+        <div class="body">
+          <p class="eyebrow">Field Notes</p>
+          <h2>{esc(m['title_en'])}</h2>
+          <p>{esc(m['desc_en'])}</p>
+          <span class="btn-feature">Walk through the house</span>
+        </div>
+      </a>
+""")
+    return "".join(out)
+
+
+def dream_home_index_cards() -> str:
+    out = []
+    for m in dream_homes_listed():
+        out.append(f"""        <a class="idea-card" href="{m['slug']}/index.html">
+          <div class="thumb"><img src="{m['slug']}/hero.jpg" alt="{esc(m['hero_alt_en'])}" /></div>
+          <div class="body">
+            <p class="eyebrow">Field Notes</p>
+            <h3>{esc(m['title_en'])}</h3>
+            <p>{esc(m['desc_en'])}</p>
+          </div>
+        </a>
+""")
+    return "".join(out)
+
+
+def write_field_notes_dream_homes():
+    for slug in DREAM_HOME_SLUGS:
+        if (FIELD_NOTES_CONTENT / slug / "meta.json").exists():
+            write_field_notes_dream_home(slug)
+
+
+def write_field_notes_dream_home(slug: str):
+    m = dream_home_meta(slug)
+    prefix = "../../"
+    out = PUBLIC / "field-notes" / slug
+    out.mkdir(parents=True, exist_ok=True)
+    body = (FIELD_NOTES_CONTENT / slug / "body-en.html").read_text()
+    og = f"{SITE_URL}/field-notes/{slug}/social-en-1200x630.jpg"
+    robots = "" if m.get("listed") else '<meta name="robots" content="noindex,nofollow" />\n'
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+{head_meta(m['title_en'] + " \u2014 Lock & Linen", m['desc_en'], f"/field-notes/{slug}/", og)}
+{robots}{FAVICON.format(p=prefix)}<link rel="stylesheet" href="{prefix}css/site.css" />
+</head>
+<body>
+{header(prefix)}
+
+  <section class="hero fn-hero" aria-label="{esc(m['title_en'])}">
+    <img src="hero.jpg" width="1600" height="900" alt="{esc(m['hero_alt_en'])}" />
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="eyebrow">Field Notes</p>
+      <h1>{esc(m['title_en'])}</h1>
+      <p class="tagline">{DREAM_HOME_TAGLINE}</p>
+    </div>
+  </section>
+
+  <article class="fn-article">
+    <div class="wrap" data-native-fr="field-notes/{slug}/body-fr.html">
+{body}
+    </div>
+  </article>
+
+{footer(DREAM_HOME_AI_NOTE, prefix)}
+</body>
+</html>
+"""
+    (out / "index.html").write_text(html)
+
+
+def patch_dream_homes_fr():
+    """Point each FR dream-home page at its French social image."""
+    for slug in DREAM_HOME_SLUGS:
+        path = PUBLIC / "fr" / "field-notes" / slug / "index.html"
+        if not path.exists():
+            continue
+        html = path.read_text()
+        html = html.replace(
+            f"{SITE_URL}/field-notes/{slug}/social-en-1200x630.jpg",
+            f"{SITE_URL}/field-notes/{slug}/social-fr-1200x630.jpg",
+        )
+        path.write_text(html)
+
+
 def write_robots_and_sitemap():
     (PUBLIC / "robots.txt").write_text(
         f"""User-agent: *
@@ -4095,6 +4222,7 @@ def main():
     patch_unlisted_quiet_pantry_fr()
     patch_unlisted_solar_fr()
     patch_unlisted_cameras_fr()
+    patch_dream_homes_fr()
 
 
 if __name__ == "__main__":

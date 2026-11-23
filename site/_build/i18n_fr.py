@@ -38,7 +38,14 @@ TRANSLATABLE_ATTRS = ("alt", "title", "aria-label", "placeholder", "data-label")
 META_KEYS = {"description", "og:title", "og:description", "twitter:title", "twitter:description", "og:image:alt"}
 NOINDEX_REDIRECTS = {"gear/index.html"}
 # Built and translated, but kept out of sitemap.xml (preview / unlisted pages).
-UNLISTED_PAGES = set()  # no unlisted Field Notes previews at the moment
+UNLISTED_PAGES = {
+    "field-notes/a-house-at-the-end-of-a-lavender-field/index.html",  # dream-home unlisted
+    "field-notes/a-bath-in-the-woods/index.html",  # dream-home unlisted
+    "field-notes/one-roof-on-the-grassland/index.html",  # dream-home unlisted
+    "field-notes/a-white-house-down-to-the-sea/index.html",  # dream-home unlisted
+    "field-notes/a-house-around-a-courtyard/index.html",  # dream-home unlisted
+}
+CONTENT = ROOT / "site" / "_content"
 
 
 def en_pages() -> list[Path]:
@@ -476,6 +483,8 @@ def main(extract: bool = False):
             soup = BeautifulSoup(strip_i18n(p.read_text()), "html.parser")
             for div in soup.select('.fr-summary[lang="fr"]'):
                 div.decompose()
+            for el in soup.select("[data-native-fr]"):
+                el.clear()  # native French body, not translated unit by unit
             for k in collect_units(soup):
                 all_keys.setdefault(k, rel)
         miss = {k: v for k, v in all_keys.items() if k not in fr}
@@ -506,7 +515,18 @@ def main(extract: bool = False):
         soup = BeautifulSoup(src, "html.parser")
         for div in soup.select('.fr-summary[lang="fr"]'):
             div.decompose()  # the whole FR page is French; the short EN-page summary is redundant
+        # Pages with a native French body (data-native-fr="<path under site/_content>"):
+        # skip translating that block and drop in the hand-written French HTML instead.
+        native = []
+        for el in soup.select("[data-native-fr]"):
+            native.append((el, el["data-native-fr"]))
+            del el["data-native-fr"]
+            el.clear()
         translate_soup(soup, fr, missing)
+        for el, src_rel in native:
+            frag = BeautifulSoup("\n" + (CONTENT / src_rel).read_text() + "    ", "html.parser")
+            for n in list(frag.contents):
+                el.append(n)
         rewrite_urls(soup, rel, page_map)
         soup.html["lang"] = FR_LANG
         canon = soup.find("link", rel="canonical")
@@ -518,7 +538,7 @@ def main(extract: bool = False):
         fr_html = inject_switch(fr_html, lang_switch_html(en_clean, fr_path(en_clean), "fr"))
         out.write_text(fr_html)
         # ---- English page: add hreflang + switch + lang router
-        en_html = inject_head(src, hreflang_html(en_clean) + LANG_SCRIPT)
+        en_html = inject_head(re.sub(r' data-native-fr="[^"]*"', "", src), hreflang_html(en_clean) + LANG_SCRIPT)
         en_html = inject_switch(en_html, lang_switch_html(en_clean, fr_path(en_clean), "en"))
         p.write_text(en_html)
         count += 1
