@@ -1454,7 +1454,6 @@
  "{0}Plug-in, indoor or outdoor{/0} {1} {2} {/1}": "{0}Branchée, intérieur ou extérieur{/0} {1} {2} {/1}",
  "{0}Solar, outdoor{/0} {1} {2} {/1}": "{0}Solaire, extérieur{/0} {1} {2} {/1}",
  "Dream Homes: an AI-generated concept home": "Maisons de rêve : une maison concept générée par IA",
- "Walk through the house": "Visiter la maison",
  "{0}AI disclosure:{/0} This is an AI-generated concept home, not a real property, and it is not for sale or for rent. The hero, social and in-body images on this page are AI-generated stills from our Dream Homes reel. The products suggested are real Amazon listings; they are not items shown in the reel.": "{0}Contenu généré par l’IA :{/0} Il s’agit d’une maison concept générée par IA, pas d’une vraie propriété, et elle n’est ni à vendre ni à louer. L’image principale, les images sociales et les images dans le texte de cette page sont des images fixes générées par IA, tirées de notre vidéo Maisons de rêve. Les produits suggérés sont de vraies offres Amazon; ils n’apparaissent pas dans la vidéo.",
  "This is an AI-generated concept home, not a real property, and it is not for sale or for rent. The hero, social and in-body images on this page are AI-generated stills from our Dream Homes reel. The products suggested are real Amazon listings; they are not items shown in the reel.": "Il s’agit d’une maison concept générée par IA, pas d’une vraie propriété, et elle n’est ni à vendre ni à louer. L’image principale, les images sociales et les images dans le texte de cette page sont des images fixes générées par IA, tirées de notre vidéo Maisons de rêve. Les produits suggérés sont de vraies offres Amazon; ils n’apparaissent pas dans la vidéo.",
  "A Bath in the Woods, and the House Built Around It": "Un bain en forêt, et la maison bâtie autour",
@@ -1476,5 +1475,6 @@
  "One Roof on the Grassland, and the Whole Sky for a Yard": "Un seul toit dans la savane, et tout le ciel pour cour",
  "One Roof on the Grassland, and the Whole Sky for a Yard — Lock & Linen": "Un seul toit dans la savane, et tout le ciel pour cour — Lock & Linen",
  "A long, low rammed-earth house alone on the East African savanna, with a deep veranda and a green inner courtyard. An AI concept home.": "Une longue maison de pisé seule dans la savane d’Afrique de l’Est, avec une grande galerie et une cour verte. Une maison concept créée par IA.",
- "A long, low rammed-earth house with a deep veranda in tall golden grass under a huge sky, with acacias.": "Une longue maison basse en pisé avec une grande galerie, dans les hautes herbes dorées sous un ciel immense, entourée d’acacias."
+ "A long, low rammed-earth house with a deep veranda in tall golden grass under a huge sky, with acacias.": "Une longue maison basse en pisé avec une grande galerie, dans les hautes herbes dorées sous un ciel immense, entourée d’acacias.",
+ "{0}Walk through the house{/0}": "{0}Visiter la maison{/0}"
 }
