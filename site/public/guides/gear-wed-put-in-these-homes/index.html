@@ -118,6 +118,86 @@
   @media (max-width: 640px) {
     .gear-tabs a { font-size: 0.68rem; padding: 0.44rem 0.72rem; }
   }
+  /* ll-gear-fn-css-start */
+  .gear-fn-extra {
+    margin: 3rem 0 2rem;
+  }
+  .gear-fn-extra .gear-section {
+    max-width: 70ch;
+    margin: 2.4rem 0 0.8rem;
+  }
+  .gear-fn-extra .gear-section h2 {
+    font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0.15rem 0 0.3rem;
+  }
+  .gear-fn-extra .gear-section p,
+  .fn-post-list,
+  .blackout-checklist,
+  .fn-already {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  .fn-post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.4rem 0 0;
+    max-width: 70ch;
+  }
+  .fn-post-list li {
+    margin: 0.35rem 0;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .fn-post-list a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .fn-post-list a:hover { border-bottom-color: var(--ink); }
+  .fn-already {
+    margin: 0.6rem 0 1rem;
+    max-width: 70ch;
+  }
+  .blackout-checklist {
+    max-width: 70ch;
+    color: var(--ink);
+  }
+  .blackout-checklist h3 {
+    font-size: 1.08rem;
+    font-weight: 500;
+    margin: 1.6rem 0 0.35rem;
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+  .blackout-checklist ul {
+    margin: 0.2rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .blackout-checklist li {
+    margin: 0.4rem 0;
+    color: var(--ink);
+  }
+  .blackout-checklist .safety {
+    color: var(--ink);
+  }
+  .blackout-checklist a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .blackout-checklist a:hover { border-bottom-color: var(--ink); }
+  .gear-fn-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 1rem;
+    margin: 0.8rem 0 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+  }
+  .gear-fn-toc a { color: var(--ink); }
+  /* ll-gear-fn-css-end */
 </style>
 </head>
 <body>
@@ -193,7 +273,7 @@
         <p>Quiet ways to set a phone down for the evening — no performance claims, just the look of a calmer room.</p>
       </div>
       <div class="shop-grid">
-        <article class="product">
+        <article class="product" id="gear-B09BGTVBKG">
           <span class="ph-badge">Faraday pouch</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B09BGTVBKG?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/81dB0DIKV+L._AC_SL1471_.jpg" alt="Mission Darkness non-window Faraday phone bag, two-pack" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -205,7 +285,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B09BGTVBKG?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B07GXZM5PM">
           <span class="ph-badge">Leather sleeve</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B07GXZM5PM?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/41WzxFgYTiL._AC_SL1000_.jpg" alt="SLNT leather Faraday phone sleeve in medium, black" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -226,7 +306,7 @@
         <p>Clear film and soft drapery inspired by the glass in these concept homes — similar products, not the exact rooms.</p>
       </div>
       <div class="shop-grid">
-        <article class="product">
+        <article class="product" id="gear-B00PR0W5ZQ">
           <span class="ph-badge">Window film</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B00PR0W5ZQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/91ws31QbJFL._AC_SL1500_.jpg" alt="BDF S8MC 8 mil clear window security film, 36 by 49 inches" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -238,7 +318,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B00PR0W5ZQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B07R5FC3K1">
           <span class="ph-badge">Blackout drapes</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B07R5FC3K1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/71eEt6XAQPL._AC_SL1500_.jpg" alt="NICETOWN biscotti beige blackout curtain panels, 52 by 95 inches, set of two" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -250,7 +330,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B07R5FC3K1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B00BAFIQF0">
           <span class="ph-badge">Track lock</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B00BAFIQF0?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/71bRtrW8lBL._AC_SL1500_.jpg" alt="Prime-Line sliding window security lock, an aluminum thumb-screw clamp, pack of four" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -262,7 +342,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B00BAFIQF0?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B000P0SHTQ">
           <span class="ph-badge">Flip lock</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B000P0SHTQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/61BiTnQYnVL._AC_SL1500_.jpg" alt="Prime-Line U 9929 window flip lock in antique brass, two-pack" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -274,7 +354,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B000P0SHTQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B00RDVE2L2">
           <span class="ph-badge">Privacy film</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B00RDVE2L2?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/81ODG9ldiIL._AC_SL1500_.jpg" alt="rabbitgoo frosted glass privacy film, static-cling roll" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -296,7 +376,7 @@
         <p>A small shelf of quiet backup power and light, ready if the grid goes dark for a while. <a href="../../field-notes/when-the-grid-goes-dark/index.html">Read the power guide</a>.</p>
       </div>
       <div class="shop-grid">
-        <article class="product">
+        <article class="product" id="gear-B0GMRFYVZ9">
           <span class="ph-badge">Power bank</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0GMRFYVZ9?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/61ZZw2GRDVL._AC_SL1500_.jpg" alt="Twelve South PowerCapsule 10,000 mAh power bank in Dune" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -308,7 +388,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0GMRFYVZ9?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0G53Z8RD1">
           <span class="ph-badge">Weather radio</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0G53Z8RD1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/71K5FLRT4CL._AC_SL1500_.jpg" alt="FosPower NOAA emergency weather radio A1 with crank and solar panel" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -320,7 +400,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0G53Z8RD1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0GKGFWY69">
           <span class="ph-badge">Power station</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0GKGFWY69?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/81qxI84VesL._AC_SL1500_.jpg" alt="DaranEner portable power station in a compact grey case" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -332,7 +412,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0GKGFWY69?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B07BMJPH8L">
           <span class="ph-badge">Solar lantern</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B07BMJPH8L?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/41p6YZxaahL._AC_SL1000_.jpg" alt="Goal Zero Crush Light Chroma collapsible solar lantern" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -344,7 +424,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B07BMJPH8L?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0F66NH2ZX">
           <span class="ph-badge">Everyday carry</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0F66NH2ZX?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/217wCCtq3QL._AC_UL1500_.jpg" alt="Anker Prime Power Bank, 20,100 mAh, 220 W, in silver and black with a digital display" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -356,7 +436,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0F66NH2ZX?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0F66LNB8D">
           <span class="ph-badge">Everyday carry</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0F66LNB8D?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/31PvsmoVUfL._AC_UL1500_.jpg" alt="Anker Prime Power Bank, 26,250 mAh, 300 W, in silver and black with a digital display" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -368,7 +448,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0F66LNB8D?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0D7PPG25F">
           <span class="ph-badge">Home backup</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0D7PPG25F?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/31+D1tNXreL._AC_UL1500_.jpg" alt="Jackery Explorer 1000 v2 portable power station in black and orange with a handle and AC outlets" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -380,7 +460,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0D7PPG25F?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0DFG2WDQH">
           <span class="ph-badge">Home backup</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0DFG2WDQH?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/41-aYRSzjEL._AC_UL1500_.jpg" alt="Jackery Explorer 2000 v2 portable power station in black and orange with a handle and AC outlets" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -392,7 +472,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0DFG2WDQH?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0DCC2BVFW">
           <span class="ph-badge">Home backup</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0DCC2BVFW?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/61bW3qrsEbL._AC_SL1500_.jpg" alt="EcoFlow DELTA 3 Plus home-backup power station, silver case with a front display and AC outlets" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -404,7 +484,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0DCC2BVFW?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0FVFGL38H">
           <span class="ph-badge">Home backup</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0FVFGL38H?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/41iJKYxROtL._AC_UL1500_.jpg" alt="Anker SOLIX C2000 Gen 2 portable power station in grey and black with a front display and AC outlets" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -426,7 +506,7 @@
         <p>Simple door hardware and alerts — no monthly fees, no lock-picking tools, nothing theatrical.</p>
       </div>
       <div class="shop-grid">
-        <article class="product">
+        <article class="product" id="gear-B00186URTY">
           <span class="ph-badge">Portable lock</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B00186URTY?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/71coaNix4cL._AC_SL1500_.jpg" alt="Addalock portable door latch lock for inward-swinging doors" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -438,7 +518,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B00186URTY?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B002BQ4VBU">
           <span class="ph-badge">Door bar</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B002BQ4VBU?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/51FWoCaY1HL._AC_SL1500_.jpg" alt="Buddybar steel door security bar for inward-swinging doors" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -450,7 +530,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B002BQ4VBU?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0CD7NT4Y9">
           <span class="ph-badge">Video doorbell</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0CD7NT4Y9?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/71QyIxfvwgL._AC_SL1500_.jpg" alt="eufy Security Video Doorbell E340 with dual cameras and local storage" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -462,7 +542,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0CD7NT4Y9?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0CYYZ6WRW">
           <span class="ph-badge">Smart lock</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0CYYZ6WRW?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/71FST35LxpL._AC_SL1500_.jpg" alt="eufy Security Smart Lock C220 fingerprint keyless deadbolt" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -474,7 +554,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0CYYZ6WRW?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B00178HMCI">
           <span class="ph-badge">Door &amp; window sensors</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B00178HMCI?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/713mRL8qmxL._AC_SL1500_.jpg" alt="UltraPro personal security window and door alarm, two-pack" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -486,7 +566,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B00178HMCI?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B00M30SQGA">
           <span class="ph-badge">Wedge alarm</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B00M30SQGA?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/61HQzV1nC-L._AC_SL1500_.jpg" alt="SABRE wedge door stop alarm, a black floor wedge with a built-in siren" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -508,7 +588,7 @@
         <p>Warm light, washed flax, and wool — the soft layer that makes a fortified room still feel like a home.</p>
       </div>
       <div class="shop-grid">
-        <article class="product">
+        <article class="product" id="gear-B0GFDJ4X22">
           <span class="ph-badge">Cordless lamp</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0GFDJ4X22?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/61vfu8cgFnL._AC_SL1024_.jpg" alt="Puzipha cordless table lamp with wood base and linen shade" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -520,7 +600,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0GFDJ4X22?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0FK5BJZKM">
           <span class="ph-badge">Cordless lamp</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0FK5BJZKM?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/71qAuAp7hWL._AC_SL1500_.jpg" alt="EZVALO cordless table lamp with wood-grain base and fabric shade" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -532,7 +612,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0FK5BJZKM?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0D46PQT2C">
           <span class="ph-badge">Lantern</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0D46PQT2C?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/61RGPrIrQhL._AC_SL1500_.jpg" alt="Barebones Edison Light Stick lantern in brass with leather strap" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -544,7 +624,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0D46PQT2C?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B000BS05XS">
           <span class="ph-badge">Candle lantern</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B000BS05XS?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/61V-aWwc-BL._AC_SL1500_.jpg" alt="UCO original collapsible candle lantern value pack with four candles and a bag" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -556,7 +636,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B000BS05XS?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B09S24TQVP">
           <span class="ph-badge">Flameless candles</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B09S24TQVP?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/51XwXIQtSGL._AC_SL1500_.jpg" alt="Luminara ivory flameless wax pillars, set of three" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -568,7 +648,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B09S24TQVP?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B0D6BN7RQQ">
           <span class="ph-badge">Nightstand</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B0D6BN7RQQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/71yhzQBRjLL._AC_SL1500_.jpg" alt="runjuly wooden nightstand with built-in charging" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -580,7 +660,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0D6BN7RQQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B08ZBWCTCK">
           <span class="ph-badge">Linen sheets</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B08ZBWCTCK?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/61yWCpO-2BL._AC_SL1000_.jpg" alt="Simple and Opulence 100 percent linen four-piece sheet set in natural flax" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -592,7 +672,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B08ZBWCTCK?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B00I3N0M40">
           <span class="ph-badge">Wool throw</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B00I3N0M40?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/81XYjlPGMKL._AC_SL1500_.jpg" alt="Pendleton Eco-Wise 100 percent wool throw blanket with fringe, 54 by 60 inches" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -604,7 +684,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B00I3N0M40?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B09BYXV2FR">
           <span class="ph-badge">Soft furnishings</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B09BYXV2FR?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/61ZZP3e7QBL._AC_SL1001_.jpg" alt="LLB ivory sheepskin area rug approximately two by six feet" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -625,7 +705,7 @@
         <p>A quiet pantry shelf: drinking water, a compact kit, and a box for the papers you would want after a fire or a flood.</p>
       </div>
       <div class="shop-grid">
-        <article class="product">
+        <article class="product" id="gear-B006QF3TW4">
           <span class="ph-badge">Water filter</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B006QF3TW4?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/610MT9qiRyL._SL1500_.jpg" alt="LifeStraw personal water filter in blue" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -637,7 +717,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B006QF3TW4?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B06XVJDYSF">
           <span class="ph-badge">First aid</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B06XVJDYSF?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/81eu-EJdSmL._AC_SL1500_.jpg" alt="Swiss Safe 200-piece first aid kit in a compact case" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -649,7 +729,7 @@
             <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B06XVJDYSF?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
           </div>
         </article>
-        <article class="product">
+        <article class="product" id="gear-B00KOO599O">
           <span class="ph-badge">Document safe</span>
           <a class="ph-img" href="https://www.amazon.com/dp/B00KOO599O?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
             <img src="https://m.media-amazon.com/images/I/91wwgIO6pzL._AC_SL1500_.jpg" alt="SentrySafe fireproof and waterproof document lock box with key lock and carrying handles" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
@@ -666,6 +746,519 @@
     </div>
   </section>
 
+<!--ll-gear-fn-start-->
+  <section class="gear-fn-extra" id="from-field-notes-and-checklist" data-generated="field-notes-gear">
+    <div class="wrap">
+      <p class="section-label">Further down this page</p>
+      <p class="gear-fn-toc">
+        <a href="#field-notes-posts">Field Notes posts</a>
+        <a href="#from-field-notes">Products from Field Notes</a>
+        <a href="#blackout-checklist">Prolonged-blackout checklist</a>
+      </p>
+    </div>
+    <div class="wrap" id="field-notes-posts">
+      <div class="gear-section">
+        <p class="section-label">Field Notes</p>
+        <h2>Field Notes posts so far</h2>
+        <p>Every Field Notes piece that is public now, newest first.</p>
+      </div>
+      <ul class="fn-post-list">
+        <li><a href="/field-notes/one-roof-on-the-grassland/">One Roof on the Grassland, and the Whole Sky for a Yard</a></li>
+        <li><a href="/field-notes/a-bath-in-the-woods/">A Bath in the Woods, and the House Built Around It</a></li>
+        <li><a href="/field-notes/a-house-at-the-end-of-a-lavender-field/">A House at the End of a Lavender Field</a></li>
+        <li><a href="/field-notes/a-quiet-look-at-the-door/">A Quiet Look at the Door</a></li>
+        <li><a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a></li>
+        <li><a href="/field-notes/the-quiet-pantry/">The Quiet Pantry</a></li>
+        <li><a href="/field-notes/a-door-you-dont-own/">A Door You Don't Own</a></li>
+        <li><a href="/field-notes/water-filtration-guide/">What's in the Glass</a></li>
+        <li><a href="/field-notes/closed-up-for-the-evening/">Closed Up for the Evening</a></li>
+        <li><a href="/field-notes/when-the-grid-goes-dark/">When the Grid Goes Dark</a></li>
+      </ul>
+    </div>
+    <div class="wrap" id="from-field-notes">
+      <div class="gear-section">
+        <p class="section-label">From Field Notes</p>
+        <h2>Products from Field Notes</h2>
+        <p>Pieces we have written about in the public Field Notes, grouped by article. Items already in the showcase above are pointed to rather than repeated. When the same piece appears in more than one note, it is shown once.</p>
+      </div>
+      <div class="gear-section" id="fn-products-one-roof-on-the-grassland">
+        <p class="section-label">One Roof on the Grassland, and the Whole Sky for a Yard</p>
+        <h2><a href="/field-notes/one-roof-on-the-grassland/">One Roof on the Grassland, and the Whole Sky for a Yard</a></h2>
+      </div>
+      <div class="shop-grid">
+        <article class="product" id="gear-B08SLBQK7S">
+          <span class="ph-badge">Clay jug</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B08SLBQK7S?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/71Vmbf3E24L._AC_SL1500_.jpg" alt="Hakan Anadolu unglazed terracotta water pitcher, 1.5 qt" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Hakan Anadolu unglazed terracotta water pitcher, 1.5 qt</h3>
+            <p>A handmade clay jug from Cappadocia, Turkey, with a stopper and a small saucer.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/one-roof-on-the-grassland/">One Roof on the Grassland, and the Whole Sky for a Yard</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B08SLBQK7S?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0CKRDJC26">
+          <span class="ph-badge">Daybed cushions</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0CKRDJC26?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/818SAg-2nxL._AC_SL1500_.jpg" alt="Foindtower ramie-and-cotton pillow covers, 20 × 20 in, natural beige" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Foindtower ramie-and-cotton pillow covers, 20 × 20 in, natural beige</h3>
+            <p>Ramie and cotton covers with a flange edge, the colour of dry grass; inserts not included.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/one-roof-on-the-grassland/">One Roof on the Grassland, and the Whole Sky for a Yard</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0CKRDJC26?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0B74SR4VQ">
+          <span class="ph-badge">Woven rug</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0B74SR4VQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/81gb8sQf4TL._AC_SL1500_.jpg" alt="Scandilivin hand-woven jute and cotton rug, 8 × 10 ft" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Scandilivin hand-woven jute and cotton rug, 8 × 10 ft</h3>
+            <p>Sixty percent jute and forty percent cotton, hand-woven in India; the listing recommends a rug pad.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/one-roof-on-the-grassland/">One Roof on the Grassland, and the Whole Sky for a Yard</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0B74SR4VQ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+      </div>
+      <div class="gear-section" id="fn-products-a-bath-in-the-woods">
+        <p class="section-label">A Bath in the Woods, and the House Built Around It</p>
+        <h2><a href="/field-notes/a-bath-in-the-woods/">A Bath in the Woods, and the House Built Around It</a></h2>
+      </div>
+      <div class="shop-grid">
+        <article class="product" id="gear-B00GQFW54C">
+          <span class="ph-badge">Bath stool</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B00GQFW54C?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61jsp+Qzy3L._AC_SL1500_.jpg" alt="IPPINKA square hinoki bath stool, made in Japan" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>IPPINKA square hinoki bath stool, made in Japan</h3>
+            <p>A low stool of Japanese cypress for washing before the soak, the way a Japanese bath is used.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-bath-in-the-woods/">A Bath in the Woods, and the House Built Around It</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B00GQFW54C?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0CQ7RH7X1">
+          <span class="ph-badge">Paper light</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0CQ7RH7X1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/51fjLIhSvdL._AC_SL1500_.jpg" alt="LianHeng rice paper floor lamp" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>LianHeng rice paper floor lamp</h3>
+            <p>A tall oval rice-paper shade on a slim metal frame, with a foot switch; bulbs not included.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-bath-in-the-woods/">A Bath in the Woods, and the House Built Around It</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0CQ7RH7X1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+      </div>
+      <div class="gear-section" id="fn-products-a-house-at-the-end-of-a-lavender-field">
+        <p class="section-label">A House at the End of a Lavender Field</p>
+        <h2><a href="/field-notes/a-house-at-the-end-of-a-lavender-field/">A House at the End of a Lavender Field</a></h2>
+      </div>
+      <div class="shop-grid">
+        <article class="product" id="gear-B09HZM2L7K">
+          <span class="ph-badge">Table linen</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B09HZM2L7K?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/81Vt-U1LpwL._AC_SL1500_.jpg" alt="EVERLY pure linen rectangle tablecloth, 60 × 120 in" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>EVERLY pure linen rectangle tablecloth, 60 × 120 in</h3>
+            <p>Flax linen in a natural tone; the listing sizes it for a 6-foot table seating 10 to 12.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-house-at-the-end-of-a-lavender-field/">A House at the End of a Lavender Field</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B09HZM2L7K?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0B2YYH3V1">
+          <span class="ph-badge">Candlelight</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0B2YYH3V1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/51N-gv8vtwL._AC_SL1500_.jpg" alt="CYS EXCEL footed glass hurricane candle holder, 8 in" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>CYS EXCEL footed glass hurricane candle holder, 8 in</h3>
+            <p>Hand-blown clear glass on a short stem, for a pillar candle on an outdoor table.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-house-at-the-end-of-a-lavender-field/">A House at the End of a Lavender Field</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0B2YYH3V1?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0F6YKFFG9">
+          <span class="ph-badge">Pergola lights</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0F6YKFFG9?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/71aSG75ae8L._AC_SL1500_.jpg" alt="Brightown 100 ft outdoor string lights, ST38 LED bulbs" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Brightown 100 ft outdoor string lights, ST38 LED bulbs</h3>
+            <p>Warm Edison-style bulbs on an outdoor-rated, dimmable string; the listing states IP65 and UL.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-house-at-the-end-of-a-lavender-field/">A House at the End of a Lavender Field</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0F6YKFFG9?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+      </div>
+      <div class="gear-section" id="fn-products-a-quiet-look-at-the-door">
+        <p class="section-label">A Quiet Look at the Door</p>
+        <h2><a href="/field-notes/a-quiet-look-at-the-door/">A Quiet Look at the Door</a></h2>
+      </div>
+      <div class="shop-grid">
+        <article class="product" id="gear-B0CJ9YX7DG">
+          <span class="ph-badge">Plug-in, indoor or outdoor</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0CJ9YX7DG?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/51IxtP5Y51L._AC_SL1500_.jpg" alt="Wyze Cam v4" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Wyze Cam v4</h3>
+            <p>A plug-in 2.5K camera the listing rates IP65 for indoor or outdoor use, with an operating range of −4 °F to 113 °F (−20 °C to 45 °C). Local recording uses a microSD card, sold separately.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-quiet-look-at-the-door/">A Quiet Look at the Door</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0CJ9YX7DG?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0FN7DLWGF">
+          <span class="ph-badge">Indoor, wired</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0FN7DLWGF?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/51br14zw1FL._AC_SL1500_.jpg" alt="Google Nest Cam Indoor (wired, 3rd gen)" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Google Nest Cam Indoor (wired, 3rd gen)</h3>
+            <p>A wired indoor camera. The listing states 2K HDR video, night vision, and two-way audio. Some of the listing’s extra alerts require a Google Home Premium subscription.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-quiet-look-at-the-door/">A Quiet Look at the Door</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0FN7DLWGF?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0BZ55JZ4S">
+          <span class="ph-badge">Solar, outdoor</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0BZ55JZ4S?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/71oSxJycVlL._AC_SL1500_.jpg" alt="eufy SoloCam S220" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>eufy SoloCam S220</h3>
+            <p>A wire-free outdoor camera with a solar panel. The listing states 2K video, 8 GB of built-in local storage, and no monthly fee. The “three hours of sunlight” figure is the maker’s, not a winter promise.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-quiet-look-at-the-door/">A Quiet Look at the Door</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0BZ55JZ4S?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+      </div>
+      <div class="gear-section" id="fn-products-a-quiet-share-of-the-sun">
+        <p class="section-label">A Quiet Share of the Sun</p>
+        <h2><a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a></h2>
+      </div>
+      <div class="shop-grid">
+        <article class="product" id="gear-B07CSKFWK7">
+          <span class="ph-badge">Site: snow and tilt</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B07CSKFWK7?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/51cZdoLXDvL._AC_SL1500_.jpg" alt="Renogy 28-inch adjustable tilt-mount brackets" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Renogy 28-inch adjustable tilt-mount brackets</h3>
+            <p>Adjustable tilt brackets the listing says fit Renogy 100 W N-type panels on a flat surface, so a stationary array can be set at a chosen angle.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B07CSKFWK7?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0B8MXPRDB">
+          <span class="ph-badge">Backup / Portable</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0B8MXPRDB?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/51awsbDJNgL._AC_SL1500_.jpg" alt="EcoFlow RIVER 2 portable power station" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>EcoFlow RIVER 2 portable power station</h3>
+            <p>A 256 Wh portable station. The listing describes LFP (LiFePO4) cells and a BMS that monitors temperature. EcoFlow’s published specs for this model state charging between 0 °C and 45 °C (32 °F and 113 °F).</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0B8MXPRDB?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B07GF5JY35">
+          <span class="ph-badge">Cabin or RV</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B07GF5JY35?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61GBnIRbvdL._AC_SL1500_.jpg" alt="Renogy 100W N-Type monocrystalline panel" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Renogy 100W N-Type monocrystalline panel</h3>
+            <p>A rigid 100 W monocrystalline (N-type) panel for a 12 V cabin or RV array, with pre-drilled mounting holes. It is a single panel, not a complete kit.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B07GF5JY35?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B079JTMR95">
+          <span class="ph-badge">Cabin or RV</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B079JTMR95?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61loxDN6D2L._AC_SL1500_.jpg" alt="Renogy Rover 20A MPPT charge controller" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Renogy Rover 20A MPPT charge controller</h3>
+            <p>A 20 A MPPT controller for 12 V or 24 V banks. The listing says lead-acid types are auto-detected and lithium is a manual setting.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B079JTMR95?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0D8377KV3">
+          <span class="ph-badge">Balcony or portable</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0D8377KV3?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/81DH1RdhimL._SL1500_.jpg" alt="Jackery SolarSaga 200W portable panel" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Jackery SolarSaga 200W portable panel</h3>
+            <p>A folding 200 W panel meant to charge a portable station, not a household outlet. The listing states an operating range of −4 °F to 149 °F (−20 °C to 65 °C).</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0D8377KV3?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0BJDH4VCR">
+          <span class="ph-badge">Flexible</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0BJDH4VCR?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61ywCN4pJFL._AC_SL1500_.jpg" alt="BougeRV Yuma 100W CIGS flexible panel" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>BougeRV Yuma 100W CIGS flexible panel</h3>
+            <p>A flexible 100 W CIGS thin-film panel with pre-punched holes, for an irregular or weight-limited surface, as the listing describes.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0BJDH4VCR?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+      </div>
+      <div class="gear-section" id="fn-products-the-quiet-pantry">
+        <p class="section-label">The Quiet Pantry</p>
+        <h2><a href="/field-notes/the-quiet-pantry/">The Quiet Pantry</a></h2>
+      </div>
+      <div class="shop-grid">
+        <article class="product" id="gear-B004DB7XCA">
+          <span class="ph-badge">Rotation</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B004DB7XCA?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/81HMFwaPYlL._AC_SL1500_.jpg" alt="FIFO Can Tracker, 54 cans" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>FIFO Can Tracker, 54 cans</h3>
+            <p>A gravity rack for up to 54 cans: load at the top, take the oldest from the bottom.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/the-quiet-pantry/">The Quiet Pantry</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B004DB7XCA?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B07Y9W3PBT">
+          <span class="ph-badge">Rotation</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B07Y9W3PBT?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61PmLtOFcjL._AC_SL1500_.jpg" alt="Yoget removable food labels, 300" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Yoget removable food labels, 300</h3>
+            <p>Two rolls of 1 × 3 inch write-on labels with Date and Contents lines.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/the-quiet-pantry/">The Quiet Pantry</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B07Y9W3PBT?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0HB5XCNCS">
+          <span class="ph-badge">Everyday shelf</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0HB5XCNCS?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/713QJMtFkYL._AC_SL1500_.jpg" alt="OXO Good Grips 2-piece POP container set" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>OXO Good Grips 2-piece POP container set</h3>
+            <p>Two 4.4 qt push-button containers sized for 5 lb bags of flour or sugar.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/the-quiet-pantry/">The Quiet Pantry</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0HB5XCNCS?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B09CCL3BNN">
+          <span class="ph-badge">Long-term storage</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B09CCL3BNN?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/71tkQxXP4LL._AC_SL1500_.jpg" alt="Wallaby 1-gallon Mylar bags with oxygen absorbers, 30-pack" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Wallaby 1-gallon Mylar bags with oxygen absorbers, 30-pack</h3>
+            <p>30 heat-sealable 1-gallon bags, 30 oxygen absorbers (400cc each) and 30 labels.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/the-quiet-pantry/">The Quiet Pantry</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B09CCL3BNN?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0DZ7SNZ2P">
+          <span class="ph-badge">Long-term storage</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0DZ7SNZ2P?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/81TKqAT6idL._AC_SL1500_.jpg" alt="United Solutions 5-gallon buckets with lids, 6-pack, black" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>United Solutions 5-gallon buckets with lids, 6-pack, black</h3>
+            <p>Six black 5-gallon buckets with snap-on lids, listed as food-grade and BPA-free.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/the-quiet-pantry/">The Quiet Pantry</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0DZ7SNZ2P?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B007KAZ1W0">
+          <span class="ph-badge">Long-term storage</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B007KAZ1W0?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/615Z6AdjTUL._AC_SL1500_.jpg" alt="Gamma2 Gamma Seal lid, red" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Gamma2 Gamma Seal lid, red</h3>
+            <p>A two-part screw-on lid listed to fit standard 3.5 to 7 gallon buckets.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/the-quiet-pantry/">The Quiet Pantry</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B007KAZ1W0?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+      </div>
+      <div class="gear-section" id="fn-products-a-door-you-dont-own">
+        <p class="section-label">A Door You Don't Own</p>
+        <h2><a href="/field-notes/a-door-you-dont-own/">A Door You Don't Own</a></h2>
+      </div>
+      <p class="fn-already">Already in the showcase above : <a href="#gear-B00186URTY">Addalock portable door lock</a>, <a href="#gear-B002BQ4VBU">Buddybar Door Jammer</a>, <a href="#gear-B00178HMCI">UltraPro window and door alarm</a>.</p>
+      <div class="gear-section" id="fn-products-water-filtration-guide">
+        <p class="section-label">What's in the Glass</p>
+        <h2><a href="/field-notes/water-filtration-guide/">What's in the Glass</a></h2>
+      </div>
+      <div class="shop-grid">
+        <article class="product" id="gear-B01N30IDMJ">
+          <span class="ph-badge">Replacement filter</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B01N30IDMJ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/71Aj5xDZ3QL._AC_SL1500_.jpg" alt="Brita Elite replacement filter" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Brita Elite replacement filter</h3>
+            <p>The Elite (OB06) pitcher filter, rated for 120 gallons.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/water-filtration-guide/">What's in the Glass</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B01N30IDMJ?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0FN9Y9JSP">
+          <span class="ph-badge">Under-sink filter</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0FN9Y9JSP?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/71bM4ngsaqL._AC_SL1500_.jpg" alt="Aquasana Claryum 3-Stage Max Flow" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Aquasana Claryum 3-Stage Max Flow</h3>
+            <p>Under-sink system with its own faucet, in brushed nickel.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/water-filtration-guide/">What's in the Glass</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0FN9Y9JSP?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B01LB0L6MS">
+          <span class="ph-badge">Replacement filters</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B01LB0L6MS?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/8173jbY2-VL._AC_SL1500_.jpg" alt="Aquasana Claryum 3-Stage replacement filters" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Aquasana Claryum 3-Stage replacement filters</h3>
+            <p>The genuine replacement set for the AQ-6300M.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/water-filtration-guide/">What's in the Glass</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B01LB0L6MS?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0987FCQQW">
+          <span class="ph-badge">Under-sink reverse osmosis</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0987FCQQW?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61JIdYrO0WL._AC_SL1500_.jpg" alt="Waterdrop G3P800" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>Waterdrop G3P800</h3>
+            <p>A tankless under-sink reverse-osmosis system.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/water-filtration-guide/">What's in the Glass</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0987FCQQW?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+        <article class="product" id="gear-B0F2GRXV71">
+          <span class="ph-badge">Countertop reverse osmosis</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B0F2GRXV71?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/61apy3HP+UL._AC_SL1500_.jpg" alt="AquaTru Classic" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>AquaTru Classic</h3>
+            <p>A countertop reverse-osmosis purifier; no plumbing required.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/water-filtration-guide/">What's in the Glass</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B0F2GRXV71?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+      </div>
+      <div class="gear-section" id="fn-products-closed-up-for-the-evening">
+        <p class="section-label">Closed Up for the Evening</p>
+        <h2><a href="/field-notes/closed-up-for-the-evening/">Closed Up for the Evening</a></h2>
+      </div>
+      <p class="fn-already">Already in the showcase above : <a href="#gear-B00186URTY">Addalock portable door lock</a>, <a href="#gear-B002BQ4VBU">Buddybar door security bar</a>, <a href="#gear-B00M30SQGA">SABRE wedge door stop alarm</a>, <a href="#gear-B00BAFIQF0">Prime-Line sliding window security lock</a>, <a href="#gear-B000P0SHTQ">Prime-Line U 9929 window flip lock</a>, <a href="#gear-B00178HMCI">UltraPro window and door alarm, 2-pack</a>, <a href="#gear-B00RDVE2L2">rabbitgoo frosted glass privacy film</a>.</p>
+      <div class="shop-grid">
+        <article class="product" id="gear-B00CX5Z4B0">
+          <span class="ph-badge">Safety film</span>
+          <a class="ph-img" href="https://www.amazon.com/dp/B00CX5Z4B0?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/I/91ws31QbJFL._AC_SL1500_.jpg" alt="BDF S8MC 8 mil clear window film, 36 in × 12 ft" width="600" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer-when-downgrade" />
+          </a>
+          <div class="ph-body">
+            <h3>BDF S8MC 8 mil clear window film, 36 in × 12 ft</h3>
+            <p>8-mil clear film, 36 in × 12 ft.</p>
+            <p class="ph-homes">Featured in <a href="/field-notes/closed-up-for-the-evening/">Closed Up for the Evening</a></p>
+            <a class="btn-soon btn-amazon" href="https://www.amazon.com/dp/B00CX5Z4B0?tag=lockandlinen-20" rel="nofollow sponsored noopener noreferrer">View on Amazon</a>
+          </div>
+        </article>
+      </div>
+      <div class="gear-section" id="fn-products-when-the-grid-goes-dark">
+        <p class="section-label">When the Grid Goes Dark</p>
+        <h2><a href="/field-notes/when-the-grid-goes-dark/">When the Grid Goes Dark</a></h2>
+      </div>
+      <p class="fn-already">Already in the showcase above : <a href="#gear-B0GMRFYVZ9">Twelve South PowerCapsule 10K</a>, <a href="#gear-B0F66NH2ZX">Anker Prime 20,100 mAh, 220W</a>, <a href="#gear-B0GKGFWY69">DaranEner 600W / 288Wh</a>, <a href="#gear-B0DCC2BVFW">EcoFlow DELTA 3 Plus</a>, <a href="#gear-B0F66LNB8D">Anker Prime 26,250 mAh, 300W</a>, <a href="#gear-B0D7PPG25F">Jackery Explorer 1000 v2</a>, <a href="#gear-B0DFG2WDQH">Jackery Explorer 2000 v2</a>, <a href="#gear-B0FVFGL38H">Anker SOLIX C2000 Gen 2</a>.</p>
+    </div>
+    <div class="wrap blackout-checklist" id="blackout-checklist">
+      <div class="gear-section">
+        <p class="section-label">At home</p>
+        <h2>A checklist for a prolonged blackout</h2>
+        <p>A longer outage is easier to meet calmly when a few quiet supplies are already in the house. The Government of Canada’s <a href="https://www.canada.ca/en/services/policing/emergencies/preparedness/get-prepared/emergency-kits/get-kit.html">emergency kit checklist</a> is a good place to start: be ready to look after yourself for at least 72 hours, and add more supplies if you can, in case it lasts longer. What follows is a practical list for a longer outage at home. Where we already write about a piece, or already show it in the showcase above, we point you to it. The rest are ordinary household items — not a new shopping list.</p>
+      </div>
+      <h3 id="blackout-water">Water</h3>
+      <ul>
+        <li><strong>Storage.</strong> The basic kit calls for two litres of stored or bottled water per person per day, for drinking, cooking and hygiene, for at least 72 hours. <a href="https://www.canada.ca/en/health-canada/services/food-drinking-water-safe-emergency.html">Health Canada</a> suggests thinking about two more litres per person per day for cooking and cleaning. Include some smaller bottles, which are easier to carry.</li>
+        <li><strong>Filtration.</strong> The systems in <a href="/field-notes/water-filtration-guide/">What’s in the Glass</a>, and the <a href="#gear-B006QF3TW4">LifeStraw</a> already in the showcase above.</li>
+        <li><strong>Purification, beyond filtration.</strong> Health Canada and the additional-supplies list mention water-purifying tablets, or unscented household bleach, if local authorities say the tap is unsafe and boiling is not practical. Follow those official instructions, not a guess.</li>
+      </ul>
+      <h3 id="blackout-food">Food</h3>
+      <ul>
+        <li><strong>Non-perishables.</strong> Canned food, energy bars and dried foods, replaced once a year, per the basic kit. For everyday storage, see <a href="/field-notes/the-quiet-pantry/">The Quiet Pantry</a>.</li>
+        <li>A manual can opener.</li>
+        <li><strong>Cooking without grid power.</strong> The additional-supplies list includes a small fuel-operated stove and fuel. Official guidance is never to use them inside buildings, tents, or other closed spaces, because of carbon monoxide. After an outage, Health Canada also suggests opening the refrigerator and freezer only when you need to.</li>
+      </ul>
+      <h3 id="blackout-power">Emergency power</h3>
+      <ul>
+        <li>Portable power stations and power banks: the <a href="#power">Power-out kit</a> above, and the notes <a href="/field-notes/when-the-grid-goes-dark/">When the Grid Goes Dark</a> and <a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a>.</li>
+        <li>Solar panels and controllers: in <a href="/field-notes/a-quiet-share-of-the-sun/">A Quiet Share of the Sun</a>.</li>
+      </ul>
+      <h3 id="blackout-heat">Heating and cooling, by other means</h3>
+      <ul>
+        <li>Extra layers, a warm blanket, and blackout curtains to hold a little heat or keep a room cooler. In the showcase: <a href="#linen">Cozy linen &amp; light</a> and the <a href="#gear-B07R5FC3K1">blackout curtains</a>.</li>
+        <li class="safety"><strong>Safety.</strong> Never run a generator, a barbecue, a fuel stove, or a fuel heater inside the house, a garage, a tent, or any other closed space. A working carbon monoxide alarm matters whenever something burns fuel.</li>
+      </ul>
+      <h3 id="blackout-light">Lighting</h3>
+      <ul>
+        <li>Lamps, lanterns and candles already in <a href="#linen">Cozy linen &amp; light</a>, the <a href="#gear-B07BMJPH8L">Goal Zero solar lantern</a>, and, from Field Notes, the <a href="#gear-B0CQ7RH7X1">rice-paper floor lamp</a>, <a href="#gear-B0F6YKFFG9">outdoor string lights</a>, and the <a href="#gear-B0B2YYH3V1">hurricane candle holder</a>.</li>
+        <li>A battery or crank flashlight, which official kits mention, and waterproof matches if you keep candles, stored safely.</li>
+      </ul>
+      <h3 id="blackout-comms">Communication</h3>
+      <ul>
+        <li>A crank or solar emergency radio, such as the <a href="#gear-B0G53Z8RD1">FosPower weather radio</a> in the showcase.</li>
+        <li>Charged phones, and <a href="#power">power banks</a> to keep them going.</li>
+        <li>A printed list of contacts, a copy of the household emergency plan, and an agreed meeting place, as the official document list suggests for the kit.</li>
+      </ul>
+      <h3 id="blackout-medical">Medical</h3>
+      <ul>
+        <li>A first aid kit. In the showcase: the <a href="#gear-B06XVJDYSF">Swiss Safe kit</a>.</li>
+        <li>A supply of your prescription medicines, as you need them, and a list of every medicine, the dose, and what it is for, as the official document list asks.</li>
+      </ul>
+      <h3 id="blackout-sanitation">Sanitation and hygiene</h3>
+      <ul>
+        <li>Toiletries and menstrual supplies, according to who is in the house.</li>
+        <li>Hand sanitizer and garbage bags, listed among the additional supplies.</li>
+        <li>The water stored above also covers washing. The <a href="/field-notes/the-quiet-pantry/">food-grade buckets</a> in the pantry note can be set aside for water or cleaning, if you keep them for that.</li>
+      </ul>
+      <h3 id="blackout-tools">Tools</h3>
+      <ul>
+        <li>Basic tools: a hammer, screwdrivers, gloves, a pocket knife.</li>
+        <li>Duct tape, scissors and plastic sheeting, also on the additional-supplies list.</li>
+        <li>The manual can opener already named above.</li>
+      </ul>
+      <h3 id="blackout-security">Doors, windows and cameras</h3>
+      <ul>
+        <li>Locks, bars, alarms and window film: the <a href="#entry">Entry &amp; doors</a> and <a href="#window">Window &amp; glass</a> groups above, and the notes <a href="/field-notes/a-door-you-dont-own/">A Door You Don’t Own</a> and <a href="/field-notes/closed-up-for-the-evening/">Closed Up for the Evening</a>.</li>
+        <li>Home cameras: <a href="/field-notes/a-quiet-look-at-the-door/">A Quiet Look at the Door</a>.</li>
+      </ul>
+      <h3 id="blackout-documents">Documents and cash</h3>
+      <ul>
+        <li>Paper and digital copies of identification, insurance and the emergency plan, kept with the kit.</li>
+        <li>Some cash in small bills, useful if card payments are down.</li>
+        <li>In the showcase, the <a href="#gear-B00KOO599O">SentrySafe document box</a> for papers.</li>
+      </ul>
+    </div>
+  </section>
+<!--ll-gear-fn-end-->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">Lock <span>&amp;</span> Linen</div>

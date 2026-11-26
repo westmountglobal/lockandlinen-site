@@ -4217,12 +4217,17 @@ def main():
     manifest = [{"slug": s["slug"], "yt": s["yt"], "title": s["title"]} for s in STORIES]
     (ROOT / "site" / "_build" / "manifest.json").write_text(json.dumps(manifest, indent=2))
     print("Done.", len(STORIES), "stories + privacy/contact/guide + field notes")
+    import gear_from_field_notes
+    print("Patching EN gear page with public Field Notes products and checklist…")
+    print(" ", gear_from_field_notes.patch_en())
     import i18n_fr  # French twins under /fr/, EN|FR switch, hreflang, sitemap alternates
     i18n_fr.main()
     patch_unlisted_quiet_pantry_fr()
     patch_unlisted_solar_fr()
     patch_unlisted_cameras_fr()
     patch_dream_homes_fr()
+    print("Patching FR gear page with public Field Notes products and checklist…")
+    print(" ", gear_from_field_notes.patch_fr())
 
 
 if __name__ == "__main__":
