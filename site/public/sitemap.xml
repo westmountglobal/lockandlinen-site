@@ -99,6 +99,20 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://lockandlinen.com/field-notes/a-white-house-down-to-the-sea/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/a-white-house-down-to-the-sea/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/a-white-house-down-to-the-sea/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/a-white-house-down-to-the-sea/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/field-notes/a-white-house-down-to-the-sea/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/a-white-house-down-to-the-sea/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/a-white-house-down-to-the-sea/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/a-white-house-down-to-the-sea/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://lockandlinen.com/field-notes/closed-up-for-the-evening/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/closed-up-for-the-evening/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/closed-up-for-the-evening/" />
