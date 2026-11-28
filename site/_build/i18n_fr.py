@@ -39,7 +39,6 @@ META_KEYS = {"description", "og:title", "og:description", "twitter:title", "twit
 NOINDEX_REDIRECTS = {"gear/index.html"}
 # Built and translated, but kept out of sitemap.xml (preview / unlisted pages).
 UNLISTED_PAGES = {
-    "field-notes/a-house-around-a-courtyard/index.html",  # dream-home unlisted
 }
 CONTENT = ROOT / "site" / "_content"
 

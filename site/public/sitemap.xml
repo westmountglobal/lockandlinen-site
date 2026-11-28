@@ -57,6 +57,20 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://lockandlinen.com/field-notes/a-house-around-a-courtyard/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/a-house-around-a-courtyard/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/a-house-around-a-courtyard/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/a-house-around-a-courtyard/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://lockandlinen.com/fr/field-notes/a-house-around-a-courtyard/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/a-house-around-a-courtyard/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/a-house-around-a-courtyard/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lockandlinen.com/field-notes/a-house-around-a-courtyard/" />
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://lockandlinen.com/field-notes/a-house-at-the-end-of-a-lavender-field/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://lockandlinen.com/field-notes/a-house-at-the-end-of-a-lavender-field/" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://lockandlinen.com/fr/field-notes/a-house-at-the-end-of-a-lavender-field/" />
